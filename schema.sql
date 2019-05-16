@@ -10,5 +10,10 @@ CREATE TABLE photo_information (
   description VARCHAR(1000) NOT NULL,
   is_verified BOOLEAN NOT NULL,
   listing_id INT,
-)
+  PRIMARY KEY (id)
+);
 
+LOAD DATA LOCAL INFILE 'fakeData.txt'
+INTO TABLE photo_information
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n' (photo_url, description, is_verified, listing_id);
