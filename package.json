@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack -d --watch",
     "start": "nodemon server/server.js",
-    "create-fake-data": "node fakeDataGenerator.js"
+    "seedDB": "node fakeDataGenerator.js && mysql -u root < schema.sql"
   },
   "lint-staged": {
     "*.js": "eslint",
