@@ -4,7 +4,8 @@
   "description": "Photo display module for an Airbnb",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production"
   },
   "lint-staged": {
     "*.js": "eslint",
@@ -22,11 +23,20 @@
   "keywords": [],
   "author": "Scott Torres",
   "license": "ISC",
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
   "bugs": {
     "url": "https://github.com/carebnb/photodisplay-module/issues"
   },
   "homepage": "https://github.com/carebnb/photodisplay-module#readme",
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.17.2",
@@ -34,6 +44,13 @@
     "eslint-plugin-react": "^7.13.0",
     "husky": "^2.3.0",
     "lint-staged": "^8.1.7",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "stylelint": "^10.0.1",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   }
 }
