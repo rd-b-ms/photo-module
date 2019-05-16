@@ -1,1 +1,5 @@
+# Ignore npm node_modules
 node_modules
+
+# Other files to ignore
+.DS_store
