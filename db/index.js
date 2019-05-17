@@ -1,13 +1,19 @@
 const mysql = require('mysql');
 
-const connection = mysql.connection({
+const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
   database: 'photo_display',
 });
 
-connection.connect();
+connection.connect((err) => {
+  if (err) {
+    console.log('Could not connect to MySQL', err);
+  } else {
+    console.log('Connected to MySQL!');
+  }
+});
 
 const getPhotos = (listingID, callback) => {
   connection.query(`SELECT photo_url from photo_information where listing_id = ${listingID}`, (err, photoUrls) => {
@@ -19,4 +25,4 @@ const getPhotos = (listingID, callback) => {
   });
 };
 
-module.exports = getPhotos;
+module.exports = { getPhotos };
