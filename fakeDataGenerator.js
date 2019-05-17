@@ -4,9 +4,9 @@ const fs = require('fs');
 const createFakeData = () => {
   const fakeDataArray = [];
 
-  for (let i = 1; i < 1000; i += 1) {
+  for (let i = 1; i < 697; i += 1) {
     fakeDataArray.push([
-      faker.image.city(),
+      `photos/photo-${i}.jpg`,
       faker.lorem.sentence(),
       faker.random.boolean(),
       faker.random.number({ min: 1, max: 101, precision: 3 }),
