@@ -1,4 +1,6 @@
+/* eslint-disable import/extensions */
 import React from 'react';
+import PhotosContainer from './PhotosContainer.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,7 +11,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>Testing React Functionality</div>
+      <div>
+        <PhotosContainer />
+      </div>
     );
   }
 }
