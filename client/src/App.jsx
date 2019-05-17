@@ -1,6 +1,6 @@
-/* eslint-disable import/extensions */
 import React from 'react';
-import PhotosContainer from './PhotosContainer.jsx';
+import PhotosContainer from './PhotosContainer';
+
 
 class App extends React.Component {
   constructor(props) {
