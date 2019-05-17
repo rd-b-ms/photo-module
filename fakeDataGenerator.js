@@ -9,7 +9,7 @@ const createFakeData = () => {
       `photos/photo-${i}.jpg`,
       faker.lorem.sentence(),
       faker.random.boolean(),
-      faker.random.number({ min: 1, max: 101, precision: 3 }),
+      Math.ceil((i % 101) + 1),
     ]);
   }
   return fakeDataArray;
