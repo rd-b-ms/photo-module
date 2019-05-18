@@ -12,7 +12,7 @@ class PhotosContainer extends React.Component {
     const { photos } = this.props;
     return (
       photos.map(photo => (
-        <Photo photoURL={photo.photo_url} />
+        <Photo photo={photo} />
       ))
     );
   }
