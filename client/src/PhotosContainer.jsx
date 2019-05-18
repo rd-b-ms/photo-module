@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Photo from './Photo';
 
 class PhotosContainer extends React.Component {
   constructor(props) {
@@ -7,10 +9,17 @@ class PhotosContainer extends React.Component {
   }
 
   render() {
+    const { photos } = this.props;
     return (
-      <div>Test Photos Container</div>
+      photos.map(photo => (
+        <Photo photoURL={photo.photo_url} />
+      ))
     );
   }
 }
+
+PhotosContainer.propTypes = {
+  photos: PropTypes.shape(['']).isRequired,
+};
 
 export default PhotosContainer;
