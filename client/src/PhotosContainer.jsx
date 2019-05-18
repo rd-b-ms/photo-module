@@ -19,7 +19,7 @@ class PhotosContainer extends React.Component {
 }
 
 PhotosContainer.propTypes = {
-  photos: PropTypes.shape(['']).isRequired,
+  photos: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default PhotosContainer;
