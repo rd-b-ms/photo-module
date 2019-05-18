@@ -16,7 +16,7 @@ connection.connect((err) => {
 });
 
 const getPhotos = (listingID, callback) => {
-  connection.query(`SELECT photo_url from photo_information where listing_id = ${listingID}`, (err, photoUrls) => {
+  connection.query(`SELECT id,photo_url,description,is_verified from photo_information where listing_id = ${listingID}`, (err, photoUrls) => {
     if (err) {
       callback(err);
     } else {
