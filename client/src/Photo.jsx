@@ -41,11 +41,21 @@ const StyledImage = styled.img`
   width: 100%;
 `;
 
-const Photo = ({ photo, index }) => (
-  <StyledPhoto index={index}>
-    <StyledImage src={photo.photo_url} alt="home interior" index={index} />
-  </StyledPhoto>
-);
+class Photo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    const { photo, index } = this.props;
+    return (
+      <StyledPhoto index={index}>
+        <StyledImage src={photo.photo_url} alt="home interior" index={index} />
+      </StyledPhoto>
+    );
+  }
+}
 
 Photo.propTypes = {
   photo: PropTypes.shape({ photo_url: '' }).isRequired,
