@@ -34,6 +34,7 @@ const StyledPhoto = styled.div`
     return '2';
   }};
   border: 1px solid #484848;
+  overflow: hidden;
 `;
 
 const StyledImage = styled.img`
@@ -41,6 +42,10 @@ const StyledImage = styled.img`
   width: 100%;
   opacity: ${props => ((!props.hover && props.isContainerHovered) ? '0.7' : '1')};
   transform: ${props => (props.hover ? 'scale(1.05)' : 'scale(1)')};
+  -webkit-transition: 0.5s ease-out;
+  -moz-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
+  -ms-transition: 0.5s ease-out;
 `;
 
 class Photo extends React.Component {

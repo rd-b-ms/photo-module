@@ -10,6 +10,7 @@ const StyledContainer = styled.div`
   height: 475px;
   width: 100%;
   background: #000;
+  overflow: hidden;
 `;
 
 class App extends React.Component {
