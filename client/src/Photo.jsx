@@ -44,14 +44,37 @@ const StyledImage = styled.img`
 class Photo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { hover: false };
+
+    this.onMouseOver = this.onMouseOver.bind(this);
+    this.onMouseOut = this.onMouseOut.bind(this);
+  }
+
+  onMouseOver() {
+    this.setState({
+      hover: true,
+    });
+  }
+
+  onMouseOut() {
+    this.setState({
+      hover: false,
+    });
   }
 
   render() {
     const { photo, index } = this.props;
     return (
       <StyledPhoto index={index}>
-        <StyledImage src={photo.photo_url} alt="home interior" index={index} />
+        <StyledImage
+          src={photo.photo_url}
+          alt="home interior"
+          index={index}
+          onMouseOver={this.onMouseOver}
+          onFocus={this.onMouseOver}
+          onMouseOut={this.onMouseOut}
+          onBlur={this.onMouseOut}
+        />
       </StyledPhoto>
     );
   }
