@@ -40,7 +40,7 @@ const StyledImage = styled.img`
   height: 100%;
   width: 100%;
   opacity: ${props => ((!props.hover && props.isContainerHovered) ? '0.7' : '1')};
-
+  transform: ${props => (props.hover ? 'scale(1.05)' : 'scale(1)')};
 `;
 
 class Photo extends React.Component {
