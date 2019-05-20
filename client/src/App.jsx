@@ -44,14 +44,16 @@ class App extends React.Component {
   }
 
   render() {
-    const { photos, index } = this.state;
+    const { photos, index, isContainerHovered } = this.state;
     return (
-      <StyledContainer>
+      <StyledContainer
+        onMouseOver={this.onContainerMouseOver}
+        onFocus={this.onContainerMouseOver}
+        onMouseOut={this.onContainerMouseOut}
+        onBlur={this.onContainerMouseOut}
+      >
         <PhotosContainer
-          onMouseOver={this.onContainerMouseOver}
-          onFocus={this.onContainerMouseOver}
-          onMouseOut={this.onContainerMouseOut}
-          onBlur={this.onContainerMouseOut}
+          isContainerHovered={isContainerHovered}
           photos={photos}
           index={index}
         />

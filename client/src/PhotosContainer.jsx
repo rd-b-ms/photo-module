@@ -9,12 +9,17 @@ class PhotosContainer extends React.Component {
   }
 
   render() {
-    const { photos } = this.props;
+    const { photos, isContainerHovered } = this.props;
     return (
       photos.map((photo, index) => {
         if (index < 5) {
           return (
-            <Photo photo={photo} key={photo.id} index={index} />
+            <Photo
+              isContainerHovered={isContainerHovered}
+              photo={photo}
+              key={photo.id}
+              index={index}
+            />
           );
         }
       })
@@ -24,6 +29,7 @@ class PhotosContainer extends React.Component {
 
 PhotosContainer.propTypes = {
   photos: PropTypes.instanceOf(Array).isRequired,
+  isContainerHovered: PropTypes.bool.isRequired,
 };
 
 export default PhotosContainer;

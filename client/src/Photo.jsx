@@ -39,6 +39,8 @@ const StyledPhoto = styled.div`
 const StyledImage = styled.img`
   height: 100%;
   width: 100%;
+  opacity: ${props => ((!props.hover && props.isContainerHovered) ? '0.7' : '1')};
+
 `;
 
 class Photo extends React.Component {
@@ -63,13 +65,16 @@ class Photo extends React.Component {
   }
 
   render() {
-    const { photo, index } = this.props;
+    const { photo, index, isContainerHovered } = this.props;
+    const { hover } = this.state;
     return (
       <StyledPhoto index={index}>
         <StyledImage
           src={photo.photo_url}
           alt="home interior"
           index={index}
+          hover={hover}
+          isContainerHovered={isContainerHovered}
           onMouseOver={this.onMouseOver}
           onFocus={this.onMouseOver}
           onMouseOut={this.onMouseOut}
@@ -83,6 +88,7 @@ class Photo extends React.Component {
 Photo.propTypes = {
   photo: PropTypes.shape({ photo_url: '' }).isRequired,
   index: PropTypes.number.isRequired,
+  isContainerHovered: PropTypes.bool.isRequired,
 };
 
 export default Photo;
