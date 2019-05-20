@@ -1,12 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const Photo = ({ photo }) => (
-  <img src={photo.photo_url} alt="home interior" />
+const StyledPhoto = styled.div`
+  grid-column-start: ${(props) => {
+    if (props.index === 0) {
+      return '1';
+    }
+    if (props.index === 1 || props.index === 3) {
+      return '2';
+    }
+    return '3';
+  }};
+  grid-column-end: ${(props) => {
+    if (props.index === 0) {
+      return '2';
+    }
+    if (props.index === 1 || props.index === 3) {
+      return '3';
+    }
+    return '4';
+  }};
+  grid-row-start: ${(props) => {
+    if (props.index <= 2) {
+      return '1';
+    }
+    return '2';
+  }};
+  grid-row-end:${(props) => {
+    if (props.index === 0 || props.index === 3 || props.index === 4) {
+      return '3';
+    }
+    return '2';
+  }};
+  border: 1px solid #484848;
+`;
+
+const StyledImage = styled.img`
+  height: 100%;
+  width: 100%;
+`;
+
+const Photo = ({ photo, index }) => (
+  <StyledPhoto index={index}>
+    <StyledImage src={photo.photo_url} alt="home interior" index={index} />
+  </StyledPhoto>
 );
 
 Photo.propTypes = {
   photo: PropTypes.shape({ photo_url: '' }).isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default Photo;

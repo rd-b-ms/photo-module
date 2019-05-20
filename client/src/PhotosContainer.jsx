@@ -11,9 +11,13 @@ class PhotosContainer extends React.Component {
   render() {
     const { photos } = this.props;
     return (
-      photos.map(photo => (
-        <Photo photo={photo} key={photo.id} />
-      ))
+      photos.map((photo, index) => {
+        if (index < 5) {
+          return (
+            <Photo photo={photo} key={photo.id} index={index} />
+          );
+        }
+      })
     );
   }
 }
