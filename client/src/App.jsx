@@ -15,8 +15,10 @@ const StyledContainer = styled.div`
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { photos: [], isContainerHovered: false };
 
-    this.state = { photos: [] };
+    this.onContainerMouseOver = this.onContainerMouseOver.bind(this);
+    this.onContainerMouseOut = this.onContainerMouseOut.bind(this);
   }
 
   componentDidMount() {
@@ -29,11 +31,30 @@ class App extends React.Component {
       });
   }
 
+  onContainerMouseOver() {
+    this.setState({
+      isContainerHovered: true,
+    });
+  }
+
+  onContainerMouseOut() {
+    this.setState({
+      isContainerHovered: false,
+    });
+  }
+
   render() {
     const { photos, index } = this.state;
     return (
       <StyledContainer>
-        <PhotosContainer photos={photos} index={index} />
+        <PhotosContainer
+          onMouseOver={this.onContainerMouseOver}
+          onFocus={this.onContainerMouseOver}
+          onMouseOut={this.onContainerMouseOut}
+          onBlur={this.onContainerMouseOut}
+          photos={photos}
+          index={index}
+        />
       </StyledContainer>
     );
   }
