@@ -43,16 +43,19 @@ class SaveButton extends React.Component {
   render() {
     const { isClicked } = this.state;
     let imgSource;
+    let saveText;
     if (isClicked) {
       imgSource = './../icons/altlike.svg';
+      saveText = 'Saved';
     } else {
       imgSource = './../icons/like.svg';
+      saveText = 'Save';
     }
     return (
       <StyledButton type="button" onClick={this.onClick}>
         <StyledDiv>
           <StyledImg src={imgSource} alt="like icon" isClicked={isClicked} />
-          <div>Save</div>
+          <div>{saveText}</div>
         </StyledDiv>
       </StyledButton>
     );
