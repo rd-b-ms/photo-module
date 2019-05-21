@@ -16,7 +16,7 @@ const StyledDiv = styled.div`
   justify-content: center;
 `;
 
-const StyledSvg = styled.img`
+const StyledImg = styled.img`
   width: 15px;
   height: 15px;
   padding: 0px 15px 0px 0px;
@@ -38,10 +38,17 @@ class SaveButton extends React.Component {
   }
 
   render() {
+    const { isClicked } = this.state;
+    let imgSource;
+    if (isClicked) {
+      imgSource = './../icons/altlike.svg';
+    } else {
+      imgSource = './../icons/like.svg';
+    }
     return (
       <StyledButton type="button" onClick={this.onClick}>
         <StyledDiv>
-          <StyledSvg src="./../icons/altlike.svg" alt="like icon" fill="#484848" />
+          <StyledImg src={imgSource} alt="like icon" isClicked={isClicked} />
           <div>Save</div>
         </StyledDiv>
       </StyledButton>
