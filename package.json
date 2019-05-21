@@ -7,7 +7,8 @@
     "build": "webpack -d --watch",
     "start": "nodemon server/server.js",
     "seedDB": "node fakeDataGenerator.js && mysql -u root < schema.sql",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "npx jest --coverage"
   },
   "lint-staged": {
     "*.js": "eslint",

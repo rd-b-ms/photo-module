@@ -2,7 +2,6 @@ import 'babel-polyfill';
 
 const puppeteer = require('puppeteer');
 
-
 const pageUrl = 'http://localhost:3002';
 let page;
 let browser;

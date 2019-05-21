@@ -1,7 +1,6 @@
-module.exports = function (api) {
-
+module.exports = function babelConfig(api) {
   api.cache(true);
-  const presets = ["@babel/preset-env", "@babel/preset-react"];
+  const presets = ['@babel/preset-env', '@babel/preset-react'];
 
   return {
     presets,
