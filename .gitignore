@@ -3,5 +3,13 @@ node_modules
 
 # Other files to ignore
 .DS_store
+
+# Static Images
 photos/
+icons/
+
+# Fake Data Text File
 fakeData.txt
+
+# Testing Coverage Report Files
+coverage/

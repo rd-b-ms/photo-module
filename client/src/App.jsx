@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import PhotosContainer from './PhotosContainer';
+import SaveButton from './SaveButton';
 
 const StyledContainer = styled.div`
   display: grid;
@@ -58,6 +59,7 @@ class App extends React.Component {
           photos={photos}
           index={index}
         />
+        <SaveButton />
       </StyledContainer>
     );
   }
