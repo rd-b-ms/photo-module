@@ -19,6 +19,9 @@
     }
   },
   "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/"
+    ],
     "setupFilesAfterEnv": [
       "./node_modules/jest-environment-enzyme/lib/index.js"
     ],
@@ -31,10 +34,12 @@
   "keywords": [],
   "author": "Scott Torres",
   "license": "ISC",
-  "presets": [
-    "@babel/preset-env",
-    "@babel/preset-react"
-  ],
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
   "bugs": {
     "url": "https://github.com/carebnb/photodisplay-module/issues"
   },
@@ -59,11 +64,13 @@
     "lint-staged": "^8.1.7",
     "pre-commit": "^1.2.2",
     "puppeteer": "^1.16.0",
+    "react-test-renderer": "^16.8.6",
     "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "fs": "0.0.1-security",
