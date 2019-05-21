@@ -14,6 +14,9 @@ const StyledButton = styled.button`
 const StyledDiv = styled.div`
   display: flex;
   justify-content: center;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
 `;
 
 const StyledImg = styled.img`
