@@ -18,6 +18,10 @@
       "pre-commit": "lint-staged"
     }
   },
+  "jest": {
+    "setupFilesAfterEnv": ["./node_modules/jest-environment-enzyme/lib/index.js"],
+    "testEnvironment": "enzyme"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/carebnb/photodisplay-module.git"
