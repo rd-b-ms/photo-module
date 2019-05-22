@@ -4,7 +4,9 @@ import { StyledContainer } from '../Styles/style';
 import PhotosContainer from './PhotosContainer';
 import SaveButton from './SaveButton';
 import ShareButton from './ShareButton';
-import ViewPhotosButton from './ViewPhotosButton';
+import ViewPhotosButton from '../ViewPhotosButton';
+import ShareModal from '../ShareModal';
+
 
 class App extends React.Component {
   constructor(props) {
