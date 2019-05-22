@@ -1,19 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
+import StyledContainer from '../Styles/style'
 import PhotosContainer from './PhotosContainer';
 import SaveButton from './SaveButton';
 import ShareButton from './ShareButton';
-
-const StyledContainer = styled.div`
-  display: grid;
-  grid-template-columns: 50% 25% 25%;
-  grid-template-rows: 50% 50%;
-  height: 475px;
-  width: 100%;
-  background: #000;
-  overflow: hidden;
-`;
 
 class App extends React.Component {
   constructor(props) {
