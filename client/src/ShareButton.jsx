@@ -30,23 +30,23 @@ const StyledImg = styled.img`
 class ShareButton extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isClicked: false };
+    this.state = { shareButtonClicked: false };
 
-    this.onClick = this.onClick.bind(this);
+    this.onShareButtonClick = this.onShareButtonClick.bind(this);
   }
 
-  onClick(event) {
+  onShareButtonClick(event) {
     event.preventDefault();
-    this.setState(prevState => ({ isClicked: !prevState.isClicked }));
+    this.setState(prevState => ({ shareButtonClicked: !prevState.shareButtonClicked }));
   }
 
   render() {
-    const { isClicked } = this.state;
+    const { shareButtonClicked } = this.state;
 
     return (
-      <StyledButton type="button" onClick={this.onClick}>
+      <StyledButton type="button" onClick={this.onShareButtonClick}>
         <StyledDiv>
-          <StyledImg src="./../icons/share-icon-svg-5.jpg" alt="like icon" isClicked={isClicked} />
+          <StyledImg src="./../icons/share-icon-svg-5.jpg" alt="like icon" shareButtonClicked={shareButtonClicked} />
           <div>Share</div>
         </StyledDiv>
       </StyledButton>
