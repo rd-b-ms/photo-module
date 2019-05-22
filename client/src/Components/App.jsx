@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import StyledContainer from '../Styles/style'
+import { StyledContainer } from '../Styles/style';
 import PhotosContainer from './PhotosContainer';
 import SaveButton from './SaveButton';
 import ShareButton from './ShareButton';
