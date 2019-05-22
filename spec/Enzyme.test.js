@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import App from './App';
+import App from '../client/src/App';
 
 configure({ adapter: new Adapter() });
 
