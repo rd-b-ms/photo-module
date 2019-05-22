@@ -1,52 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const StyledPhoto = styled.div`
-  grid-column-start: ${(props) => {
-    if (props.index === 0) {
-      return '1';
-    }
-    if (props.index === 1 || props.index === 3) {
-      return '2';
-    }
-    return '3';
-  }};
-  grid-column-end: ${(props) => {
-    if (props.index === 0) {
-      return '2';
-    }
-    if (props.index === 1 || props.index === 3) {
-      return '3';
-    }
-    return '4';
-  }};
-  grid-row-start: ${(props) => {
-    if (props.index <= 2) {
-      return '1';
-    }
-    return '2';
-  }};
-  grid-row-end:${(props) => {
-    if (props.index === 0 || props.index === 3 || props.index === 4) {
-      return '3';
-    }
-    return '2';
-  }};
-  border: 1px solid #484848;
-  overflow: hidden;
-`;
-
-const StyledImage = styled.img`
-  height: 100%;
-  width: 100%;
-  opacity: ${props => ((!props.hover && props.isContainerHovered) ? '0.7' : '1')};
-  transform: ${props => (props.hover ? 'scale(1.05)' : 'scale(1)')};
-  -webkit-transition: 0.5s ease-out;
-  -moz-transition: 0.5s ease-out;
-  -o-transition: 0.5s ease-out;
-  -ms-transition: 0.5s ease-out;
-`;
+import { StyledPhotoContainer, StyledPhoto } from '../Styles/style';
 
 class Photo extends React.Component {
   constructor(props) {
@@ -73,8 +27,8 @@ class Photo extends React.Component {
     const { photo, index, isContainerHovered } = this.props;
     const { hover } = this.state;
     return (
-      <StyledPhoto index={index}>
-        <StyledImage
+      <StyledPhotoContainer index={index}>
+        <StyledPhoto
           src={photo.photo_url}
           alt="home interior"
           index={index}
@@ -85,7 +39,7 @@ class Photo extends React.Component {
           onMouseOut={this.onMouseOut}
           onBlur={this.onMouseOut}
         />
-      </StyledPhoto>
+      </StyledPhotoContainer>
     );
   }
 }

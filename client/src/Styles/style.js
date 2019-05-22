@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-// App Level Styled Components
+// Styled Components for App.jsx
 const StyledContainer = styled.div`
   display: grid;
   grid-template-columns: 50% 25% 25%;
@@ -11,7 +11,7 @@ const StyledContainer = styled.div`
   overflow: hidden;
 `;
 
-// Share Button Styled Components
+// Styled Components for ShareButton.jsx
 const StyledShareButton = styled.button`
   position: absolute;
   margin: 2% 0% 0% 82%;
@@ -38,9 +38,58 @@ const StyledShareImage = styled.img`
   flex-direction: row;
 `;
 
+// Styled Components for Photo.jsx
+const StyledPhotoContainer = styled.div`
+  grid-column-start: ${(props) => {
+    if (props.index === 0) {
+      return '1';
+    }
+    if (props.index === 1 || props.index === 3) {
+      return '2';
+    }
+    return '3';
+  }};
+  grid-column-end: ${(props) => {
+    if (props.index === 0) {
+      return '2';
+    }
+    if (props.index === 1 || props.index === 3) {
+      return '3';
+    }
+    return '4';
+  }};
+  grid-row-start: ${(props) => {
+    if (props.index <= 2) {
+      return '1';
+    }
+    return '2';
+  }};
+  grid-row-end:${(props) => {
+    if (props.index === 0 || props.index === 3 || props.index === 4) {
+      return '3';
+    }
+    return '2';
+  }};
+  border: 1px solid #484848;
+  overflow: hidden;
+`;
+
+const StyledPhoto = styled.img`
+  height: 100%;
+  width: 100%;
+  opacity: ${props => ((!props.hover && props.isContainerHovered) ? '0.7' : '1')};
+  transform: ${props => (props.hover ? 'scale(1.05)' : 'scale(1)')};
+  -webkit-transition: 0.5s ease-out;
+  -moz-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
+  -ms-transition: 0.5s ease-out;
+`;
+
 export {
   StyledContainer,
   StyledShareButton,
   StyledShareText,
   StyledShareImage,
+  StyledPhotoContainer,
+  StyledPhoto,
 };
