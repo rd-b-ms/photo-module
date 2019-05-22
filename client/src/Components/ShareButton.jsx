@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
+const StyledShareButton = styled.button`
   position: absolute;
   margin: 2% 0% 0% 82%;
   border-radius: 4px;
@@ -11,7 +11,7 @@ const StyledButton = styled.button`
   width: 91px;
 `;
 
-const StyledDiv = styled.div`
+const StyledShareText = styled.div`
   display: flex;
   justify-content: center;
   font-family: Roboto, Helvetica, sans-serif;
@@ -19,7 +19,7 @@ const StyledDiv = styled.div`
   font-size: 14px;
 `;
 
-const StyledImg = styled.img`
+const StyledShareImage = styled.img`
   width: 15px;
   height: 15px;
   padding: 0px 15px 0px 0px;
@@ -44,12 +44,12 @@ class ShareButton extends React.Component {
     const { shareButtonClicked } = this.state;
 
     return (
-      <StyledButton type="button" onClick={this.onShareButtonClick}>
-        <StyledDiv>
-          <StyledImg src="./../icons/share-icon-svg-5.jpg" alt="like icon" shareButtonClicked={shareButtonClicked} />
+      <StyledShareButton type="button" onClick={this.onShareButtonClick}>
+        <StyledShareText>
+          <StyledShareImage src="./../icons/share-icon-svg-5.jpg" alt="like icon" shareButtonClicked={shareButtonClicked} />
           <div>Share</div>
-        </StyledDiv>
-      </StyledButton>
+        </StyledShareText>
+      </StyledShareButton>
     );
   }
 }
