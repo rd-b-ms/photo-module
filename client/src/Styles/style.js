@@ -85,6 +85,33 @@ const StyledPhoto = styled.img`
   -ms-transition: 0.5s ease-out;
 `;
 
+// Styled Components for SaveButton.jsx
+const StyledSaveButton = styled.button`
+  position: absolute;
+  margin: 2% 0% 0% 90%;
+  border-radius: 4px;
+  background-color: white;
+  color: #484848;
+  height: 36px;
+  width: 91px;
+`;
+
+const StyledSaveText = styled.div`
+  display: flex;
+  justify-content: center;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+`;
+
+const StyledHeartImg = styled.img`
+  width: 15px;
+  height: 15px;
+  padding: 0px 15px 0px 0px;
+  display: flex;
+  flex-direction: row;
+`;
+
 export {
   StyledContainer,
   StyledShareButton,
@@ -92,4 +119,7 @@ export {
   StyledShareImage,
   StyledPhotoContainer,
   StyledPhoto,
+  StyledSaveButton,
+  StyledSaveText,
+  StyledHeartImg,
 };

@@ -1,31 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const StyledButton = styled.button`
-  position: absolute;
-  margin: 2% 0% 0% 90%;
-  border-radius: 4px;
-  background-color: white;
-  color: #484848;
-  height: 36px;
-  width: 91px;
-`;
-
-const StyledDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  font-family: Roboto, Helvetica, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-`;
-
-const StyledImg = styled.img`
-  width: 15px;
-  height: 15px;
-  padding: 0px 15px 0px 0px;
-  display: flex;
-  flex-direction: row;
-`;
+import { StyledSaveButton, StyledSaveText, StyledHeartImg } from '../Styles/style';
 
 class SaveButton extends React.Component {
   constructor(props) {
@@ -52,12 +26,12 @@ class SaveButton extends React.Component {
       saveText = 'Save';
     }
     return (
-      <StyledButton type="button" onClick={this.onClick}>
-        <StyledDiv>
-          <StyledImg src={imgSource} alt="like icon" isClicked={isClicked} />
+      <StyledSaveButton type="button" onClick={this.onClick}>
+        <StyledSaveText>
+          <StyledHeartImg src={imgSource} alt="like icon" isClicked={isClicked} />
           <div>{saveText}</div>
-        </StyledDiv>
-      </StyledButton>
+        </StyledSaveText>
+      </StyledSaveButton>
     );
   }
 }
