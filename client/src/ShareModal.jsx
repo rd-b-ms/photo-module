@@ -30,11 +30,9 @@ const ShareModal = ({ shareModalIsVisible }) => {
   // }
 
   return (
-    <div>
-      <StyledSection shareModalIsVisible={shareModalIsVisible}>
-        <StyledDiv>Test Modal</StyledDiv>
-      </StyledSection>
-    </div>
+    <StyledSection shareModalIsVisible={shareModalIsVisible}>
+      <StyledDiv>Test Modal</StyledDiv>
+    </StyledSection>
   );
 };
 

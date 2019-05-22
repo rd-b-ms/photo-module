@@ -52,23 +52,21 @@ class App extends React.Component {
       shareModalIsVisible,
     } = this.state;
     return (
-      <div>
+      <StyledContainer
+        onMouseOver={this.onContainerMouseOver}
+        onFocus={this.onContainerMouseOver}
+        onMouseOut={this.onContainerMouseOut}
+        onBlur={this.onContainerMouseOut}
+      >
         <ShareModal shareModalIsVisible={shareModalIsVisible} />
-        <StyledContainer
-          onMouseOver={this.onContainerMouseOver}
-          onFocus={this.onContainerMouseOver}
-          onMouseOut={this.onContainerMouseOut}
-          onBlur={this.onContainerMouseOut}
-        >
-          <PhotosContainer
-            isContainerHovered={isContainerHovered}
-            photos={photos}
-            index={index}
-          />
-          <ShareButton showShareModal={this.showShareModal} />
-          <SaveButton />
-        </StyledContainer>
-      </div>
+        <PhotosContainer
+          isContainerHovered={isContainerHovered}
+          photos={photos}
+          index={index}
+        />
+        <ShareButton showShareModal={this.showShareModal} />
+        <SaveButton />
+      </StyledContainer>
     );
   }
 }
