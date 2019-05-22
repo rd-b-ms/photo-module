@@ -15,12 +15,13 @@ class App extends React.Component {
 
     this.onContainerMouseOver = this.onContainerMouseOver.bind(this);
     this.onContainerMouseOut = this.onContainerMouseOut.bind(this);
+    this.showShareModal = this.showShareModal.bind(this);
   }
 
   componentDidMount() {
     axios.get('/photos/?listingid=7')
       .then((photoList) => {
-        this.setState({ photos: photoList.data });
+        this.setState({ photos: photoList.data, shareModalIsVisible: false });
       })
       .catch((err) => {
         throw err;
@@ -39,24 +40,35 @@ class App extends React.Component {
     });
   }
 
+  showShareModal(isVisible) {
+    this.setState({ shareModalIsVisible: isVisible });
+  }
+
   render() {
-    const { photos, index, isContainerHovered } = this.state;
+    const {
+      photos,
+      index,
+      isContainerHovered,
+      shareModalIsVisible,
+    } = this.state;
     return (
-      <StyledContainer
-        onMouseOver={this.onContainerMouseOver}
-        onFocus={this.onContainerMouseOver}
-        onMouseOut={this.onContainerMouseOut}
-        onBlur={this.onContainerMouseOut}
-      >
-        <PhotosContainer
-          isContainerHovered={isContainerHovered}
-          photos={photos}
-          index={index}
-        />
-        <ShareButton />
-        <SaveButton />
-        <ViewPhotosButton />
-      </StyledContainer>
+      <div>
+        <ShareModal shareModalIsVisible={shareModalIsVisible} />
+        <StyledContainer
+          onMouseOver={this.onContainerMouseOver}
+          onFocus={this.onContainerMouseOver}
+          onMouseOut={this.onContainerMouseOut}
+          onBlur={this.onContainerMouseOut}
+        >
+          <PhotosContainer
+            isContainerHovered={isContainerHovered}
+            photos={photos}
+            index={index}
+          />
+          <ShareButton showShareModal={this.showShareModal} />
+          <SaveButton />
+        </StyledContainer>
+      </div>
     );
   }
 }
