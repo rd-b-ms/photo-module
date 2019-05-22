@@ -21,4 +21,8 @@ describe('PhotosContainer', () => {
     const wrapper = mount(<App />);
     expect(wrapper.find('ShareButton').text()).toEqual('Share');
   });
+  it('should have a button with text "View Photos" on load', () => {
+    const wrapper = mount(<App />);
+    expect(wrapper.find('ViewPhotosButton').text()).toEqual('View Photos');
+  });
 });
