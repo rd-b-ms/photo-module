@@ -15,6 +15,10 @@ describe('App', () => {
 describe('PhotosContainer', () => {
   it('should have a button with text "Save" on load', () => {
     const wrapper = mount(<App />);
-    expect(wrapper.find('button').text()).toEqual('Save');
+    expect(wrapper.find('SaveButton').text()).toEqual('Save');
+  });
+  it('should have a button with text "Share" on load', () => {
+    const wrapper = mount(<App />);
+    expect(wrapper.find('ShareButton').text()).toEqual('Share');
   });
 });
