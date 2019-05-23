@@ -1,33 +1,28 @@
-import 'babel-polyfill';
+import React from 'react';
+import { shallow, mount, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import App from '../client/src/App';
 
-const puppeteer = require('puppeteer');
+configure({ adapter: new Adapter() });
 
-const pageUrl = 'http://localhost:3002';
-let page;
-let browser;
-const width = 1440;
-const height = 780;
-
-beforeAll(async () => {
-  browser = await puppeteer.launch({
-    headless: false,
-    slowMo: 80,
-    args: [`--window-size=${width},${height}`],
+describe('App', () => {
+  it('should load <App /> without crashing', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper).toBeTruthy();
   });
-  page = await browser.newPage();
-  await page.setViewport({ width, height });
 });
 
-afterAll(() => {
-  browser.close();
-});
-
-describe('App loading sequence', () => {
-  beforeEach(async () => {
-    await page.goto(pageUrl, { waituntil: 'networkidle2' });
+describe('PhotosContainer', () => {
+  it('should have a button with text "Save" on load', () => {
+    const wrapper = mount(<App />);
+    expect(wrapper.find('SaveButton').text()).toEqual('Save');
   });
-  test('initial page title is correct', async () => {
-    const title = await page.title();
-    expect(title).toEqual('Carebnb');
+  it('should have a button with text "Share" on load', () => {
+    const wrapper = mount(<App />);
+    expect(wrapper.find('ShareButton').text()).toEqual('Share');
+  });
+  it('should have a button with text "View Photos" on load', () => {
+    const wrapper = mount(<App />);
+    expect(wrapper.find('ViewPhotosButton').text()).toEqual('View Photos');
   });
 });
