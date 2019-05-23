@@ -77,8 +77,10 @@ const StyledInnerSection = styled.section`
 class ShareModal extends React.Component {
   constructor(props) {
     super(props);
+    this.ref = React.createRef();
 
     this.onCloseButtonClick = this.onCloseButtonClick.bind(this);
+    this.handleClickOutsideModal = this.handleClickOutsideModal.bind(this);
   }
 
   onCloseButtonClick(event) {
@@ -87,12 +89,24 @@ class ShareModal extends React.Component {
     hideShareModal(false);
   }
 
+  handleClickOutsideModal(event) {
+    const isOutside = !this.ref.current.contains(event.target);
+    const { hideShareModal } = this.props;
+
+    if (isOutside) {
+      hideShareModal(false);
+    }
+  }
+
   render() {
     const { shareModalIsVisible } = this.props;
 
     return (
-      <StyledSection shareModalIsVisible={shareModalIsVisible}>
-        <StyledDiv>
+      <StyledSection
+        onClick={this.handleClickOutsideModal}
+        shareModalIsVisible={shareModalIsVisible}
+      >
+        <StyledDiv ref={this.ref}>
           <StyledCloseButton onClick={this.onCloseButtonClick}>X</StyledCloseButton>
           <StyledHeader>
             <StyledTitle>Share</StyledTitle>

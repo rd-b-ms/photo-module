@@ -39,8 +39,6 @@ class ShareButton extends React.Component {
   onShareButtonClick(event) {
     event.preventDefault();
     const { showShareModal } = this.props;
-    // this.setState(prevState => ({ shareButtonClicked: !prevState.shareButtonClicked }));
-    // const { shareButtonClicked } = this.state;
     showShareModal(true);
   }
 

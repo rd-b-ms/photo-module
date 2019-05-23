@@ -11,7 +11,7 @@ import ShareModal from '../ShareModal';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { photos: [], isContainerHovered: false };
+    this.state = { photos: [], isContainerHovered: false, shareModalIsVisible: false };
 
     this.onContainerMouseOver = this.onContainerMouseOver.bind(this);
     this.onContainerMouseOut = this.onContainerMouseOut.bind(this);
@@ -22,7 +22,7 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/photos/?listingid=7')
       .then((photoList) => {
-        this.setState({ photos: photoList.data, shareModalIsVisible: false });
+        this.setState({ photos: photoList.data });
       })
       .catch((err) => {
         throw err;
