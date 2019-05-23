@@ -102,8 +102,7 @@ class ShareModal extends React.Component {
     this.handleClickOutsideModal = this.handleClickOutsideModal.bind(this);
   }
 
-  onCloseButtonClick(event) {
-    event.preventDefault();
+  onCloseButtonClick() {
     const { hideShareModal } = this.props;
     hideShareModal(false);
   }
