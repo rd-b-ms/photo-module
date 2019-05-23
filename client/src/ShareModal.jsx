@@ -130,7 +130,8 @@ class ShareModal extends React.Component {
           <StyledHeader>
             <StyledTitle>Share</StyledTitle>
             <StyledListingDescription>
-              Check out this awesome listing on Carebnb: (Add fake data here)
+              Check out this awesome listing on Carebnb:
+               Veniam voluptatem sit rerum aut sed est in suscipit.
             </StyledListingDescription>
           </StyledHeader>
           <StyledLinkContainer>
