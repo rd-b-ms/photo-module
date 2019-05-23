@@ -5,14 +5,18 @@ import PhotosContainer from './PhotosContainer';
 import SaveButton from './SaveButton';
 import ShareButton from './ShareButton';
 import ViewPhotosButton from './ViewPhotosButton';
+import ShareModal from './ShareModal';
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { photos: [], isContainerHovered: false };
+    this.state = { photos: [], isContainerHovered: false, shareModalIsVisible: false };
 
     this.onContainerMouseOver = this.onContainerMouseOver.bind(this);
     this.onContainerMouseOut = this.onContainerMouseOut.bind(this);
+    this.showShareModal = this.showShareModal.bind(this);
+    this.hideShareModal = this.hideShareModal.bind(this);
   }
 
   componentDidMount() {
@@ -37,8 +41,21 @@ class App extends React.Component {
     });
   }
 
+  showShareModal(isVisible) {
+    this.setState({ shareModalIsVisible: isVisible });
+  }
+
+  hideShareModal(isNotVisible) {
+    this.setState({ shareModalIsVisible: isNotVisible });
+  }
+
   render() {
-    const { photos, index, isContainerHovered } = this.state;
+    const {
+      photos,
+      index,
+      isContainerHovered,
+      shareModalIsVisible,
+    } = this.state;
     return (
       <StyledContainer
         onMouseOver={this.onContainerMouseOver}
@@ -46,12 +63,16 @@ class App extends React.Component {
         onMouseOut={this.onContainerMouseOut}
         onBlur={this.onContainerMouseOut}
       >
+        <ShareModal
+          hideShareModal={this.hideShareModal}
+          shareModalIsVisible={shareModalIsVisible}
+        />
         <PhotosContainer
           isContainerHovered={isContainerHovered}
           photos={photos}
           index={index}
         />
-        <ShareButton />
+        <ShareButton showShareModal={this.showShareModal} />
         <SaveButton />
         <ViewPhotosButton />
       </StyledContainer>
