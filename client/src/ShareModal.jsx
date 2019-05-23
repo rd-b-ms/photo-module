@@ -69,9 +69,6 @@ const StyledLinkContainer = styled.section`
   padding: 24px 0px;
   border-bottom: 1px solid rgb(235, 235, 235);
   border-top: 1px solid rgb(235, 235, 235);
-  font-weight: 400;
-  font-size: 16px;
-  color: #008489;
   justify-content: center;
   cursor: pointer;
 `;
@@ -82,6 +79,18 @@ const StyledIcon = styled.img`
   fill: rgb(72, 72, 72);
   z-index: 10;
   margin: 0px 8px -4px 0px;
+`;
+
+const StyledTextContainer = styled.span`
+  font-weight: 400;
+  font-size: 16px;
+  color: #008489;
+`;
+
+const StyledText = styled.span`
+  ${StyledTextContainer}:hover & {
+    text-decoration: underline;
+  }
 `;
 
 class ShareModal extends React.Component {
@@ -126,27 +135,39 @@ class ShareModal extends React.Component {
           </StyledHeader>
           <StyledLinkContainer>
             <StyledIcon src="./../icons/facebook-app-symbol.svg" alt="facebook icon" />
-            <span>Facebook</span>
+            <StyledTextContainer>
+              <StyledText>Facebook</StyledText>
+            </StyledTextContainer>
           </StyledLinkContainer>
           <StyledLinkContainer>
             <StyledIcon src="./../icons/twitter-logo-silhouette.svg" alt="twitter icon" />
-            <span>Twitter</span>
+            <StyledTextContainer>
+              <StyledText>Twitter</StyledText>
+            </StyledTextContainer>
           </StyledLinkContainer>
           <StyledLinkContainer>
             <StyledIcon src="./../icons/email.svg" alt="email icon" />
-            <span>Email</span>
+            <StyledTextContainer>
+              <StyledText>Email</StyledText>
+            </StyledTextContainer>
           </StyledLinkContainer>
           <StyledLinkContainer>
             <StyledIcon src="./../icons/messenger.svg" alt="facebook messenger icon" />
-            <span>Messenger</span>
+            <StyledTextContainer>
+              <StyledText>Messenger</StyledText>
+            </StyledTextContainer>
           </StyledLinkContainer>
           <StyledLinkContainer>
             <StyledIcon src="./../icons/document.svg" alt="facebook messenger icon" />
-            <span>Copy Link</span>
+            <StyledTextContainer>
+              <StyledText>Copy Link</StyledText>
+            </StyledTextContainer>
           </StyledLinkContainer>
           <StyledLinkContainer>
             <StyledIcon src="./../icons/html-coding.svg" alt="facebook messenger icon" />
-            <span>Embed</span>
+            <StyledTextContainer>
+              <StyledText>Embed</StyledText>
+            </StyledTextContainer>
           </StyledLinkContainer>
         </StyledDiv>
       </StyledSection>
