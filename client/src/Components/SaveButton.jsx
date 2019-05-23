@@ -26,7 +26,7 @@ class SaveButton extends React.Component {
       saveText = 'Save';
     }
     return (
-      <StyledSaveButton type="button" onClick={this.onClick}>
+      <StyledSaveButton onClick={this.onClick}>
         <StyledSaveText>
           <StyledHeartImg src={imgSource} alt="like icon" isClicked={isClicked} />
           <div>{saveText}</div>
