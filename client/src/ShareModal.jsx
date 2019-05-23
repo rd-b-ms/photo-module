@@ -73,6 +73,7 @@ const StyledInnerSection = styled.section`
   font-size: 16px;
   color: #008489;
   justify-content: center;
+  cursor: pointer;
 `;
 
 const StyledLogo = styled.img`
