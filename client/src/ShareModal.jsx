@@ -64,7 +64,7 @@ const StyledListingDescription = styled.div`
   line-height: 1.28em;
 `;
 
-const StyledInnerSection = styled.section`
+const StyledLinkContainer = styled.section`
   display: block;
   padding: 24px 0px;
   border-bottom: 1px solid rgb(235, 235, 235);
@@ -76,7 +76,7 @@ const StyledInnerSection = styled.section`
   cursor: pointer;
 `;
 
-const StyledLogo = styled.img`
+const StyledIcon = styled.img`
   height: 18px;
   width: 18px;
   fill: rgb(72, 72, 72);
@@ -124,30 +124,30 @@ class ShareModal extends React.Component {
               Check out this awesome listing on Carebnb: (Add fake data here)
             </StyledListingDescription>
           </StyledHeader>
-          <StyledInnerSection>
-            <StyledLogo src="./../icons/facebook-app-symbol.svg" alt="facebook icon" />
+          <StyledLinkContainer>
+            <StyledIcon src="./../icons/facebook-app-symbol.svg" alt="facebook icon" />
             <span>Facebook</span>
-          </StyledInnerSection>
-          <StyledInnerSection>
-            <StyledLogo src="./../icons/twitter-logo-silhouette.svg" alt="twitter icon" />
+          </StyledLinkContainer>
+          <StyledLinkContainer>
+            <StyledIcon src="./../icons/twitter-logo-silhouette.svg" alt="twitter icon" />
             <span>Twitter</span>
-          </StyledInnerSection>
-          <StyledInnerSection>
-            <StyledLogo src="./../icons/email.svg" alt="email icon" />
+          </StyledLinkContainer>
+          <StyledLinkContainer>
+            <StyledIcon src="./../icons/email.svg" alt="email icon" />
             <span>Email</span>
-          </StyledInnerSection>
-          <StyledInnerSection>
-            <StyledLogo src="./../icons/messenger.svg" alt="facebook messenger icon" />
+          </StyledLinkContainer>
+          <StyledLinkContainer>
+            <StyledIcon src="./../icons/messenger.svg" alt="facebook messenger icon" />
             <span>Messenger</span>
-          </StyledInnerSection>
-          <StyledInnerSection>
-            <StyledLogo src="./../icons/document.svg" alt="facebook messenger icon" />
+          </StyledLinkContainer>
+          <StyledLinkContainer>
+            <StyledIcon src="./../icons/document.svg" alt="facebook messenger icon" />
             <span>Copy Link</span>
-          </StyledInnerSection>
-          <StyledInnerSection>
-            <StyledLogo src="./../icons/html-coding.svg" alt="facebook messenger icon" />
+          </StyledLinkContainer>
+          <StyledLinkContainer>
+            <StyledIcon src="./../icons/html-coding.svg" alt="facebook messenger icon" />
             <span>Embed</span>
-          </StyledInnerSection>
+          </StyledLinkContainer>
         </StyledDiv>
       </StyledSection>
     );
