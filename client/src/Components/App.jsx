@@ -16,6 +16,7 @@ class App extends React.Component {
     this.onContainerMouseOver = this.onContainerMouseOver.bind(this);
     this.onContainerMouseOut = this.onContainerMouseOut.bind(this);
     this.showShareModal = this.showShareModal.bind(this);
+    this.hideShareModal = this.hideShareModal.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +45,10 @@ class App extends React.Component {
     this.setState({ shareModalIsVisible: isVisible });
   }
 
+  hideShareModal(isNotVisible) {
+    this.setState({ shareModalIsVisible: isNotVisible });
+  }
+
   render() {
     const {
       photos,
@@ -58,7 +63,10 @@ class App extends React.Component {
         onMouseOut={this.onContainerMouseOut}
         onBlur={this.onContainerMouseOut}
       >
-        <ShareModal shareModalIsVisible={shareModalIsVisible} />
+        <ShareModal
+          hideShareModal={this.hideShareModal}
+          shareModalIsVisible={shareModalIsVisible}
+        />
         <PhotosContainer
           isContainerHovered={isContainerHovered}
           photos={photos}

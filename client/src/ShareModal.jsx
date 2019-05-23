@@ -74,40 +74,59 @@ const StyledInnerSection = styled.section`
   color: #008489;
 `;
 
-const ShareModal = ({ shareModalIsVisible }) => (
-  <StyledSection shareModalIsVisible={shareModalIsVisible}>
-    <StyledDiv>
-      <StyledCloseButton>X</StyledCloseButton>
-      <StyledHeader>
-        <StyledTitle>Share</StyledTitle>
-        <StyledListingDescription>
-          Check out this awesome listing on Carebnb: (Add fake data here)
-        </StyledListingDescription>
-      </StyledHeader>
-      <StyledInnerSection>
-        <span>Facebook</span>
-      </StyledInnerSection>
-      <StyledInnerSection>
-        <span>Twitter</span>
-      </StyledInnerSection>
-      <StyledInnerSection>
-        <span>Email</span>
-      </StyledInnerSection>
-      <StyledInnerSection>
-        <span>Messenger</span>
-      </StyledInnerSection>
-      <StyledInnerSection>
-        <span>Copy Link</span>
-      </StyledInnerSection>
-      <StyledInnerSection>
-        <span>Embed</span>
-      </StyledInnerSection>
-    </StyledDiv>
-  </StyledSection>
-);
+class ShareModal extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.onCloseButtonClick = this.onCloseButtonClick.bind(this);
+  }
+
+  onCloseButtonClick(event) {
+    event.preventDefault();
+    const { hideShareModal } = this.props;
+    hideShareModal(false);
+  }
+
+  render() {
+    const { shareModalIsVisible } = this.props;
+
+    return (
+      <StyledSection shareModalIsVisible={shareModalIsVisible}>
+        <StyledDiv>
+          <StyledCloseButton onClick={this.onCloseButtonClick}>X</StyledCloseButton>
+          <StyledHeader>
+            <StyledTitle>Share</StyledTitle>
+            <StyledListingDescription>
+              Check out this awesome listing on Carebnb: (Add fake data here)
+            </StyledListingDescription>
+          </StyledHeader>
+          <StyledInnerSection>
+            <span>Facebook</span>
+          </StyledInnerSection>
+          <StyledInnerSection>
+            <span>Twitter</span>
+          </StyledInnerSection>
+          <StyledInnerSection>
+            <span>Email</span>
+          </StyledInnerSection>
+          <StyledInnerSection>
+            <span>Messenger</span>
+          </StyledInnerSection>
+          <StyledInnerSection>
+            <span>Copy Link</span>
+          </StyledInnerSection>
+          <StyledInnerSection>
+            <span>Embed</span>
+          </StyledInnerSection>
+        </StyledDiv>
+      </StyledSection>
+    );
+  }
+}
 
 ShareModal.propTypes = {
   shareModalIsVisible: PropTypes.bool.isRequired,
+  hideShareModal: PropTypes.func.isRequired,
 };
 
 export default ShareModal;
