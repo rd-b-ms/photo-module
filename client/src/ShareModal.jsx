@@ -14,27 +14,57 @@ const StyledSection = styled.section`
 `;
 
 const StyledDiv = styled.div`
-    position:fixed;
-    background: #fff;
-    width: 80%;
-    height: auto;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+  display: block;
+  position:fixed;
+  background: rgb(255, 255, 255);
+  padding: 24px;
+  font-family: Roboto, Helvetica, sans-serif;
+  color: #484848;
+  font-size: 14px;
+  width: 25%;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
 `;
 
-const ShareModal = ({ shareModalIsVisible }) => {
-  // constructor({ shareModalIsVisible }) {
-  //   super({ shareModalIsVisible });
-  //   this.state = { isVisible: false };
-  // }
+const StyledCloseButton = styled.button`
+  display: block;
+  padding: 20px;
+  margin: -20px;
+  cursor: pointer;
+  background-color: transparent;
+  font-weight: 100;
+  font-family: inherit;
+  font-size: 24px;
+  border-width: 0px;
+  color: rgb(118, 118, 118);
+`;
 
-  return (
-    <StyledSection shareModalIsVisible={shareModalIsVisible}>
-      <StyledDiv>Test Modal</StyledDiv>
-    </StyledSection>
-  );
-};
+const StyledHeader = styled.div`
+  display: block;
+`;
+
+const StyledTitle = styled.h1`
+  margin: 15px 0px 0px 0px;
+  padding: 2px 0px;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 24px;
+  line-height: 1.25em;
+  color: #484848;
+`;
+
+const ShareModal = ({ shareModalIsVisible }) => (
+  <StyledSection shareModalIsVisible={shareModalIsVisible}>
+    <StyledDiv>
+      <StyledCloseButton>X</StyledCloseButton>
+      <StyledHeader>
+        <StyledTitle>Share</StyledTitle>
+      </StyledHeader>
+    </StyledDiv>
+  </StyledSection>
+);
 
 ShareModal.propTypes = {
   shareModalIsVisible: PropTypes.bool.isRequired,
