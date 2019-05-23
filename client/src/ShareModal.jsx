@@ -72,6 +72,15 @@ const StyledInnerSection = styled.section`
   font-weight: 400;
   font-size: 16px;
   color: #008489;
+  justify-content: center;
+`;
+
+const StyledLogo = styled.img`
+  height: 18px;
+  width: 18px;
+  fill: rgb(72, 72, 72);
+  z-index: 10;
+  margin: 0px 8px -4px 0px;
 `;
 
 class ShareModal extends React.Component {
@@ -115,21 +124,27 @@ class ShareModal extends React.Component {
             </StyledListingDescription>
           </StyledHeader>
           <StyledInnerSection>
+            <StyledLogo src="./../icons/facebook-app-symbol.svg" alt="facebook icon" />
             <span>Facebook</span>
           </StyledInnerSection>
           <StyledInnerSection>
+            <StyledLogo src="./../icons/twitter-logo-silhouette.svg" alt="twitter icon" />
             <span>Twitter</span>
           </StyledInnerSection>
           <StyledInnerSection>
+            <StyledLogo src="./../icons/email.svg" alt="email icon" />
             <span>Email</span>
           </StyledInnerSection>
           <StyledInnerSection>
+            <StyledLogo src="./../icons/messenger.svg" alt="facebook messenger icon" />
             <span>Messenger</span>
           </StyledInnerSection>
           <StyledInnerSection>
+            <StyledLogo src="./../icons/document.svg" alt="facebook messenger icon" />
             <span>Copy Link</span>
           </StyledInnerSection>
           <StyledInnerSection>
+            <StyledLogo src="./../icons/html-coding.svg" alt="facebook messenger icon" />
             <span>Embed</span>
           </StyledInnerSection>
         </StyledDiv>
