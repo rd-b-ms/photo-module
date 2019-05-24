@@ -12,7 +12,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photos: [],
+      photos: [{
+        description: 'Veniam voluptatem sit rerum aut sed est in suscipit.',
+        id: 98,
+        is_verified: 0,
+        photo_url: 'photos/photo-6.jpg',
+      }],
       isContainerHovered: false,
       shareModalIsVisible: false,
       photoCarouselIsVisible: false,
@@ -84,7 +89,7 @@ class App extends React.Component {
           hideShareModal={this.hideShareModal}
           shareModalIsVisible={shareModalIsVisible}
         />
-        <PhotoCarousel photoCarouselIsVisible={photoCarouselIsVisible} />
+        <PhotoCarousel photos={photos} photoCarouselIsVisible={photoCarouselIsVisible} />
         <PhotosContainer
           isContainerHovered={isContainerHovered}
           photos={photos}

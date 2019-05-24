@@ -19,6 +19,15 @@ function NextArrow(props) {
   );
 }
 
+function PhotoListButtonArrow(props) {
+  const { height, width, fill } = props;
+  return (
+    <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" style={{ height, width, fill }}>
+      <path d="m23.85 6.86-11.5 11a .5.5 0 0 1 -.69 0l-11.5-11a .5.5 0 0 1 .34-.86h23a .5.5 0 0 1 .35.86z" fillRule="evenodd" />
+    </svg>
+  );
+}
+
 PreviousArrow.propTypes = {
   height: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
@@ -31,7 +40,14 @@ NextArrow.propTypes = {
   fill: PropTypes.string.isRequired,
 };
 
+PhotoListButtonArrow.propTypes = {
+  height: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired,
+  fill: PropTypes.string.isRequired,
+};
+
 export {
   PreviousArrow,
   NextArrow,
+  PhotoListButtonArrow,
 };
