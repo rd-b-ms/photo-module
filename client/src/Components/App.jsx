@@ -57,11 +57,11 @@ class App extends React.Component {
   }
 
   showPhotoCarousel(isVisible) {
-    this.setState({ PhotoCarouselIsVisible: isVisible });
+    this.setState({ photoCarouselIsVisible: isVisible });
   }
 
   hidePhotoCarousel(isNotVisible) {
-    this.setState({ PhotoCarouselIsVisible: isNotVisible });
+    this.setState({ photoCarouselIsVisible: isNotVisible });
   }
 
   render() {
