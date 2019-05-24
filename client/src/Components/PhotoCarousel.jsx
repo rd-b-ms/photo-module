@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledCarousel = styled.section`
-  display: ${props => (props.photoCarouselIsVisible ? 'block' : 'none')};
+  display: ${props => (props.photoCarouselIsVisible ? 'table' : 'none')};
   position: fixed;
   top: 0;
   left: 0;
@@ -14,14 +14,41 @@ const StyledCarousel = styled.section`
   z-index: 1000;
 `;
 
+const ImageContainer = styled.div`
+  position: relative;
+`;
+
 const StyledImg = styled.img`
-  display: block;
-  position:fixed;
-  width: 23%;
-  height: auto;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  display: table-row;
+  height: 100%;
+  width: 100%;
+  max-width: 105vh;
+  margin: 0px auto;
+`;
+
+const SlideshowContainer = styled.div`
+  display: table;
+  height: 100%;
+`;
+
+const PreviousButton = styled.button`
+  width: 75px;
+  font-size: medium;
+`;
+
+const NextButton = styled.button`
+  width: 75px;
+  font-size: medium;
+`;
+
+const TopPadding = styled.div`
+  display: table-row;
+  padding: 66px 15px 20px;
+`;
+
+const Caption = styled.div`
+  display: table-row;
+  position: relative;
 `;
 
 
@@ -35,7 +62,15 @@ class PhotoCarousel extends React.Component {
     const { photoCarouselIsVisible } = this.props;
     return (
       <StyledCarousel photoCarouselIsVisible={photoCarouselIsVisible}>
-        <StyledImg src="./../photos/photo-1.jpg"></StyledImg>
+        <SlideshowContainer>
+          <TopPadding />
+          <ImageContainer>
+            <PreviousButton />
+            <StyledImg src="./../photos/photo-1.jpg"></StyledImg>
+            <NextButton />
+          </ImageContainer>
+          <Caption />
+        </SlideshowContainer>
       </StyledCarousel>
     );
   }
