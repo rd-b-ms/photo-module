@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledButton = styled.button`
   position: absolute;
@@ -29,9 +30,11 @@ class ViewPhotosButton extends React.Component {
 
   onViewPhotosButtonClick(event) {
     event.preventDefault();
-    this.setState(prevState => ({
-      onViewPhotosButtonClicked: !prevState.onViewPhotosButtonClicked,
-    }));
+    const { showPhotoCarousel } = this.props;
+    // this.setState(prevState => ({
+    //   onViewPhotosButtonClicked: !prevState.onViewPhotosButtonClicked,
+    // }));
+    showPhotoCarousel(true);
   }
 
   render() {
@@ -48,5 +51,9 @@ class ViewPhotosButton extends React.Component {
     );
   }
 }
+
+ViewPhotosButton.propTypes = {
+  showPhotoCarousel: PropTypes.func.isRequired,
+};
 
 export default ViewPhotosButton;

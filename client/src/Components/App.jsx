@@ -6,17 +6,24 @@ import SaveButton from './SaveButton';
 import ShareButton from './ShareButton';
 import ViewPhotosButton from './ViewPhotosButton';
 import ShareModal from './ShareModal';
-
+import PhotoCarousel from './PhotoCarousel';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { photos: [], isContainerHovered: false, shareModalIsVisible: false };
+    this.state = {
+      photos: [],
+      isContainerHovered: false,
+      shareModalIsVisible: false,
+      photoCarouselIsVisible: false,
+    };
 
     this.onContainerMouseOver = this.onContainerMouseOver.bind(this);
     this.onContainerMouseOut = this.onContainerMouseOut.bind(this);
     this.showShareModal = this.showShareModal.bind(this);
     this.hideShareModal = this.hideShareModal.bind(this);
+    this.showPhotoCarousel = this.showPhotoCarousel.bind(this);
+    this.hidePhotoCarousel = this.hidePhotoCarousel.bind(this);
   }
 
   componentDidMount() {
@@ -49,12 +56,21 @@ class App extends React.Component {
     this.setState({ shareModalIsVisible: isNotVisible });
   }
 
+  showPhotoCarousel(isVisible) {
+    this.setState({ PhotoCarouselIsVisible: isVisible });
+  }
+
+  hidePhotoCarousel(isNotVisible) {
+    this.setState({ PhotoCarouselIsVisible: isNotVisible });
+  }
+
   render() {
     const {
       photos,
       index,
       isContainerHovered,
       shareModalIsVisible,
+      photoCarouselIsVisible,
     } = this.state;
     return (
       <StyledContainer
@@ -68,6 +84,7 @@ class App extends React.Component {
           hideShareModal={this.hideShareModal}
           shareModalIsVisible={shareModalIsVisible}
         />
+        <PhotoCarousel photoCarouselIsVisible={photoCarouselIsVisible} />
         <PhotosContainer
           isContainerHovered={isContainerHovered}
           photos={photos}
@@ -75,7 +92,10 @@ class App extends React.Component {
         />
         <ShareButton showShareModal={this.showShareModal} />
         <SaveButton />
-        <ViewPhotosButton />
+        <ViewPhotosButton
+          showPhotoCarousel={this.showPhotoCarousel}
+          hidePhotoCarousel={this.hidePhotoCarousel}
+        />
       </StyledContainer>
     );
   }
