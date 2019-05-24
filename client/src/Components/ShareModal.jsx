@@ -121,13 +121,14 @@ class ShareModal extends React.Component {
 
     return (
       <StyledSection
+        className="share-modal-container"
         onClick={this.handleClickOutsideModal}
         shareModalIsVisible={shareModalIsVisible}
       >
         <StyledDiv ref={this.ref}>
-          <StyledCloseButton onClick={this.onCloseButtonClick}>X</StyledCloseButton>
+          <StyledCloseButton className="share-modal-close-button" onClick={this.onCloseButtonClick}>X</StyledCloseButton>
           <StyledHeader>
-            <StyledTitle>Share</StyledTitle>
+            <StyledTitle className="share-modal-title">Share</StyledTitle>
             <StyledListingDescription>
               Check out this awesome listing on Carebnb:
                Veniam voluptatem sit rerum aut sed est in suscipit.

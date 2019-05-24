@@ -46,7 +46,7 @@ class ShareButton extends React.Component {
     const { shareButtonClicked } = this.state;
 
     return (
-      <StyledButton type="button" onClick={this.onShareButtonClick}>
+      <StyledButton className="share-button" onClick={this.onShareButtonClick}>
         <StyledDiv>
           <StyledImg src="./../icons/share-icon-svg-5.jpg" alt="like icon" shareButtonClicked={shareButtonClicked} />
           <div>Share</div>

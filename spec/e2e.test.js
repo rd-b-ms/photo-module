@@ -23,11 +23,26 @@ afterAll(() => {
 });
 
 describe('App loading sequence', () => {
-  beforeEach(async () => {
-    await page.goto(pageUrl, { waituntil: 'networkidle2' });
-  });
   test('initial page title is correct', async () => {
+    await page.goto(pageUrl, { waituntil: 'networkidle2' });
     const title = await page.title();
     expect(title).toEqual('Carebnb');
+  });
+  test('share modal opens on a share button click', async () => {
+    await page.click('.share-button');
+    await page.waitForSelector('.share-modal-container', { visible: true })
+      .catch(err => console.log(err));
+  });
+  test('share modal closes when X is clicked', async () => {
+    await page.click('.share-modal-close-button');
+    await page.waitForSelector('.share-modal-container', { visible: false })
+      .catch(err => console.log(err));
+  });
+  test('hovering over photo should highlight photo and dim other photos', async () => {
+    await page.hover('.photo');
+    const hoveredPhotoOpacity = await page.evaluate(() => getComputedStyle(document.getElementById('0'), null).opacity);
+    const unhoveredPhotoOpacity = await page.evaluate(() => getComputedStyle(document.getElementById('1'), null).opacity);
+    expect(hoveredPhotoOpacity).toEqual('1');
+    expect(unhoveredPhotoOpacity).toEqual('0.7');
   });
 });
