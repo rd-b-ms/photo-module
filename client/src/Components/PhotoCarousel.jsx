@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { PreviousArrow, NextArrow } from './svg';
 
 const StyledCarousel = styled.section`
   display: ${props => (props.photoCarouselIsVisible ? 'table' : 'none')};
@@ -31,16 +32,6 @@ const SlideshowContainer = styled.div`
   height: 100%;
 `;
 
-const PreviousButton = styled.button`
-  width: 75px;
-  font-size: medium;
-`;
-
-const NextButton = styled.button`
-  width: 75px;
-  font-size: medium;
-`;
-
 const TopPadding = styled.div`
   display: table-row;
   padding: 66px 15px 20px;
@@ -50,7 +41,6 @@ const Caption = styled.div`
   display: table-row;
   position: relative;
 `;
-
 
 class PhotoCarousel extends React.Component {
   constructor(props) {
@@ -65,9 +55,9 @@ class PhotoCarousel extends React.Component {
         <SlideshowContainer>
           <TopPadding />
           <ImageContainer>
-            <PreviousButton />
-            <StyledImg src="./../photos/photo-1.jpg"></StyledImg>
-            <NextButton />
+            <PreviousArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
+            <StyledImg src="./../photos/photo-1.jpg" />
+            <NextArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
           </ImageContainer>
           <Caption />
         </SlideshowContainer>
