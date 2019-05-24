@@ -9,18 +9,14 @@ const StyledCarousel = styled.section`
   left: 0;
   width:100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+  background: rgba(0, 0, 0, 0.85);
+  background-color: #262626;  
+  z-index: 1000;
 `;
 
-const StyledDiv = styled.div`
+const StyledImg = styled.img`
   display: block;
   position:fixed;
-  background: rgb(255, 255, 255);
-  padding: 24px;
-  font-family: Roboto, Helvetica, sans-serif;
-  color: #484848;
-  font-size: 14px;
   width: 23%;
   height: auto;
   top:50%;
@@ -39,7 +35,7 @@ class PhotoCarousel extends React.Component {
     const { photoCarouselIsVisible } = this.props;
     return (
       <StyledCarousel photoCarouselIsVisible={photoCarouselIsVisible}>
-        <StyledDiv>Test Photo Carousel</StyledDiv>
+        <StyledImg src="./../photos/photo-1.jpg"></StyledImg>
       </StyledCarousel>
     );
   }
