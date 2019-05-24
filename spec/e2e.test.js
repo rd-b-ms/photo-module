@@ -1,4 +1,5 @@
 import 'babel-polyfill';
+import { doesNotReject } from 'assert';
 
 const puppeteer = require('puppeteer');
 
@@ -29,5 +30,10 @@ describe('App loading sequence', () => {
   test('initial page title is correct', async () => {
     const title = await page.title();
     expect(title).toEqual('Carebnb');
+  });
+  test('share modal opens on a share button click', async () => {
+    await page.click('.share-button');
+    await page.waitForSelector('.share-modal-container', { visible: true })
+      .catch(err => console.log(err));
   });
 });

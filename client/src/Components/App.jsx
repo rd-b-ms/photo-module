@@ -64,6 +64,7 @@ class App extends React.Component {
         onBlur={this.onContainerMouseOut}
       >
         <ShareModal
+          className="share-modal"
           hideShareModal={this.hideShareModal}
           shareModalIsVisible={shareModalIsVisible}
         />
