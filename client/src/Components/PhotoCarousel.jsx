@@ -8,11 +8,21 @@ const StyledCarousel = styled.section`
   position: fixed;
   top: 0;
   left: 0;
-  width:100%;
+  bottom: 0;
+  right: 0;
+  width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.85);
   background-color: #262626;  
   z-index: 1000;
+`;
+
+const TopPaddingContainer = styled.div`
+  display: table-row;
+`;
+
+const TopPadding = styled.div`
+  padding: 66px 15px 20px;
 `;
 
 const ImageContainer = styled.div`
@@ -28,18 +38,35 @@ const StyledImg = styled.img`
 `;
 
 const SlideshowContainer = styled.div`
-  display: table;
-  height: 100%;
-`;
-
-const TopPadding = styled.div`
   display: table-row;
-  padding: 66px 15px 20px;
+  height: 100%;
 `;
 
 const Caption = styled.div`
   display: table-row;
   position: relative;
+`;
+
+const PreviousArrowContainer = styled.button`
+  position: absolute;
+  background: transparent;
+  border: 0px;
+  width: 75px;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+`;
+
+const NextArrowContainer = styled.button`
+  position: absolute;
+  background: transparent;
+  border: 0px;
+  width: 75px;
+  height: 100%;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
 `;
 
 class PhotoCarousel extends React.Component {
@@ -52,12 +79,18 @@ class PhotoCarousel extends React.Component {
     const { photoCarouselIsVisible } = this.props;
     return (
       <StyledCarousel photoCarouselIsVisible={photoCarouselIsVisible}>
-        <SlideshowContainer>
+        <TopPaddingContainer>
           <TopPadding />
+        </TopPaddingContainer>
+        <SlideshowContainer>
           <ImageContainer>
-            <PreviousArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
+            <PreviousArrowContainer type="button">
+              <PreviousArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
+            </PreviousArrowContainer>
             <StyledImg src="./../photos/photo-1.jpg" />
-            <NextArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
+            <NextArrowContainer type="button">
+              <NextArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
+            </NextArrowContainer>
           </ImageContainer>
           <Caption />
         </SlideshowContainer>
