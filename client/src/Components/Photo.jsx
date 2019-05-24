@@ -31,6 +31,8 @@ class Photo extends React.Component {
         <StyledPhoto
           src={photo.photo_url}
           alt="home interior"
+          className="photo"
+          id={index}
           index={index}
           hover={hover}
           isContainerHovered={isContainerHovered}

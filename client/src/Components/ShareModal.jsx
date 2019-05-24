@@ -126,7 +126,7 @@ class ShareModal extends React.Component {
         shareModalIsVisible={shareModalIsVisible}
       >
         <StyledDiv ref={this.ref}>
-          <StyledCloseButton onClick={this.onCloseButtonClick}>X</StyledCloseButton>
+          <StyledCloseButton className="share-modal-close-button" onClick={this.onCloseButtonClick}>X</StyledCloseButton>
           <StyledHeader>
             <StyledTitle className="share-modal-title">Share</StyledTitle>
             <StyledListingDescription>
