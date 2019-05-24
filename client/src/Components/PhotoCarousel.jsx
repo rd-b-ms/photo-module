@@ -16,6 +16,9 @@ const StyledCarousel = styled.section`
   background-color: #262626;  
   z-index: 1000;
   overflow-y: auto;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
 `;
 
 const TopPaddingContainer = styled.div`
@@ -107,7 +110,7 @@ const PhotoDescription = styled.div`
 
 const HidePhotoListButton = styled.div`
   display: table-cell;
-  text-align: left;
+  text-align: right;
   vertical-align: middle;
 `;
 
