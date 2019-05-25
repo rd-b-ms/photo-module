@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { PreviousArrow, NextArrow, ClosePhotoView } from './svg';
 import PhotoCarouselCaption from './PhotoCarouselCaption';
+import PhotoCarouselMainPhoto from './PhotoCarouselMainPhoto';
 
 const StyledCarousel = styled.section`
   display: ${props => (props.photoCarouselIsVisible ? 'block' : 'none')};
@@ -68,14 +69,6 @@ const ImageContainer = styled.div`
   position: relative;
 `;
 
-const StyledImg = styled.img`
-  display: table-row;
-  height: 100%;
-  width: 100%;
-  max-width: 105vh;
-  margin: 0px auto;
-`;
-
 const NextArrowContainer = styled.button`
   position: absolute;
   background: transparent;
@@ -109,7 +102,7 @@ class PhotoCarousel extends React.Component {
               <PreviousArrowContainer type="button">
                 <PreviousArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
               </PreviousArrowContainer>
-              <StyledImg src={photos[0].photo_url} />
+              <PhotoCarouselMainPhoto photos={photos}/>
               <NextArrowContainer type="button">
                 <NextArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
               </NextArrowContainer>
