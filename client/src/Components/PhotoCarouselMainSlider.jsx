@@ -40,18 +40,42 @@ const NextArrowContainer = styled.button`
 class PhotoCarouselMainSlider extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { currentIndex: 0 };
+
+    this.advanceToNextSlide = this.advanceToNextSlide.bind(this);
+    this.backToPreviousSlide = this.backToPreviousSlide.bind(this);
+  }
+
+  advanceToNextSlide() {
+    const { currentIndex } = this.state;
+    const { photos } = this.props;
+    if (currentIndex < photos.length - 1) {
+      this.setState(prevState => ({ currentIndex: prevState.currentIndex + 1 }));
+    } else {
+      this.setState({ currentIndex: 0 });
+    }
+  }
+
+  backToPreviousSlide() {
+    const { currentIndex } = this.state;
+    const { photos } = this.props;
+    if (currentIndex > 0) {
+      this.setState(prevState => ({ currentIndex: prevState.currentIndex - 1 }));
+    } else {
+      this.setState({ currentIndex: photos.length - 1 });
+    }
   }
 
   render() {
+    const { currentIndex } = this.state;
     const { photos } = this.props;
     return (
       <ImageContainer>
-        <PreviousArrowContainer type="button">
+        <PreviousArrowContainer onClick={this.backToPreviousSlide} type="button">
           <PreviousArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
         </PreviousArrowContainer>
-        <StyledImg src={photos[0].photo_url} />
-        <NextArrowContainer type="button">
+        <StyledImg src={photos[currentIndex].photo_url} />
+        <NextArrowContainer onClick={this.advanceToNextSlide} type="button">
           <NextArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
         </NextArrowContainer>
       </ImageContainer>
