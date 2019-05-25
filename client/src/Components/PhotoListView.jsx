@@ -38,7 +38,13 @@ class PhotoListView extends React.Component {
       <PhotoListContainer>
         <PhotoListSlider>
           <PhotoListUnorderedList>
-            {photos.map((photo, index) => <PhotoListComponent photo={photo} key={photo.id} index={index} />)}
+            {photos.map((photo, index) => (
+              <PhotoListComponent
+                photo={photo}
+                key={photo.id}
+                index={index}
+              />
+            ))}
           </PhotoListUnorderedList>
         </PhotoListSlider>
       </PhotoListContainer>
