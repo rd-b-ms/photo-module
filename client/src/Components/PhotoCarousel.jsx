@@ -11,10 +11,8 @@ const StyledCarousel = styled.section`
   left: 0;
   bottom: 0;
   right: 0;
-  width: 1440px;
-  height: 720px;
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.85);
   background-color: #262626;  
   z-index: 1000;
@@ -44,7 +42,6 @@ const TopPadding = styled.div`
 
 const SlideshowContainer = styled.div`
   display: table-row;
-  height: 100%;
 `;
 
 const PreviousArrowContainer = styled.button`
@@ -92,21 +89,21 @@ class PhotoCarousel extends React.Component {
     return (
       <StyledCarousel photoCarouselIsVisible={photoCarouselIsVisible}>
         <CarouselGuts>
-        <TopPaddingContainer>
-          <TopPadding />
-        </TopPaddingContainer>
-        <SlideshowContainer>
-          <ImageContainer>
-            <PreviousArrowContainer type="button">
-              <PreviousArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
-            </PreviousArrowContainer>
-            <StyledImg src={photos[0].photo_url} />
-            <NextArrowContainer type="button">
-              <NextArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
-            </NextArrowContainer>
-          </ImageContainer>
-          <PhotoCarouselCaption photos={photos} />
-        </SlideshowContainer>    
+          <TopPaddingContainer>
+            <TopPadding />
+          </TopPaddingContainer>
+          <SlideshowContainer>
+            <ImageContainer>
+              <PreviousArrowContainer type="button">
+                <PreviousArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
+              </PreviousArrowContainer>
+              <StyledImg src={photos[0].photo_url} />
+              <NextArrowContainer type="button">
+                <NextArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
+              </NextArrowContainer>
+            </ImageContainer>
+            <PhotoCarouselCaption photos={photos} />
+          </SlideshowContainer>   
         </CarouselGuts>
       </StyledCarousel>
     );
