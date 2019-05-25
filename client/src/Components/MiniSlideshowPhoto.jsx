@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const PLComponent = styled.li`
+const MiniSlideshowPhotoContainer = styled.li`
   display: inline-block;
   float: left;
   margin-left: ${props => (props.index === 0 ? '0px' : '10px')};
@@ -29,15 +29,7 @@ const MiniPhoto = styled.img`
   height: 67px;
 `;
 
-// const PhotoListComponent = ({ photo, index, indexOfDisplayedPhoto }) => (
-//   <PLComponent index={index}>
-//     <ClickablePhoto indexOfDisplayedPhoto={indexOfDisplayedPhoto} index={index}>
-//       <MiniPhoto src={photo.photo_url} />
-//     </ClickablePhoto>
-//   </PLComponent>
-// );
-
-class PhotoListComponent extends React.Component {
+class MiniSlideshowPhoto extends React.Component {
   constructor(props) {
     super(props);
 
@@ -57,16 +49,16 @@ class PhotoListComponent extends React.Component {
   render() {
     const { index, photo, indexOfDisplayedPhoto } = this.props;
     return (
-      <PLComponent index={index}>
+      <MiniSlideshowPhotoContainer index={index}>
         <ClickablePhoto indexOfDisplayedPhoto={indexOfDisplayedPhoto} index={index}>
           <MiniPhoto onClick={this.goToSpecificPhoto} src={photo.photo_url} id={index} />
         </ClickablePhoto>
-      </PLComponent>
+      </MiniSlideshowPhotoContainer>
     );
   }
 }
 
-PhotoListComponent.propTypes = {
+MiniSlideshowPhoto.propTypes = {
   photo: PropTypes.instanceOf(Object).isRequired,
   index: PropTypes.number.isRequired,
   indexOfDisplayedPhoto: PropTypes.number.isRequired,
@@ -74,4 +66,4 @@ PhotoListComponent.propTypes = {
   backToPreviousSlide: PropTypes.func.isRequired,
 };
 
-export default PhotoListComponent;
+export default MiniSlideshowPhoto;

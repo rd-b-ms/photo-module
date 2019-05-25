@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { ClosePhotoView } from './svg';
-import PhotoCarouselCaption from './PhotoCarouselCaption';
-import PhotoCarouselMainSlider from './PhotoCarouselMainSlider';
+import { ClosePhotoSlideshowButton } from './svg';
+import SlideshowFooter from './SlideshowFooter';
+import MainSlideshow from './MainSlideshow';
 
-const StyledCarousel = styled.section`
+const PhotoSlideshowModal = styled.section`
   display: ${props => (props.photoCarouselIsVisible ? 'block' : 'none')};
   position: fixed;
   top: 0;
@@ -21,7 +21,7 @@ const StyledCarousel = styled.section`
   font-weight: 300;
 `;
 
-const CloseButtonContainer = styled.div`
+const ClosePhotoSlideshowButtonContainer = styled.div`
   position: absolute;
   right: 0px;
   top: 0px;
@@ -33,7 +33,7 @@ const CloseButtonContainer = styled.div`
   z-index: 2000;
 `;
 
-const CarouselContainer = styled.div`
+const TableContainer = styled.div`
   display: table;
   table-layout: fixed;
   position: absolute;
@@ -116,28 +116,28 @@ class PhotoCarousel extends React.Component {
     const { photos, photoCarouselIsVisible } = this.props;
     const { indexOfDisplayedPhoto, translateValue } = this.state;
     return (
-      <StyledCarousel photoCarouselIsVisible={photoCarouselIsVisible}>
-        <CloseButtonContainer onClick={this.closePhotoCarousel}>
-          <ClosePhotoView
+      <PhotoSlideshowModal photoCarouselIsVisible={photoCarouselIsVisible}>
+        <ClosePhotoSlideshowButtonContainer onClick={this.closePhotoCarousel}>
+          <ClosePhotoSlideshowButton
             type="button"
             display="block"
             height="2em"
             width="2em"
             fill="rgb(255, 255, 255)"
           />
-        </CloseButtonContainer>
-        <CarouselContainer>
+        </ClosePhotoSlideshowButtonContainer>
+        <TableContainer>
           <TopPaddingContainer>
             <TopPadding />
           </TopPaddingContainer>
           <SlideshowContainer>
-            <PhotoCarouselMainSlider
+            <MainSlideshow
               indexOfDisplayedPhoto={indexOfDisplayedPhoto}
               advanceToNextSlide={this.advanceToNextSlide}
               backToPreviousSlide={this.backToPreviousSlide}
               photos={photos}
             />
-            <PhotoCarouselCaption
+            <SlideshowFooter
               advanceToNextSlide={this.advanceToNextSlide}
               backToPreviousSlide={this.backToPreviousSlide}
               translateValue={translateValue}
@@ -145,8 +145,8 @@ class PhotoCarousel extends React.Component {
               photos={photos}
             />
           </SlideshowContainer>
-        </CarouselContainer>
-      </StyledCarousel>
+        </TableContainer>
+      </PhotoSlideshowModal>
     );
   }
 }

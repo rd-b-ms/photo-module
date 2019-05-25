@@ -19,7 +19,7 @@ function NextArrow(props) {
   );
 }
 
-function PhotoListButtonArrow(props) {
+function MiniSlideshowVisibilityArrow(props) {
   const { height, width, fill } = props;
   return (
     <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" style={{ height, width, fill }}>
@@ -28,8 +28,13 @@ function PhotoListButtonArrow(props) {
   );
 }
 
-function ClosePhotoView(props) {
-  const { display, height, width, fill } = props;
+function ClosePhotoSlideshowButton(props) {
+  const {
+    display,
+    height,
+    width,
+    fill,
+  } = props;
   return (
     <svg viewBox="0 0 24 24" role="img" aria-label="Close" focusable="false" style={{ display, height, width, fill }}>
       <path d="m23.25 24c-.19 0-.38-.07-.53-.22l-10.72-10.72-10.72 10.72c-.29.29-.77.29-1.06 0s-.29-.77 0-1.06l10.72-10.72-10.72-10.72c-.29-.29-.29-.77 0-1.06s.77-.29 1.06 0l10.72 10.72 10.72-10.72c.29-.29.77-.29 1.06 0s .29.77 0 1.06l-10.72 10.72 10.72 10.72c.29.29.29.77 0 1.06-.15.15-.34.22-.53.22" fillRule="evenodd" />
@@ -49,13 +54,13 @@ NextArrow.propTypes = {
   fill: PropTypes.string.isRequired,
 };
 
-PhotoListButtonArrow.propTypes = {
+MiniSlideshowVisibilityArrow.propTypes = {
   height: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
   fill: PropTypes.string.isRequired,
 };
 
-ClosePhotoView.propTypes = {
+ClosePhotoSlideshowButton.propTypes = {
   display: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
@@ -65,6 +70,6 @@ ClosePhotoView.propTypes = {
 export {
   PreviousArrow,
   NextArrow,
-  PhotoListButtonArrow,
-  ClosePhotoView,
+  MiniSlideshowVisibilityArrow,
+  ClosePhotoSlideshowButton,
 };

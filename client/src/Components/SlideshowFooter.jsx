@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { PhotoListButtonArrow } from './svg';
-import PhotoListView from './PhotoListView';
+import { MiniSlideshowVisibilityArrow } from './svg';
+import MiniSlideshow from './MiniSlideshow';
 
-
-const BottomRowContainer = styled.div`
+const BottomRow = styled.div`
   display: block;
   background-image: none;
   background-color: transparent;
@@ -19,20 +18,12 @@ const BottomRowContainer = styled.div`
   overflow: hidden;
   border-radius: 0px;
 `;
-const BottomRow = styled.div`
-  position: relative;
-`;
 
-const CaptionContainer = styled.div`
+const FooterContainer = styled.div`
   max-width: 105vh;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
-`;
-
-const Caption = styled.div`
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
   transform: translateY(0px);
   transition: -ms-transform 0.2s ease-out 0s, -webkit-transform 0.2s ease-out 0s, transform 0.2s ease-out 0s;
@@ -45,14 +36,14 @@ const PhotoDescription = styled.div`
   vertical-align: middle;
 `;
 
-const HidePhotoListButton = styled.div`
+const MiniSlideshowVisibilityButton = styled.div`
   display: table-cell;
   text-align: right;
   vertical-align: middle;
   cursor: pointer;
 `;
 
-class PhotoCarouselCaption extends React.Component {
+class SlideshowFooter extends React.Component {
   constructor(props) {
     super(props);
     this.state = { photoListIsVisible: true };
@@ -73,42 +64,40 @@ class PhotoCarouselCaption extends React.Component {
       backToPreviousSlide,
     } = this.props;
     const { photoListIsVisible } = this.state;
-    const photoListButtonText = (photoListIsVisible ? 'Hide Photo List' : 'Show Photo List')
+    const photoListButtonText = (photoListIsVisible ? 'Hide Photo List' : 'Show Photo List');
     return (
-      <BottomRowContainer>
-        <BottomRow>
+      <BottomRow>
+        <div style={{ position: 'relative' }}>
           <div style={{ marginBottom: '24px' }}>
-            <CaptionContainer>
-              <Caption>
-                <div style={{ marginBottom: '12px' }}>
-                  <div style={{ display: 'table', width: '100%' }}>
-                    <PhotoDescription>{photos[0].description}</PhotoDescription>
-                    <HidePhotoListButton onClick={this.togglePhotoListVisibility}>
-                      <span>
-                        {photoListButtonText}
-                        <PhotoListButtonArrow height="10px" width="10px" fill="currentcolor" />
-                      </span>
-                    </HidePhotoListButton>
-                  </div>
+            <FooterContainer>
+              <div style={{ marginBottom: '12px' }}>
+                <div style={{ display: 'table', width: '100%' }}>
+                  <PhotoDescription>{photos[0].description}</PhotoDescription>
+                  <MiniSlideshowVisibilityButton onClick={this.togglePhotoListVisibility}>
+                    <span>
+                      {photoListButtonText}
+                      <MiniSlideshowVisibilityArrow height="10px" width="10px" fill="currentcolor" />
+                    </span>
+                  </MiniSlideshowVisibilityButton>
                 </div>
-                <PhotoListView
-                  photoListIsVisible={photoListIsVisible}
-                  advanceToNextSlide={advanceToNextSlide}
-                  backToPreviousSlide={backToPreviousSlide}
-                  translateValue={translateValue}
-                  indexOfDisplayedPhoto={indexOfDisplayedPhoto}
-                  photos={photos}
-                />
-              </Caption>
-            </CaptionContainer>
+              </div>
+              <MiniSlideshow
+                photoListIsVisible={photoListIsVisible}
+                advanceToNextSlide={advanceToNextSlide}
+                backToPreviousSlide={backToPreviousSlide}
+                translateValue={translateValue}
+                indexOfDisplayedPhoto={indexOfDisplayedPhoto}
+                photos={photos}
+              />
+            </FooterContainer>
           </div>
-        </BottomRow>
-      </BottomRowContainer>
+        </div>
+      </BottomRow>
     );
   }
 }
 
-PhotoCarouselCaption.propTypes = {
+SlideshowFooter.propTypes = {
   photos: PropTypes.instanceOf(Array).isRequired,
   indexOfDisplayedPhoto: PropTypes.number.isRequired,
   translateValue: PropTypes.number.isRequired,
@@ -116,4 +105,4 @@ PhotoCarouselCaption.propTypes = {
   backToPreviousSlide: PropTypes.func.isRequired,
 };
 
-export default PhotoCarouselCaption;
+export default SlideshowFooter;

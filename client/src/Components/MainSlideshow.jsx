@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { PreviousArrow, NextArrow } from './svg';
 
-const StyledImg = styled.img`
+const MainPhoto = styled.img`
   display: table-row;
   width: 100%;
   height: 100%;
@@ -22,7 +22,7 @@ const PreviousArrowContainer = styled.button`
   cursor: pointer;
 `;
 
-const ImageContainer = styled.div`
+const MainSlideshowContainer = styled.div`
   position: relative;
 `;
 
@@ -37,7 +37,7 @@ const NextArrowContainer = styled.button`
   cursor: pointer;
 `;
 
-class PhotoCarouselMainSlider extends React.Component {
+class MainSlideshow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -67,24 +67,24 @@ class PhotoCarouselMainSlider extends React.Component {
   render() {
     const { photos, indexOfDisplayedPhoto } = this.props;
     return (
-      <ImageContainer>
+      <MainSlideshowContainer>
         <PreviousArrowContainer onClick={this.previousArrowClick} type="button">
           <PreviousArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
         </PreviousArrowContainer>
         <NextArrowContainer onClick={this.nextArrowClick} type="button">
           <NextArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
         </NextArrowContainer>
-        <StyledImg onClick={this.nextArrowClick} src={photos[indexOfDisplayedPhoto].photo_url} />
-      </ImageContainer>
+        <MainPhoto onClick={this.nextArrowClick} src={photos[indexOfDisplayedPhoto].photo_url} />
+      </MainSlideshowContainer>
     );
   }
 }
 
-PhotoCarouselMainSlider.propTypes = {
+MainSlideshow.propTypes = {
   photos: PropTypes.instanceOf(Array).isRequired,
   indexOfDisplayedPhoto: PropTypes.number.isRequired,
   backToPreviousSlide: PropTypes.func.isRequired,
   advanceToNextSlide: PropTypes.func.isRequired,
 };
 
-export default PhotoCarouselMainSlider;
+export default MainSlideshow;

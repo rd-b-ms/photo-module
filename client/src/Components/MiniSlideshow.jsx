@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import PhotoListComponent from './PhotoListComponent';
+import MiniSlideshowPhoto from './MiniSlideshowPhoto';
 
-const PhotoListContainer = styled.div`
+const MiniSlideshowContainer = styled.div`
   display: ${props => (props.photoListIsVisible ? 'block' : 'none')}
   position: relative;
   height: 67px;
   overflow: hidden;
 `;
 
-const PhotoListSlider = styled.div`
+const MiniSlideshowListContainer = styled.div`
   position: absolute;
   width: 11110px;
   height: 100%;
   background-color: transparent;
 `;
 
-const PhotoListUnorderedList = styled.ul`
+const MiniSlideshowUnorderedList = styled.ul`
   position: absolute;
   height: 100%;
   list-style-type: none;
@@ -28,7 +28,7 @@ const PhotoListUnorderedList = styled.ul`
   padding: 0px;
 `;
 
-class PhotoListView extends React.Component {
+class MiniSlideshow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -44,11 +44,11 @@ class PhotoListView extends React.Component {
       photoListIsVisible,
     } = this.props;
     return (
-      <PhotoListContainer photoListIsVisible={photoListIsVisible}>
-        <PhotoListSlider>
-          <PhotoListUnorderedList translateValue={translateValue}>
+      <MiniSlideshowContainer photoListIsVisible={photoListIsVisible}>
+        <MiniSlideshowListContainer>
+          <MiniSlideshowUnorderedList translateValue={translateValue}>
             {photos.map((photo, index) => (
-              <PhotoListComponent
+              <MiniSlideshowPhoto
                 advanceToNextSlide={advanceToNextSlide}
                 backToPreviousSlide={backToPreviousSlide}
                 photo={photo}
@@ -57,14 +57,14 @@ class PhotoListView extends React.Component {
                 indexOfDisplayedPhoto={indexOfDisplayedPhoto}
               />
             ))}
-          </PhotoListUnorderedList>
-        </PhotoListSlider>
-      </PhotoListContainer>
+          </MiniSlideshowUnorderedList>
+        </MiniSlideshowListContainer>
+      </MiniSlideshowContainer>
     );
   }
 }
 
-PhotoListView.propTypes = {
+MiniSlideshow.propTypes = {
   photos: PropTypes.instanceOf(Array).isRequired,
   indexOfDisplayedPhoto: PropTypes.number.isRequired,
   translateValue: PropTypes.number.isRequired,
@@ -73,4 +73,4 @@ PhotoListView.propTypes = {
   photoListIsVisible: PropTypes.bool.isRequired,
 };
 
-export default PhotoListView;
+export default MiniSlideshow;
