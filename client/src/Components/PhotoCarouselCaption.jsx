@@ -73,6 +73,7 @@ class PhotoCarouselCaption extends React.Component {
       backToPreviousSlide,
     } = this.props;
     const { photoListIsVisible } = this.state;
+    const photoListButtonText = (photoListIsVisible ? 'Hide Photo List' : 'Show Photo List')
     return (
       <BottomRowContainer>
         <BottomRow>
@@ -84,7 +85,7 @@ class PhotoCarouselCaption extends React.Component {
                     <PhotoDescription>{photos[0].description}</PhotoDescription>
                     <HidePhotoListButton onClick={this.togglePhotoListVisibility}>
                       <span>
-                        Hide Photo List
+                        {photoListButtonText}
                         <PhotoListButtonArrow height="10px" width="10px" fill="currentcolor" />
                       </span>
                     </HidePhotoListButton>
