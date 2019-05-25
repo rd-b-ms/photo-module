@@ -24,7 +24,12 @@ class Photo extends React.Component {
   }
 
   render() {
-    const { photo, index, isContainerHovered, id } = this.props;
+    const {
+      photo,
+      index,
+      isContainerHovered,
+      id,
+    } = this.props;
     const { hover } = this.state;
     return (
       <StyledPhotoContainer index={index}>

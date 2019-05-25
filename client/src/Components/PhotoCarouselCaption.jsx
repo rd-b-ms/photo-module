@@ -58,7 +58,13 @@ class PhotoCarouselCaption extends React.Component {
   }
 
   render() {
-    const { photos, indexOfDisplayedPhoto, translateValue, advanceToNextSlide, backToPreviousSlide } = this.props;
+    const {
+      photos,
+      indexOfDisplayedPhoto,
+      translateValue,
+      advanceToNextSlide,
+      backToPreviousSlide,
+    } = this.props;
     return (
       <BottomRowContainer>
         <BottomRow>

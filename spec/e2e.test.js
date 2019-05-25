@@ -11,7 +11,7 @@ const height = 780;
 beforeAll(async () => {
   browser = await puppeteer.launch({
     headless: false,
-    slowMo: 250,
+    slowMo: 80,
     args: [`--window-size=${width},${height}`],
   });
   page = await browser.newPage();
