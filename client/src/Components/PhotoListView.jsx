@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import PhotoListComponent from './PhotoListComponent';
 
 const PhotoListContainer = styled.div`
+  display: ${props => (props.photoListIsVisible ? 'block' : 'none')}
   position: relative;
   height: 67px;
   overflow: hidden;
@@ -40,9 +41,10 @@ class PhotoListView extends React.Component {
       translateValue,
       advanceToNextSlide,
       backToPreviousSlide,
+      photoListIsVisible,
     } = this.props;
     return (
-      <PhotoListContainer>
+      <PhotoListContainer photoListIsVisible={photoListIsVisible}>
         <PhotoListSlider>
           <PhotoListUnorderedList translateValue={translateValue}>
             {photos.map((photo, index) => (
@@ -68,6 +70,7 @@ PhotoListView.propTypes = {
   translateValue: PropTypes.number.isRequired,
   advanceToNextSlide: PropTypes.func.isRequired,
   backToPreviousSlide: PropTypes.func.isRequired,
+  photoListIsVisible: PropTypes.bool.isRequired,
 };
 
 export default PhotoListView;

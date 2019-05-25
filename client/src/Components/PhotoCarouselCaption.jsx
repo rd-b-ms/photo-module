@@ -49,12 +49,19 @@ const HidePhotoListButton = styled.div`
   display: table-cell;
   text-align: right;
   vertical-align: middle;
+  cursor: pointer;
 `;
 
 class PhotoCarouselCaption extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { photoListIsVisible: true };
+
+    this.togglePhotoListVisibility = this.togglePhotoListVisibility.bind(this);
+  }
+
+  togglePhotoListVisibility() {
+    this.setState(prevState => ({ photoListIsVisible: !prevState.photoListIsVisible }));
   }
 
   render() {
@@ -65,6 +72,7 @@ class PhotoCarouselCaption extends React.Component {
       advanceToNextSlide,
       backToPreviousSlide,
     } = this.props;
+    const { photoListIsVisible } = this.state;
     return (
       <BottomRowContainer>
         <BottomRow>
@@ -74,7 +82,7 @@ class PhotoCarouselCaption extends React.Component {
                 <div style={{ marginBottom: '12px' }}>
                   <div style={{ display: 'table', width: '100%' }}>
                     <PhotoDescription>{photos[0].description}</PhotoDescription>
-                    <HidePhotoListButton>
+                    <HidePhotoListButton onClick={this.togglePhotoListVisibility}>
                       <span>
                         Hide Photo List
                         <PhotoListButtonArrow height="10px" width="10px" fill="currentcolor" />
@@ -83,6 +91,7 @@ class PhotoCarouselCaption extends React.Component {
                   </div>
                 </div>
                 <PhotoListView
+                  photoListIsVisible={photoListIsVisible}
                   advanceToNextSlide={advanceToNextSlide}
                   backToPreviousSlide={backToPreviousSlide}
                   translateValue={translateValue}
