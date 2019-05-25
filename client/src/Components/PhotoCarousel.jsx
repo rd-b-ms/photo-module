@@ -1,48 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { PhotoSlideshowModal, ClosePhotoSlideshowButtonContainer, TableContainer } from '../Styles/style';
 import { ClosePhotoSlideshowButton } from './svg';
 import SlideshowFooter from './SlideshowFooter';
 import MainSlideshow from './MainSlideshow';
-
-const PhotoSlideshowModal = styled.section`
-  display: ${props => (props.photoCarouselIsVisible ? 'block' : 'none')};
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.85);
-  background-color: #262626;  
-  z-index: 1000;
-  overflow-y: auto;
-  font-family: Roboto, Helvetica Neue, sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-`;
-
-const ClosePhotoSlideshowButtonContainer = styled.div`
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  padding: 16px 28px 8px;
-  cursor: pointer;
-  background-color: transparent;
-  color: buttontext;
-  border-width: 0px;
-  z-index: 2000;
-`;
-
-const TableContainer = styled.div`
-  display: table;
-  table-layout: fixed;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-`;
 
 class PhotoCarousel extends React.Component {
   constructor(props) {
