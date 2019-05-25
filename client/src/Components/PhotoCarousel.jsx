@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { PreviousArrow, NextArrow } from './svg';
+import { PreviousArrow, NextArrow, ClosePhotoView } from './svg';
 import PhotoCarouselCaption from './PhotoCarouselCaption';
 
 const StyledCarousel = styled.section`
@@ -11,8 +11,6 @@ const StyledCarousel = styled.section`
   left: 0;
   bottom: 0;
   right: 0;
-  width: 100%;
-  height: 100%;
   background: rgba(0, 0, 0, 0.85);
   background-color: #262626;  
   z-index: 1000;
@@ -20,6 +18,17 @@ const StyledCarousel = styled.section`
   font-family: Roboto, Helvetica Neue, sans-serif;
   font-size: 14px;
   font-weight: 300;
+`;
+
+const CloseButtonContainer = styled.div`
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 16px 28px 8px;
+  cursor: pointer;
+  background-color: transparent;
+  color: buttontext;
+  border-width: 0px;
 `;
 
 const CarouselGuts = styled.div`
@@ -88,6 +97,9 @@ class PhotoCarousel extends React.Component {
     const { photos, photoCarouselIsVisible } = this.props;
     return (
       <StyledCarousel photoCarouselIsVisible={photoCarouselIsVisible}>
+        <CloseButtonContainer>
+          <ClosePhotoView type="button" display="block" height="2em" width="2em" fill="rgb(255, 255, 255)" />
+        </CloseButtonContainer>
         <CarouselGuts>
           <TopPaddingContainer>
             <TopPadding />
@@ -103,7 +115,7 @@ class PhotoCarousel extends React.Component {
               </NextArrowContainer>
             </ImageContainer>
             <PhotoCarouselCaption photos={photos} />
-          </SlideshowContainer>   
+          </SlideshowContainer>
         </CarouselGuts>
       </StyledCarousel>
     );
