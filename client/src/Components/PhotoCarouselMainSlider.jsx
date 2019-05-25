@@ -74,7 +74,7 @@ class PhotoCarouselMainSlider extends React.Component {
         <NextArrowContainer onClick={this.nextArrowClick} type="button">
           <NextArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
         </NextArrowContainer>
-        <StyledImg src={photos[indexOfDisplayedPhoto].photo_url} />
+        <StyledImg onClick={this.nextArrowClick} src={photos[indexOfDisplayedPhoto].photo_url} />
       </ImageContainer>
     );
   }
