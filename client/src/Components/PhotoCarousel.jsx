@@ -44,18 +44,6 @@ const TableContainer = styled.div`
   overflow: auto;
 `;
 
-const TopPaddingContainer = styled.div`
-  display: table-row;
-`;
-
-const TopPadding = styled.div`
-  padding: 66px 15px 20px;
-`;
-
-const SlideshowContainer = styled.div`
-  display: table-row;
-`;
-
 class PhotoCarousel extends React.Component {
   constructor(props) {
     super(props);
@@ -127,10 +115,10 @@ class PhotoCarousel extends React.Component {
           />
         </ClosePhotoSlideshowButtonContainer>
         <TableContainer>
-          <TopPaddingContainer>
-            <TopPadding />
-          </TopPaddingContainer>
-          <SlideshowContainer>
+          <div style={{ display: 'table-row' }}>
+            <div style={{ padding: '66px 15px 20px' }} />
+          </div>
+          <div style={{ display: 'table-row' }}>
             <MainSlideshow
               indexOfDisplayedPhoto={indexOfDisplayedPhoto}
               advanceToNextSlide={this.advanceToNextSlide}
@@ -144,7 +132,7 @@ class PhotoCarousel extends React.Component {
               indexOfDisplayedPhoto={indexOfDisplayedPhoto}
               photos={photos}
             />
-          </SlideshowContainer>
+          </div>
         </TableContainer>
       </PhotoSlideshowModal>
     );
