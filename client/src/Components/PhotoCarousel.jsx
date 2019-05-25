@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { PreviousArrow, NextArrow, ClosePhotoView } from './svg';
+import { ClosePhotoView } from './svg';
 import PhotoCarouselCaption from './PhotoCarouselCaption';
-import PhotoCarouselMainPhoto from './PhotoCarouselMainPhoto';
+import PhotoCarouselMainSlider from './PhotoCarouselMainSlider';
 
 const StyledCarousel = styled.section`
   display: ${props => (props.photoCarouselIsVisible ? 'block' : 'none')};
@@ -54,32 +54,6 @@ const SlideshowContainer = styled.div`
   display: table-row;
 `;
 
-const PreviousArrowContainer = styled.button`
-  position: absolute;
-  background: transparent;
-  border: 0px;
-  width: 75px;
-  height: 100%;
-  top: 0px;
-  left: 0px;
-  cursor: pointer;
-`;
-
-const ImageContainer = styled.div`
-  position: relative;
-`;
-
-const NextArrowContainer = styled.button`
-  position: absolute;
-  background: transparent;
-  border: 0px;
-  width: 75px;
-  height: 100%;
-  top: 0px;
-  right: 0px;
-  cursor: pointer;
-`;
-
 class PhotoCarousel extends React.Component {
   constructor(props) {
     super(props);
@@ -98,15 +72,7 @@ class PhotoCarousel extends React.Component {
             <TopPadding />
           </TopPaddingContainer>
           <SlideshowContainer>
-            <ImageContainer>
-              <PreviousArrowContainer type="button">
-                <PreviousArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
-              </PreviousArrowContainer>
-              <PhotoCarouselMainPhoto photos={photos}/>
-              <NextArrowContainer type="button">
-                <NextArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
-              </NextArrowContainer>
-            </ImageContainer>
+            <PhotoCarouselMainSlider photos={photos} />
             <PhotoCarouselCaption photos={photos} />
           </SlideshowContainer>
         </CarouselGuts>
