@@ -19,6 +19,7 @@ class PhotosContainer extends React.Component {
               photo={photo}
               key={photo.id}
               index={index}
+              id={`Photo-${index}`}
             />
           );
         }

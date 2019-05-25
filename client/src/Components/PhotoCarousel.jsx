@@ -138,6 +138,8 @@ class PhotoCarousel extends React.Component {
               photos={photos}
             />
             <PhotoCarouselCaption
+              advanceToNextSlide={this.advanceToNextSlide}
+              backToPreviousSlide={this.backToPreviousSlide}
               translateValue={translateValue}
               indexOfDisplayedPhoto={indexOfDisplayedPhoto}
               photos={photos}

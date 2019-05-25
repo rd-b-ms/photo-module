@@ -34,13 +34,15 @@ class PhotoListView extends React.Component {
   }
 
   render() {
-    const { photos, indexOfDisplayedPhoto, translateValue } = this.props;
+    const { photos, indexOfDisplayedPhoto, translateValue, advanceToNextSlide, backToPreviousSlide } = this.props;
     return (
       <PhotoListContainer>
         <PhotoListSlider>
           <PhotoListUnorderedList translateValue={translateValue}>
             {photos.map((photo, index) => (
               <PhotoListComponent
+                advanceToNextSlide={advanceToNextSlide}
+                backToPreviousSlide={backToPreviousSlide}
                 photo={photo}
                 key={photo.id}
                 index={index}
@@ -58,6 +60,8 @@ PhotoListView.propTypes = {
   photos: PropTypes.instanceOf(Array).isRequired,
   indexOfDisplayedPhoto: PropTypes.number.isRequired,
   translateValue: PropTypes.number.isRequired,
+  advanceToNextSlide: PropTypes.func.isRequired,
+  backToPreviousSlide: PropTypes.func.isRequired,
 };
 
 export default PhotoListView;

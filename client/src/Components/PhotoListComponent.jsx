@@ -29,18 +29,49 @@ const MiniPhoto = styled.img`
   height: 67px;
 `;
 
-const PhotoListComponent = ({ photo, index, indexOfDisplayedPhoto }) => (
-  <PLComponent index={index}>
-    <ClickablePhoto indexOfDisplayedPhoto={indexOfDisplayedPhoto} index={index}>
-      <MiniPhoto src={photo.photo_url} />
-    </ClickablePhoto>
-  </PLComponent>
-);
+// const PhotoListComponent = ({ photo, index, indexOfDisplayedPhoto }) => (
+//   <PLComponent index={index}>
+//     <ClickablePhoto indexOfDisplayedPhoto={indexOfDisplayedPhoto} index={index}>
+//       <MiniPhoto src={photo.photo_url} />
+//     </ClickablePhoto>
+//   </PLComponent>
+// );
+
+class PhotoListComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.goToSpecificPhoto = this.goToSpecificPhoto.bind(this);
+  }
+
+  goToSpecificPhoto(event) {
+    const { advanceToNextSlide, backToPreviousSlide, indexOfDisplayedPhoto } = this.props;
+    if (Number(event.target.id) > indexOfDisplayedPhoto) {
+      advanceToNextSlide(Number(event.target.id));
+    }
+    if (Number(event.target.id) < indexOfDisplayedPhoto) {
+      backToPreviousSlide(Number(event.target.id));
+    }
+  }
+
+  render() {
+    const { index, photo, indexOfDisplayedPhoto } = this.props;
+    return (
+      <PLComponent index={index}>
+        <ClickablePhoto indexOfDisplayedPhoto={indexOfDisplayedPhoto} index={index}>
+          <MiniPhoto onClick={this.goToSpecificPhoto} src={photo.photo_url} id={index} />
+        </ClickablePhoto>
+      </PLComponent>
+    );
+  }
+}
 
 PhotoListComponent.propTypes = {
   photo: PropTypes.instanceOf(Object).isRequired,
   index: PropTypes.number.isRequired,
   indexOfDisplayedPhoto: PropTypes.number.isRequired,
+  advanceToNextSlide: PropTypes.func.isRequired,
+  backToPreviousSlide: PropTypes.func.isRequired,
 };
 
 export default PhotoListComponent;

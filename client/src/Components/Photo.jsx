@@ -24,7 +24,7 @@ class Photo extends React.Component {
   }
 
   render() {
-    const { photo, index, isContainerHovered } = this.props;
+    const { photo, index, isContainerHovered, id } = this.props;
     const { hover } = this.state;
     return (
       <StyledPhotoContainer index={index}>
@@ -32,7 +32,7 @@ class Photo extends React.Component {
           src={photo.photo_url}
           alt="home interior"
           className="photo"
-          id={index}
+          id={id}
           index={index}
           hover={hover}
           isContainerHovered={isContainerHovered}
@@ -50,6 +50,7 @@ Photo.propTypes = {
   photo: PropTypes.shape({ photo_url: '' }).isRequired,
   index: PropTypes.number.isRequired,
   isContainerHovered: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Photo;

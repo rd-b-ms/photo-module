@@ -58,7 +58,7 @@ class PhotoCarouselCaption extends React.Component {
   }
 
   render() {
-    const { photos, indexOfDisplayedPhoto, translateValue } = this.props;
+    const { photos, indexOfDisplayedPhoto, translateValue, advanceToNextSlide, backToPreviousSlide } = this.props;
     return (
       <BottomRowContainer>
         <BottomRow>
@@ -77,6 +77,8 @@ class PhotoCarouselCaption extends React.Component {
                   </div>
                 </div>
                 <PhotoListView
+                  advanceToNextSlide={advanceToNextSlide}
+                  backToPreviousSlide={backToPreviousSlide}
                   translateValue={translateValue}
                   indexOfDisplayedPhoto={indexOfDisplayedPhoto}
                   photos={photos}
@@ -94,6 +96,8 @@ PhotoCarouselCaption.propTypes = {
   photos: PropTypes.instanceOf(Array).isRequired,
   indexOfDisplayedPhoto: PropTypes.number.isRequired,
   translateValue: PropTypes.number.isRequired,
+  advanceToNextSlide: PropTypes.func.isRequired,
+  backToPreviousSlide: PropTypes.func.isRequired,
 };
 
 export default PhotoCarouselCaption;
