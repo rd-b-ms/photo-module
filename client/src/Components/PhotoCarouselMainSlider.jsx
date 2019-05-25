@@ -5,8 +5,8 @@ import { PreviousArrow, NextArrow } from './svg';
 
 const StyledImg = styled.img`
   display: table-row;
-  height: 100%;
   width: 100%;
+  height: 100%;
   max-width: 105vh;
   margin: 0px auto;
 `;
@@ -71,10 +71,10 @@ class PhotoCarouselMainSlider extends React.Component {
         <PreviousArrowContainer onClick={this.previousArrowClick} type="button">
           <PreviousArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
         </PreviousArrowContainer>
-        <StyledImg src={photos[indexOfDisplayedPhoto].photo_url} />
         <NextArrowContainer onClick={this.nextArrowClick} type="button">
           <NextArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
         </NextArrowContainer>
+        <StyledImg src={photos[indexOfDisplayedPhoto].photo_url} />
       </ImageContainer>
     );
   }

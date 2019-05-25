@@ -78,12 +78,7 @@ class App extends React.Component {
       photoCarouselIsVisible,
     } = this.state;
     return (
-      <StyledContainer
-        onMouseOver={this.onContainerMouseOver}
-        onFocus={this.onContainerMouseOver}
-        onMouseOut={this.onContainerMouseOut}
-        onBlur={this.onContainerMouseOut}
-      >
+      <div>
         <ShareModal
           className="share-modal"
           hideShareModal={this.hideShareModal}
@@ -94,18 +89,25 @@ class App extends React.Component {
           hidePhotoCarousel={this.hidePhotoCarousel}
           photoCarouselIsVisible={photoCarouselIsVisible}
         />
-        <PhotosContainer
-          isContainerHovered={isContainerHovered}
-          photos={photos}
-          index={index}
-        />
-        <ShareButton showShareModal={this.showShareModal} />
-        <SaveButton />
-        <ViewPhotosButton
-          showPhotoCarousel={this.showPhotoCarousel}
-          hidePhotoCarousel={this.hidePhotoCarousel}
-        />
-      </StyledContainer>
+        <StyledContainer
+          onMouseOver={this.onContainerMouseOver}
+          onFocus={this.onContainerMouseOver}
+          onMouseOut={this.onContainerMouseOut}
+          onBlur={this.onContainerMouseOut}
+        >
+          <PhotosContainer
+            isContainerHovered={isContainerHovered}
+            photos={photos}
+            index={index}
+          />
+          <ShareButton showShareModal={this.showShareModal} />
+          <SaveButton />
+          <ViewPhotosButton
+            showPhotoCarousel={this.showPhotoCarousel}
+            hidePhotoCarousel={this.hidePhotoCarousel}
+          />
+        </StyledContainer>
+      </div>
     );
   }
 }

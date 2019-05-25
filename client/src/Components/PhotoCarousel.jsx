@@ -33,8 +33,9 @@ const CloseButtonContainer = styled.div`
   z-index: 2000;
 `;
 
-const CarouselGuts = styled.div`
+const CarouselContainer = styled.div`
   display: table;
+  table-layout: fixed;
   position: absolute;
   top: 0;
   left: 0;
@@ -87,7 +88,6 @@ class PhotoCarousel extends React.Component {
   }
 
   backToPreviousSlide(nextIndex) {
-    const { translateValue } = this.state;
     const { photos } = this.props;
     let translateAmount;
     if (nextIndex === photos.length - 1) {
@@ -126,7 +126,7 @@ class PhotoCarousel extends React.Component {
             fill="rgb(255, 255, 255)"
           />
         </CloseButtonContainer>
-        <CarouselGuts>
+        <CarouselContainer>
           <TopPaddingContainer>
             <TopPadding />
           </TopPaddingContainer>
@@ -143,7 +143,7 @@ class PhotoCarousel extends React.Component {
               photos={photos}
             />
           </SlideshowContainer>
-        </CarouselGuts>
+        </CarouselContainer>
       </StyledCarousel>
     );
   }
