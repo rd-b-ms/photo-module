@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { PhotoListButtonArrow } from './svg';
+import PhotoListView from './PhotoListView';
 
-const BottomRow = styled.div`
-  position: relative;
-`;
 
 const BottomRowContainer = styled.div`
+  display: block;
   background-image: none;
   background-color: transparent;
   position: relative;
@@ -19,6 +18,9 @@ const BottomRowContainer = styled.div`
   color: rgb(255, 255, 255);
   overflow: hidden;
   border-radius: 0px;
+`;
+const BottomRow = styled.div`
+  position: relative;
 `;
 
 const CaptionContainer = styled.div`
@@ -74,6 +76,7 @@ class PhotoCarouselCaption extends React.Component {
                     </HidePhotoListButton>
                   </div>
                 </div>
+                <PhotoListView photos={photos} />
               </Caption>
             </CaptionContainer>
           </div>

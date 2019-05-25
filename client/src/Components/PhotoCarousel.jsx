@@ -5,14 +5,16 @@ import { PreviousArrow, NextArrow } from './svg';
 import PhotoCarouselCaption from './PhotoCarouselCaption';
 
 const StyledCarousel = styled.section`
-  display: ${props => (props.photoCarouselIsVisible ? 'table' : 'none')};
+  display: ${props => (props.photoCarouselIsVisible ? 'block' : 'none')};
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  width: 100%;
-  height: 100%;
+  width: 1440px;
+  height: 720px;
+  max-width: 100%;
+  max-height: 100%;
   background: rgba(0, 0, 0, 0.85);
   background-color: #262626;  
   z-index: 1000;
@@ -20,6 +22,16 @@ const StyledCarousel = styled.section`
   font-family: Roboto, Helvetica Neue, sans-serif;
   font-size: 14px;
   font-weight: 300;
+`;
+
+const CarouselGuts = styled.div`
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 `;
 
 const TopPaddingContainer = styled.div`
@@ -79,6 +91,7 @@ class PhotoCarousel extends React.Component {
     const { photos, photoCarouselIsVisible } = this.props;
     return (
       <StyledCarousel photoCarouselIsVisible={photoCarouselIsVisible}>
+        <CarouselGuts>
         <TopPaddingContainer>
           <TopPadding />
         </TopPaddingContainer>
@@ -93,7 +106,8 @@ class PhotoCarousel extends React.Component {
             </NextArrowContainer>
           </ImageContainer>
           <PhotoCarouselCaption photos={photos} />
-        </SlideshowContainer>
+        </SlideshowContainer>    
+        </CarouselGuts>
       </StyledCarousel>
     );
   }
