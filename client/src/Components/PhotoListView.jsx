@@ -22,6 +22,7 @@ const PhotoListUnorderedList = styled.ul`
   list-style-type: none;
   left: 0px;
   transition: -ms-transform 0.3s ease-out 0s, -webkit-transform 0.3s ease-out 0s, transform 0.3s ease-out 0s;
+  transform: translateX(${props => props.translateValue}px);
   margin: 0px;
   padding: 0px;
 `;
@@ -33,11 +34,11 @@ class PhotoListView extends React.Component {
   }
 
   render() {
-    const { photos, indexOfDisplayedPhoto } = this.props;
+    const { photos, indexOfDisplayedPhoto, translateValue } = this.props;
     return (
       <PhotoListContainer>
         <PhotoListSlider>
-          <PhotoListUnorderedList>
+          <PhotoListUnorderedList translateValue={translateValue}>
             {photos.map((photo, index) => (
               <PhotoListComponent
                 photo={photo}
@@ -56,6 +57,7 @@ class PhotoListView extends React.Component {
 PhotoListView.propTypes = {
   photos: PropTypes.instanceOf(Array).isRequired,
   indexOfDisplayedPhoto: PropTypes.number.isRequired,
+  translateValue: PropTypes.number.isRequired,
 };
 
 export default PhotoListView;

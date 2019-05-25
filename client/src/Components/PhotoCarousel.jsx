@@ -58,7 +58,7 @@ const SlideshowContainer = styled.div`
 class PhotoCarousel extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { indexOfDisplayedPhoto: 0 };
+    this.state = { indexOfDisplayedPhoto: 0, translateValue: 0 };
 
     this.advanceToNextSlide = this.advanceToNextSlide.bind(this);
     this.backToPreviousSlide = this.backToPreviousSlide.bind(this);
@@ -66,11 +66,45 @@ class PhotoCarousel extends React.Component {
   }
 
   advanceToNextSlide(nextIndex) {
-    this.setState({ indexOfDisplayedPhoto: nextIndex });
+    const { translateValue } = this.state;
+    const { photos } = this.props;
+    let translateAmount;
+    if (nextIndex === 0) {
+      translateAmount = translateValue;
+    } else if (nextIndex === 2 || nextIndex === photos.length - 2) {
+      translateAmount = 18;
+    } else if (nextIndex === 1 || nextIndex === photos.length - 1) {
+      translateAmount = 0;
+    } else {
+      translateAmount = 110;
+    }
+    this.setState(prevState => (
+      {
+        indexOfDisplayedPhoto: nextIndex,
+        translateValue: prevState.translateValue - translateAmount,
+      }
+    ));
   }
 
   backToPreviousSlide(nextIndex) {
-    this.setState({ indexOfDisplayedPhoto: nextIndex });
+    const { translateValue } = this.state;
+    const { photos } = this.props;
+    let translateAmount;
+    if (nextIndex === photos.length - 1) {
+      translateAmount = -((photos.length - 4) * 110) - 36;
+    } else if (nextIndex === 1 || nextIndex === photos.length - 2) {
+      translateAmount = 18;
+    } else if (nextIndex === 0) {
+      translateAmount = 0;
+    } else {
+      translateAmount = 110;
+    }
+    this.setState(prevState => (
+      {
+        indexOfDisplayedPhoto: nextIndex,
+        translateValue: prevState.translateValue + translateAmount,
+      }
+    ));
   }
 
   closePhotoCarousel() {
@@ -80,7 +114,7 @@ class PhotoCarousel extends React.Component {
 
   render() {
     const { photos, photoCarouselIsVisible } = this.props;
-    const { indexOfDisplayedPhoto } = this.state;
+    const { indexOfDisplayedPhoto, translateValue } = this.state;
     return (
       <StyledCarousel photoCarouselIsVisible={photoCarouselIsVisible}>
         <CloseButtonContainer onClick={this.closePhotoCarousel}>
@@ -103,7 +137,11 @@ class PhotoCarousel extends React.Component {
               backToPreviousSlide={this.backToPreviousSlide}
               photos={photos}
             />
-            <PhotoCarouselCaption indexOfDisplayedPhoto={indexOfDisplayedPhoto} photos={photos} />
+            <PhotoCarouselCaption
+              translateValue={translateValue}
+              indexOfDisplayedPhoto={indexOfDisplayedPhoto}
+              photos={photos}
+            />
           </SlideshowContainer>
         </CarouselGuts>
       </StyledCarousel>
