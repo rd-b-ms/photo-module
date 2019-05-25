@@ -14,7 +14,7 @@ const ClickablePhoto = styled.button`
   position: relative;
   display: inline-block;
   vertical-align: bottom;
-  opacity: 1;
+  opacity: ${props => (props.indexOfDisplayedPhoto === props.index ? '1' : '0.5')};
   cursor: default;
   overflow: hidden;
   background: transparent;
@@ -29,9 +29,9 @@ const MiniPhoto = styled.img`
   height: 67px;
 `;
 
-const PhotoListComponent = ({ photo, index }) => (
+const PhotoListComponent = ({ photo, index, indexOfDisplayedPhoto }) => (
   <PLComponent index={index}>
-    <ClickablePhoto>
+    <ClickablePhoto indexOfDisplayedPhoto={indexOfDisplayedPhoto} index={index}>
       <MiniPhoto src={photo.photo_url} />
     </ClickablePhoto>
   </PLComponent>
@@ -40,6 +40,7 @@ const PhotoListComponent = ({ photo, index }) => (
 PhotoListComponent.propTypes = {
   photo: PropTypes.instanceOf(Object).isRequired,
   index: PropTypes.number.isRequired,
+  indexOfDisplayedPhoto: PropTypes.number.isRequired,
 };
 
 export default PhotoListComponent;

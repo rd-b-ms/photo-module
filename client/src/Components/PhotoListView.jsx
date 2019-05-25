@@ -33,7 +33,7 @@ class PhotoListView extends React.Component {
   }
 
   render() {
-    const { photos } = this.props;
+    const { photos, indexOfDisplayedPhoto } = this.props;
     return (
       <PhotoListContainer>
         <PhotoListSlider>
@@ -43,6 +43,7 @@ class PhotoListView extends React.Component {
                 photo={photo}
                 key={photo.id}
                 index={index}
+                indexOfDisplayedPhoto={indexOfDisplayedPhoto}
               />
             ))}
           </PhotoListUnorderedList>
@@ -54,6 +55,7 @@ class PhotoListView extends React.Component {
 
 PhotoListView.propTypes = {
   photos: PropTypes.instanceOf(Array).isRequired,
+  indexOfDisplayedPhoto: PropTypes.number.isRequired,
 };
 
 export default PhotoListView;

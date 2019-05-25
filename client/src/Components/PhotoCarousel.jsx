@@ -57,11 +57,23 @@ const SlideshowContainer = styled.div`
 class PhotoCarousel extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { indexOfDisplayedPhoto: 0 };
+
+    this.advanceToNextSlide = this.advanceToNextSlide.bind(this);
+    this.backToPreviousSlide = this.backToPreviousSlide.bind(this);
+  }
+
+  advanceToNextSlide(nextIndex) {
+    this.setState({ indexOfDisplayedPhoto: nextIndex });
+  }
+
+  backToPreviousSlide(nextIndex) {
+    this.setState({ indexOfDisplayedPhoto: nextIndex });
   }
 
   render() {
     const { photos, photoCarouselIsVisible } = this.props;
+    const { indexOfDisplayedPhoto } = this.state;
     return (
       <StyledCarousel photoCarouselIsVisible={photoCarouselIsVisible}>
         <CloseButtonContainer>
@@ -72,8 +84,13 @@ class PhotoCarousel extends React.Component {
             <TopPadding />
           </TopPaddingContainer>
           <SlideshowContainer>
-            <PhotoCarouselMainSlider photos={photos} />
-            <PhotoCarouselCaption photos={photos} />
+            <PhotoCarouselMainSlider
+              indexOfDisplayedPhoto={indexOfDisplayedPhoto}
+              advanceToNextSlide={this.advanceToNextSlide}
+              backToPreviousSlide={this.backToPreviousSlide}
+              photos={photos}
+            />
+            <PhotoCarouselCaption indexOfDisplayedPhoto={indexOfDisplayedPhoto} photos={photos} />
           </SlideshowContainer>
         </CarouselGuts>
       </StyledCarousel>
