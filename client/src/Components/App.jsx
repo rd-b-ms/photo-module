@@ -89,7 +89,11 @@ class App extends React.Component {
           hideShareModal={this.hideShareModal}
           shareModalIsVisible={shareModalIsVisible}
         />
-        <PhotoCarousel photos={photos} photoCarouselIsVisible={photoCarouselIsVisible} />
+        <PhotoCarousel
+          photos={photos}
+          hidePhotoCarousel={this.hidePhotoCarousel}
+          photoCarouselIsVisible={photoCarouselIsVisible}
+        />
         <PhotosContainer
           isContainerHovered={isContainerHovered}
           photos={photos}

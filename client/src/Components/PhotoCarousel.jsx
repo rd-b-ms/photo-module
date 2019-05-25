@@ -30,6 +30,7 @@ const CloseButtonContainer = styled.div`
   background-color: transparent;
   color: buttontext;
   border-width: 0px;
+  z-index: 2000;
 `;
 
 const CarouselGuts = styled.div`
@@ -61,6 +62,7 @@ class PhotoCarousel extends React.Component {
 
     this.advanceToNextSlide = this.advanceToNextSlide.bind(this);
     this.backToPreviousSlide = this.backToPreviousSlide.bind(this);
+    this.closePhotoCarousel = this.closePhotoCarousel.bind(this);
   }
 
   advanceToNextSlide(nextIndex) {
@@ -71,13 +73,24 @@ class PhotoCarousel extends React.Component {
     this.setState({ indexOfDisplayedPhoto: nextIndex });
   }
 
+  closePhotoCarousel() {
+    const { hidePhotoCarousel } = this.props;
+    hidePhotoCarousel(false);
+  }
+
   render() {
     const { photos, photoCarouselIsVisible } = this.props;
     const { indexOfDisplayedPhoto } = this.state;
     return (
       <StyledCarousel photoCarouselIsVisible={photoCarouselIsVisible}>
-        <CloseButtonContainer>
-          <ClosePhotoView type="button" display="block" height="2em" width="2em" fill="rgb(255, 255, 255)" />
+        <CloseButtonContainer onClick={this.closePhotoCarousel}>
+          <ClosePhotoView
+            type="button"
+            display="block"
+            height="2em"
+            width="2em"
+            fill="rgb(255, 255, 255)"
+          />
         </CloseButtonContainer>
         <CarouselGuts>
           <TopPaddingContainer>
@@ -101,6 +114,7 @@ class PhotoCarousel extends React.Component {
 PhotoCarousel.propTypes = {
   photoCarouselIsVisible: PropTypes.bool.isRequired,
   photos: PropTypes.instanceOf(Array).isRequired,
+  hidePhotoCarousel: PropTypes.func.isRequired,
 };
 
 export default PhotoCarousel;
