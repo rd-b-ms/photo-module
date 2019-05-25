@@ -114,7 +114,7 @@ const StyledHeartImg = styled.img`
 
 // PhotoSlideshow Styled Components
 const PhotoSlideshowModal = styled.section`
-  display: ${props => (props.photoCarouselIsVisible ? 'block' : 'none')};
+  display: ${props => (props.photoSlideshowIsVisible ? 'block' : 'none')};
   position: fixed;
   top: 0;
   left: 0;

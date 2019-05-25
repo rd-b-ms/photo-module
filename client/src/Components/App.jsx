@@ -6,7 +6,7 @@ import SaveButton from './SaveButton';
 import ShareButton from './ShareButton';
 import ViewPhotosButton from './ViewPhotosButton';
 import ShareModal from './ShareModal';
-import PhotoCarousel from './PhotoCarousel';
+import PhotoSlideshow from './PhotoSlideshow';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,15 +20,15 @@ class App extends React.Component {
       }],
       isContainerHovered: false,
       shareModalIsVisible: false,
-      photoCarouselIsVisible: false,
+      photoSlideshowIsVisible: false,
     };
 
     this.onContainerMouseOver = this.onContainerMouseOver.bind(this);
     this.onContainerMouseOut = this.onContainerMouseOut.bind(this);
     this.showShareModal = this.showShareModal.bind(this);
     this.hideShareModal = this.hideShareModal.bind(this);
-    this.showPhotoCarousel = this.showPhotoCarousel.bind(this);
-    this.hidePhotoCarousel = this.hidePhotoCarousel.bind(this);
+    this.showPhotoSlideshow = this.showPhotoSlideshow.bind(this);
+    this.hidePhotoSlideshow = this.hidePhotoSlideshow.bind(this);
   }
 
   componentDidMount() {
@@ -61,12 +61,12 @@ class App extends React.Component {
     this.setState({ shareModalIsVisible: isNotVisible });
   }
 
-  showPhotoCarousel(isVisible) {
-    this.setState({ photoCarouselIsVisible: isVisible });
+  showPhotoSlideshow(isVisible) {
+    this.setState({ photoSlideshowIsVisible: isVisible });
   }
 
-  hidePhotoCarousel(isNotVisible) {
-    this.setState({ photoCarouselIsVisible: isNotVisible });
+  hidePhotoSlideshow(isNotVisible) {
+    this.setState({ photoSlideshowIsVisible: isNotVisible });
   }
 
   render() {
@@ -75,7 +75,7 @@ class App extends React.Component {
       index,
       isContainerHovered,
       shareModalIsVisible,
-      photoCarouselIsVisible,
+      photoSlideshowIsVisible,
     } = this.state;
     return (
       <div>
@@ -84,10 +84,10 @@ class App extends React.Component {
           hideShareModal={this.hideShareModal}
           shareModalIsVisible={shareModalIsVisible}
         />
-        <PhotoCarousel
+        <PhotoSlideshow
           photos={photos}
-          hidePhotoCarousel={this.hidePhotoCarousel}
-          photoCarouselIsVisible={photoCarouselIsVisible}
+          hidePhotoSlideshow={this.hidePhotoSlideshow}
+          photoSlideshowIsVisible={photoSlideshowIsVisible}
         />
         <StyledContainer
           onMouseOver={this.onContainerMouseOver}
@@ -103,8 +103,8 @@ class App extends React.Component {
           <ShareButton showShareModal={this.showShareModal} />
           <SaveButton />
           <ViewPhotosButton
-            showPhotoCarousel={this.showPhotoCarousel}
-            hidePhotoCarousel={this.hidePhotoCarousel}
+            showPhotoSlideshow={this.showPhotoSlideshow}
+            hidePhotoSlideshow={this.hidePhotoSlideshow}
           />
         </StyledContainer>
       </div>

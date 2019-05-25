@@ -30,11 +30,8 @@ class ViewPhotosButton extends React.Component {
 
   onViewPhotosButtonClick(event) {
     event.preventDefault();
-    const { showPhotoCarousel } = this.props;
-    // this.setState(prevState => ({
-    //   onViewPhotosButtonClicked: !prevState.onViewPhotosButtonClicked,
-    // }));
-    showPhotoCarousel(true);
+    const { showPhotoSlideshow } = this.props;
+    showPhotoSlideshow(true);
   }
 
   render() {
@@ -53,7 +50,7 @@ class ViewPhotosButton extends React.Component {
 }
 
 ViewPhotosButton.propTypes = {
-  showPhotoCarousel: PropTypes.func.isRequired,
+  showPhotoSlideshow: PropTypes.func.isRequired,
 };
 
 export default ViewPhotosButton;

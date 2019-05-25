@@ -5,14 +5,14 @@ import { ClosePhotoSlideshowButton } from './svg';
 import SlideshowFooter from './SlideshowFooter';
 import MainSlideshow from './MainSlideshow';
 
-class PhotoCarousel extends React.Component {
+class PhotoSlideshow extends React.Component {
   constructor(props) {
     super(props);
     this.state = { indexOfDisplayedPhoto: 0, translateValue: 0 };
 
     this.advanceToNextSlide = this.advanceToNextSlide.bind(this);
     this.backToPreviousSlide = this.backToPreviousSlide.bind(this);
-    this.closePhotoCarousel = this.closePhotoCarousel.bind(this);
+    this.closePhotoSlideshow = this.closePhotoSlideshow.bind(this);
   }
 
   advanceToNextSlide(nextIndex) {
@@ -56,17 +56,17 @@ class PhotoCarousel extends React.Component {
     ));
   }
 
-  closePhotoCarousel() {
-    const { hidePhotoCarousel } = this.props;
-    hidePhotoCarousel(false);
+  closePhotoSlideshow() {
+    const { hidePhotoSlideshow } = this.props;
+    hidePhotoSlideshow(false);
   }
 
   render() {
-    const { photos, photoCarouselIsVisible } = this.props;
+    const { photos, photoSlideshowIsVisible } = this.props;
     const { indexOfDisplayedPhoto, translateValue } = this.state;
     return (
-      <PhotoSlideshowModal photoCarouselIsVisible={photoCarouselIsVisible}>
-        <ClosePhotoSlideshowButtonContainer onClick={this.closePhotoCarousel}>
+      <PhotoSlideshowModal photoSlideshowIsVisible={photoSlideshowIsVisible}>
+        <ClosePhotoSlideshowButtonContainer onClick={this.closePhotoSlideshow}>
           <ClosePhotoSlideshowButton
             type="button"
             display="block"
@@ -100,10 +100,10 @@ class PhotoCarousel extends React.Component {
   }
 }
 
-PhotoCarousel.propTypes = {
-  photoCarouselIsVisible: PropTypes.bool.isRequired,
+PhotoSlideshow.propTypes = {
+  photoSlideshowIsVisible: PropTypes.bool.isRequired,
   photos: PropTypes.instanceOf(Array).isRequired,
-  hidePhotoCarousel: PropTypes.func.isRequired,
+  hidePhotoSlideshow: PropTypes.func.isRequired,
 };
 
-export default PhotoCarousel;
+export default PhotoSlideshow;
