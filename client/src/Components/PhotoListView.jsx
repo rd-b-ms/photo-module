@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import PhotoListComponent from './PhotoListComponent';
 
 const PhotoListContainer = styled.div`
   position: relative;
@@ -25,33 +26,6 @@ const PhotoListUnorderedList = styled.ul`
   padding: 0px;
 `;
 
-const PhotoListComponent = styled.li`
-  display: inline-block;
-  float: left;
-  margin-left: 10px;
-  height: 100%;
-  width: auto;
-`;
-
-const ClickablePhoto = styled.button`
-  position: relative;
-  display: inline-block;
-  vertical-align: bottom;
-  opacity: 1;
-  cursor: default;
-  overflow: hidden;
-  background: transparent;
-  border-width: 0px;
-  margin: 0px;
-  padding: 0px;
-  cursor: pointer;
-`;
-
-const MiniPhoto = styled.img`
-  width: 100px;
-  height: 67px;
-`;
-
 class PhotoListView extends React.Component {
   constructor(props) {
     super(props);
@@ -64,41 +38,7 @@ class PhotoListView extends React.Component {
       <PhotoListContainer>
         <PhotoListSlider>
           <PhotoListUnorderedList>
-            <PhotoListComponent style={{ marginLeft: '0px' }} src={photos[0].photo_url}>
-              <ClickablePhoto>
-                <MiniPhoto src={photos[0].photo_url} />
-              </ClickablePhoto>
-            </PhotoListComponent>
-            <PhotoListComponent src={photos[0].photo_url}>
-              <ClickablePhoto>
-                <MiniPhoto src={photos[0].photo_url} />
-              </ClickablePhoto>
-            </PhotoListComponent>
-            <PhotoListComponent src={photos[0].photo_url}>
-              <ClickablePhoto>
-                <MiniPhoto src={photos[0].photo_url} />
-              </ClickablePhoto>
-            </PhotoListComponent>
-            <PhotoListComponent src={photos[0].photo_url}>
-              <ClickablePhoto>
-                <MiniPhoto src={photos[0].photo_url} />
-              </ClickablePhoto>
-            </PhotoListComponent>
-            <PhotoListComponent src={photos[0].photo_url}>
-              <ClickablePhoto>
-                <MiniPhoto src={photos[0].photo_url} />
-              </ClickablePhoto>
-            </PhotoListComponent>
-            <PhotoListComponent src={photos[0].photo_url}>
-              <ClickablePhoto>
-                <MiniPhoto src={photos[0].photo_url} />
-              </ClickablePhoto>
-            </PhotoListComponent>
-            <PhotoListComponent src={photos[0].photo_url}>
-              <ClickablePhoto>
-                <MiniPhoto src={photos[0].photo_url} />
-              </ClickablePhoto>
-            </PhotoListComponent>
+            {photos.map((photo, index) => <PhotoListComponent photo={photo} key={photo.id} index={index} />)}
           </PhotoListUnorderedList>
         </PhotoListSlider>
       </PhotoListContainer>
