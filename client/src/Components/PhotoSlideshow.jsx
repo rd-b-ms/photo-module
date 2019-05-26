@@ -33,7 +33,7 @@ class PhotoSlideshow extends React.Component {
         translateValue: prevState.translateValue - translateAmount,
       }
     ));
-    showPhotoSlideshow(nextIndex);
+    showPhotoSlideshow(true, nextIndex);
   }
 
   backToPreviousSlide(nextIndex) {
@@ -53,7 +53,7 @@ class PhotoSlideshow extends React.Component {
         translateValue: prevState.translateValue + translateAmount,
       }
     ));
-    showPhotoSlideshow(nextIndex);
+    showPhotoSlideshow(true, nextIndex);
   }
 
   closePhotoSlideshow() {
