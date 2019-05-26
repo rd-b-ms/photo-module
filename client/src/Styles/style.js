@@ -187,6 +187,46 @@ const NextArrowContainer = styled.button`
   cursor: pointer;
 `;
 
+// SlideshowFooter Styled Components
+const BottomRow = styled.div`
+  display: block;
+  background-image: none;
+  background-color: transparent;
+  position: relative;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 2;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  overflow: hidden;
+  border-radius: 0px;
+`;
+
+const FooterContainer = styled.div`
+  max-width: 105vh;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  position: relative;
+  transform: translateY(0px);
+  transition: -ms-transform 0.2s ease-out 0s, -webkit-transform 0.2s ease-out 0s, transform 0.2s ease-out 0s;
+`;
+
+const PhotoDescription = styled.div`
+  display: table-cell;
+  padding-left: 0px;
+  text-align: left;
+  vertical-align: middle;
+`;
+
+const MiniSlideshowVisibilityButton = styled.div`
+  display: table-cell;
+  text-align: right;
+  vertical-align: middle;
+  cursor: pointer;
+`;
+
 export {
   StyledContainer,
   StyledShareButton,
@@ -204,4 +244,8 @@ export {
   PreviousArrowContainer,
   MainSlideshowContainer,
   NextArrowContainer,
+  BottomRow,
+  FooterContainer,
+  PhotoDescription,
+  MiniSlideshowVisibilityButton,
 };
