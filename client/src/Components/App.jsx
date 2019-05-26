@@ -71,10 +71,6 @@ class App extends React.Component {
     this.setState({ photoSlideshowIsVisible: isNotVisible });
   }
 
-  // showPhotoSlideshow(newIndex) {
-  //   this.setState({ indexOfDisplayedPhoto: newIndex });
-  // }
-
   render() {
     const {
       photos,
