@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { FacebookIcon, TwitterIcon, EmailIcon, MessengerIcon, CopyIcon, EmbedIcon } from './svg';
 
 const StyledSection = styled.section`
   display: ${props => (props.shareModalIsVisible ? 'block' : 'none')};
@@ -66,10 +67,10 @@ const StyledListingDescription = styled.div`
 
 const StyledLinkContainer = styled.section`
   display: block;
+  vertical-align: top;
   padding: 24px 0px;
   border-bottom: 1px solid rgb(235, 235, 235);
   border-top: 1px solid rgb(235, 235, 235);
-  justify-content: center;
   cursor: pointer;
 `;
 
@@ -91,6 +92,8 @@ const StyledText = styled.span`
   ${StyledTextContainer}:hover & {
     text-decoration: underline;
   }
+  display: table-cell;
+  vertical-align: top;
 `;
 
 class ShareModal extends React.Component {
@@ -135,37 +138,37 @@ class ShareModal extends React.Component {
             </StyledListingDescription>
           </StyledHeader>
           <StyledLinkContainer>
-            <StyledIcon src="./../icons/facebook-app-symbol.svg" alt="facebook icon" />
+            <FacebookIcon marginRight="8px" height="18px" width="18px" display="inline-block" fill="rgb(72, 72, 72)" />
             <StyledTextContainer>
               <StyledText>Facebook</StyledText>
             </StyledTextContainer>
           </StyledLinkContainer>
           <StyledLinkContainer>
-            <StyledIcon src="./../icons/twitter-logo-silhouette.svg" alt="twitter icon" />
+            <TwitterIcon marginRight="8px" height="18px" width="18px" display="inline-block" fill="rgb(72, 72, 72)" />
             <StyledTextContainer>
               <StyledText>Twitter</StyledText>
             </StyledTextContainer>
           </StyledLinkContainer>
           <StyledLinkContainer>
-            <StyledIcon src="./../icons/email.svg" alt="email icon" />
+            <EmailIcon marginRight="8px" height="18px" width="18px" display="inline-block" fill="rgb(72, 72, 72)" />
             <StyledTextContainer>
               <StyledText>Email</StyledText>
             </StyledTextContainer>
           </StyledLinkContainer>
           <StyledLinkContainer>
-            <StyledIcon src="./../icons/messenger.svg" alt="facebook messenger icon" />
+            <MessengerIcon marginRight="8px" height="18px" width="18px" display="inline-block" fill="rgb(72, 72, 72)" />
             <StyledTextContainer>
               <StyledText>Messenger</StyledText>
             </StyledTextContainer>
           </StyledLinkContainer>
           <StyledLinkContainer>
-            <StyledIcon src="./../icons/document.svg" alt="facebook messenger icon" />
+            <CopyIcon marginRight="8px" height="18px" width="18px" display="inline-block" fill="rgb(72, 72, 72)" />
             <StyledTextContainer>
               <StyledText>Copy Link</StyledText>
             </StyledTextContainer>
           </StyledLinkContainer>
           <StyledLinkContainer>
-            <StyledIcon src="./../icons/html-coding.svg" alt="facebook messenger icon" />
+            <EmbedIcon marginRight="8px" height="18px" width="18px" display="inline-block" fill="rgb(72, 72, 72)" />
             <StyledTextContainer>
               <StyledText>Embed</StyledText>
             </StyledTextContainer>
