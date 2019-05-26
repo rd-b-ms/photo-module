@@ -9,6 +9,7 @@ class Photo extends React.Component {
 
     this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseOut = this.onMouseOut.bind(this);
+    this.openSlideshowToPhoto = this.openSlideshowToPhoto.bind(this);
   }
 
   onMouseOver() {
@@ -23,8 +24,18 @@ class Photo extends React.Component {
     });
   }
 
+  openSlideshowToPhoto(index) {
+    const { showPhotoSlideshow } = this.props;
+    showPhotoSlideshow(true, index);
+  }
+
   render() {
-    const { photo, index, isContainerHovered } = this.props;
+    const {
+      photo,
+      index,
+      isContainerHovered,
+      id,
+    } = this.props;
     const { hover } = this.state;
     return (
       <StyledPhotoContainer index={index}>
@@ -32,7 +43,7 @@ class Photo extends React.Component {
           src={photo.photo_url}
           alt="home interior"
           className="photo"
-          id={index}
+          id={id}
           index={index}
           hover={hover}
           isContainerHovered={isContainerHovered}
@@ -40,6 +51,7 @@ class Photo extends React.Component {
           onFocus={this.onMouseOver}
           onMouseOut={this.onMouseOut}
           onBlur={this.onMouseOut}
+          onClick={() => this.openSlideshowToPhoto(index)}
         />
       </StyledPhotoContainer>
     );
@@ -50,6 +62,8 @@ Photo.propTypes = {
   photo: PropTypes.shape({ photo_url: '' }).isRequired,
   index: PropTypes.number.isRequired,
   isContainerHovered: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
+  showPhotoSlideshow: PropTypes.func.isRequired,
 };
 
 export default Photo;

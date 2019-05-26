@@ -112,6 +112,194 @@ const StyledHeartImg = styled.img`
   flex-direction: row;
 `;
 
+// ViewPhotosButton Styled Components
+const StyledViewPhotosButton = styled.button`
+  position: absolute;
+  margin: 29% 0% 0% 89%;
+  border-radius: 4px;
+  background-color: white;
+  color: #484848;
+  height: 32px;
+  width: 112px;
+`;
+
+const StyledViewPhotosText = styled.div`
+  display: flex;
+  justify-content: center;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+`;
+
+// PhotoSlideshow Styled Components
+const PhotoSlideshowModal = styled.section`
+  display: ${props => (props.photoSlideshowIsVisible ? 'block' : 'none')};
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.85);
+  background-color: #262626;  
+  z-index: 1000;
+  overflow-y: auto;
+  font-family: Roboto, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+`;
+
+const ClosePhotoSlideshowButtonContainer = styled.div`
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 16px 28px 8px;
+  cursor: pointer;
+  background-color: transparent;
+  color: buttontext;
+  border-width: 0px;
+  z-index: 2000;
+`;
+
+const TableContainer = styled.div`
+  display: table;
+  table-layout: fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+`;
+
+// MainSlideshow Styled Components
+const MainPhoto = styled.img`
+  display: table-row;
+  width: 100%;
+  height: 100%;
+  max-width: 105vh;
+  margin: 0px auto;
+`;
+
+const PreviousArrowContainer = styled.button`
+  position: absolute;
+  background: transparent;
+  border: 0px;
+  width: 75px;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+`;
+
+const MainSlideshowContainer = styled.div`
+  position: relative;
+`;
+
+const NextArrowContainer = styled.button`
+  position: absolute;
+  background: transparent;
+  border: 0px;
+  width: 75px;
+  height: 100%;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+`;
+
+// SlideshowFooter Styled Components
+const BottomRow = styled.div`
+  display: block;
+  background-image: none;
+  background-color: transparent;
+  position: relative;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 2;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  overflow: hidden;
+  border-radius: 0px;
+`;
+
+const FooterContainer = styled.div`
+  max-width: 105vh;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  position: relative;
+  transform: translateY(0px);
+  transition: -ms-transform 0.2s ease-out 0s, -webkit-transform 0.2s ease-out 0s, transform 0.2s ease-out 0s;
+`;
+
+const PhotoDescription = styled.div`
+  display: table-cell;
+  padding-left: 0px;
+  text-align: left;
+  vertical-align: middle;
+`;
+
+const MiniSlideshowVisibilityButton = styled.div`
+  display: table-cell;
+  text-align: right;
+  vertical-align: middle;
+  cursor: pointer;
+`;
+
+// MiniSlideshow Styled Components
+const MiniSlideshowContainer = styled.div`
+  display: ${props => (props.photoListIsVisible ? 'block' : 'none')}
+  position: relative;
+  height: 67px;
+  overflow: hidden;
+`;
+
+const MiniSlideshowListContainer = styled.div`
+  position: absolute;
+  width: 11110px;
+  height: 100%;
+  background-color: transparent;
+`;
+
+const MiniSlideshowUnorderedList = styled.ul`
+  position: absolute;
+  height: 100%;
+  list-style-type: none;
+  left: 0px;
+  transition: -ms-transform 0.3s ease-out 0s, -webkit-transform 0.3s ease-out 0s, transform 0.3s ease-out 0s;
+  transform: translateX(${props => props.translateValue}px);
+  margin: 0px;
+  padding: 0px;
+`;
+
+// MiniSlideshowPhoto Styled Components
+const MiniSlideshowPhotoContainer = styled.li`
+  display: inline-block;
+  float: left;
+  margin-left: ${props => (props.index === 0 ? '0px' : '10px')};
+  height: 100%;
+  width: auto;
+`;
+
+const ClickablePhoto = styled.button`
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  opacity: ${props => (props.indexOfDisplayedPhoto === props.index ? '1' : '0.5')};
+  cursor: default;
+  overflow: hidden;
+  background: transparent;
+  border-width: 0px;
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+`;
+
+const MiniPhoto = styled.img`
+  width: 100px;
+  height: 67px;
+`;
+
 export {
   StyledContainer,
   StyledShareButton,
@@ -122,4 +310,23 @@ export {
   StyledSaveButton,
   StyledSaveText,
   StyledHeartImg,
+  StyledViewPhotosButton,
+  StyledViewPhotosText,
+  PhotoSlideshowModal,
+  ClosePhotoSlideshowButtonContainer,
+  TableContainer,
+  MainPhoto,
+  PreviousArrowContainer,
+  MainSlideshowContainer,
+  NextArrowContainer,
+  BottomRow,
+  FooterContainer,
+  PhotoDescription,
+  MiniSlideshowVisibilityButton,
+  MiniSlideshowContainer,
+  MiniSlideshowListContainer,
+  MiniSlideshowUnorderedList,
+  MiniSlideshowPhotoContainer,
+  ClickablePhoto,
+  MiniPhoto,
 };

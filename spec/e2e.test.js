@@ -40,8 +40,8 @@ describe('App loading sequence', () => {
   });
   test('hovering over photo should highlight photo and dim other photos', async () => {
     await page.hover('.photo');
-    const hoveredPhotoOpacity = await page.evaluate(() => getComputedStyle(document.getElementById('0'), null).opacity);
-    const unhoveredPhotoOpacity = await page.evaluate(() => getComputedStyle(document.getElementById('1'), null).opacity);
+    const hoveredPhotoOpacity = await page.evaluate(() => getComputedStyle(document.getElementById('Photo-0'), null).opacity);
+    const unhoveredPhotoOpacity = await page.evaluate(() => getComputedStyle(document.getElementById('Photo-1'), null).opacity);
     expect(hoveredPhotoOpacity).toEqual('1');
     expect(unhoveredPhotoOpacity).toEqual('0.7');
   });

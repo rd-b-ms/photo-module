@@ -6,17 +6,31 @@ import SaveButton from './SaveButton';
 import ShareButton from './ShareButton';
 import ViewPhotosButton from './ViewPhotosButton';
 import ShareModal from './ShareModal';
-
+import PhotoSlideshow from './PhotoSlideshow';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { photos: [], isContainerHovered: false, shareModalIsVisible: false };
+    this.state = {
+      photos: [{
+        description: 'Veniam voluptatem sit rerum aut sed est in suscipit.',
+        id: 98,
+        is_verified: 0,
+        photo_url: 'photos/photo-6.jpg',
+      }],
+      isContainerHovered: false,
+      shareModalIsVisible: false,
+      photoSlideshowIsVisible: false,
+      indexOfDisplayedPhoto: 0,
+    };
 
     this.onContainerMouseOver = this.onContainerMouseOver.bind(this);
     this.onContainerMouseOut = this.onContainerMouseOut.bind(this);
     this.showShareModal = this.showShareModal.bind(this);
     this.hideShareModal = this.hideShareModal.bind(this);
+    this.showPhotoSlideshow = this.showPhotoSlideshow.bind(this);
+    this.hidePhotoSlideshow = this.hidePhotoSlideshow.bind(this);
+    this.showPhotoSlideshow = this.showPhotoSlideshow.bind(this);
   }
 
   componentDidMount() {
@@ -49,34 +63,57 @@ class App extends React.Component {
     this.setState({ shareModalIsVisible: isNotVisible });
   }
 
+  showPhotoSlideshow(isVisible, newIndex = 0) {
+    this.setState({ photoSlideshowIsVisible: isVisible, indexOfDisplayedPhoto: newIndex });
+  }
+
+  hidePhotoSlideshow(isNotVisible) {
+    this.setState({ photoSlideshowIsVisible: isNotVisible });
+  }
+
   render() {
     const {
       photos,
       index,
       isContainerHovered,
       shareModalIsVisible,
+      photoSlideshowIsVisible,
+      indexOfDisplayedPhoto,
     } = this.state;
     return (
-      <StyledContainer
-        onMouseOver={this.onContainerMouseOver}
-        onFocus={this.onContainerMouseOver}
-        onMouseOut={this.onContainerMouseOut}
-        onBlur={this.onContainerMouseOut}
-      >
+      <div>
         <ShareModal
           className="share-modal"
           hideShareModal={this.hideShareModal}
           shareModalIsVisible={shareModalIsVisible}
         />
-        <PhotosContainer
-          isContainerHovered={isContainerHovered}
+        <PhotoSlideshow
           photos={photos}
-          index={index}
+          indexOfDisplayedPhoto={indexOfDisplayedPhoto}
+          hidePhotoSlideshow={this.hidePhotoSlideshow}
+          photoSlideshowIsVisible={photoSlideshowIsVisible}
+          showPhotoSlideshow={this.showPhotoSlideshow}
         />
-        <ShareButton showShareModal={this.showShareModal} />
-        <SaveButton />
-        <ViewPhotosButton />
-      </StyledContainer>
+        <StyledContainer
+          onMouseOver={this.onContainerMouseOver}
+          onFocus={this.onContainerMouseOver}
+          onMouseOut={this.onContainerMouseOut}
+          onBlur={this.onContainerMouseOut}
+        >
+          <PhotosContainer
+            isContainerHovered={isContainerHovered}
+            showPhotoSlideshow={this.showPhotoSlideshow}
+            photos={photos}
+            index={index}
+          />
+          <ShareButton showShareModal={this.showShareModal} />
+          <SaveButton />
+          <ViewPhotosButton
+            showPhotoSlideshow={this.showPhotoSlideshow}
+            hidePhotoSlideshow={this.hidePhotoSlideshow}
+          />
+        </StyledContainer>
+      </div>
     );
   }
 }
