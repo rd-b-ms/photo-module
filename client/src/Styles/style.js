@@ -253,6 +253,34 @@ const MiniSlideshowUnorderedList = styled.ul`
   padding: 0px;
 `;
 
+// MiniSlideshowPhoto Styled Components
+const MiniSlideshowPhotoContainer = styled.li`
+  display: inline-block;
+  float: left;
+  margin-left: ${props => (props.index === 0 ? '0px' : '10px')};
+  height: 100%;
+  width: auto;
+`;
+
+const ClickablePhoto = styled.button`
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+  opacity: ${props => (props.indexOfDisplayedPhoto === props.index ? '1' : '0.5')};
+  cursor: default;
+  overflow: hidden;
+  background: transparent;
+  border-width: 0px;
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+`;
+
+const MiniPhoto = styled.img`
+  width: 100px;
+  height: 67px;
+`;
+
 export {
   StyledContainer,
   StyledShareButton,
@@ -277,4 +305,7 @@ export {
   MiniSlideshowContainer,
   MiniSlideshowListContainer,
   MiniSlideshowUnorderedList,
+  MiniSlideshowPhotoContainer,
+  ClickablePhoto,
+  MiniPhoto,
 };
