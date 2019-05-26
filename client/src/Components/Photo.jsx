@@ -9,6 +9,7 @@ class Photo extends React.Component {
 
     this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseOut = this.onMouseOut.bind(this);
+    this.openSlideshowToPhoto = this.openSlideshowToPhoto.bind(this);
   }
 
   onMouseOver() {
@@ -21,6 +22,11 @@ class Photo extends React.Component {
     this.setState({
       hover: false,
     });
+  }
+
+  openSlideshowToPhoto(index) {
+    const { showPhotoSlideshow } = this.props;
+    showPhotoSlideshow(true, index);
   }
 
   render() {
@@ -45,6 +51,7 @@ class Photo extends React.Component {
           onFocus={this.onMouseOver}
           onMouseOut={this.onMouseOut}
           onBlur={this.onMouseOut}
+          onClick={() => this.openSlideshowToPhoto(index)}
         />
       </StyledPhotoContainer>
     );
@@ -56,6 +63,7 @@ Photo.propTypes = {
   index: PropTypes.number.isRequired,
   isContainerHovered: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
+  showPhotoSlideshow: PropTypes.func.isRequired,
 };
 
 export default Photo;

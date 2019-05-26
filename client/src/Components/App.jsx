@@ -21,6 +21,7 @@ class App extends React.Component {
       isContainerHovered: false,
       shareModalIsVisible: false,
       photoSlideshowIsVisible: false,
+      indexOfDisplayedPhoto: 0,
     };
 
     this.onContainerMouseOver = this.onContainerMouseOver.bind(this);
@@ -29,6 +30,7 @@ class App extends React.Component {
     this.hideShareModal = this.hideShareModal.bind(this);
     this.showPhotoSlideshow = this.showPhotoSlideshow.bind(this);
     this.hidePhotoSlideshow = this.hidePhotoSlideshow.bind(this);
+    this.showPhotoSlideshow = this.showPhotoSlideshow.bind(this);
   }
 
   componentDidMount() {
@@ -61,13 +63,17 @@ class App extends React.Component {
     this.setState({ shareModalIsVisible: isNotVisible });
   }
 
-  showPhotoSlideshow(isVisible) {
-    this.setState({ photoSlideshowIsVisible: isVisible });
+  showPhotoSlideshow(isVisible, newIndex) {
+    this.setState({ photoSlideshowIsVisible: isVisible, indexOfDisplayedPhoto: newIndex });
   }
 
   hidePhotoSlideshow(isNotVisible) {
     this.setState({ photoSlideshowIsVisible: isNotVisible });
   }
+
+  // showPhotoSlideshow(newIndex) {
+  //   this.setState({ indexOfDisplayedPhoto: newIndex });
+  // }
 
   render() {
     const {
@@ -76,6 +82,7 @@ class App extends React.Component {
       isContainerHovered,
       shareModalIsVisible,
       photoSlideshowIsVisible,
+      indexOfDisplayedPhoto,
     } = this.state;
     return (
       <div>
@@ -86,8 +93,10 @@ class App extends React.Component {
         />
         <PhotoSlideshow
           photos={photos}
+          indexOfDisplayedPhoto={indexOfDisplayedPhoto}
           hidePhotoSlideshow={this.hidePhotoSlideshow}
           photoSlideshowIsVisible={photoSlideshowIsVisible}
+          showPhotoSlideshow={this.showPhotoSlideshow}
         />
         <StyledContainer
           onMouseOver={this.onContainerMouseOver}
@@ -97,6 +106,7 @@ class App extends React.Component {
         >
           <PhotosContainer
             isContainerHovered={isContainerHovered}
+            showPhotoSlideshow={this.showPhotoSlideshow}
             photos={photos}
             index={index}
           />

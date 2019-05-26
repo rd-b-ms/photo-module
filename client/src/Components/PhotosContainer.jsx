@@ -9,7 +9,7 @@ class PhotosContainer extends React.Component {
   }
 
   render() {
-    const { photos, isContainerHovered } = this.props;
+    const { photos, isContainerHovered, showPhotoSlideshow } = this.props;
     return (
       photos.map((photo, index) => {
         if (index < 5) {
@@ -20,6 +20,7 @@ class PhotosContainer extends React.Component {
               key={photo.id}
               index={index}
               id={`Photo-${index}`}
+              showPhotoSlideshow={showPhotoSlideshow}
             />
           );
         }
@@ -31,6 +32,7 @@ class PhotosContainer extends React.Component {
 PhotosContainer.propTypes = {
   photos: PropTypes.instanceOf(Array).isRequired,
   isContainerHovered: PropTypes.bool.isRequired,
+  showPhotoSlideshow: PropTypes.func.isRequired,
 };
 
 export default PhotosContainer;

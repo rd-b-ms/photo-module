@@ -8,7 +8,7 @@ import MainSlideshow from './MainSlideshow';
 class PhotoSlideshow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { indexOfDisplayedPhoto: 0, translateValue: 0 };
+    this.state = { translateValue: 0 };
 
     this.advanceToNextSlide = this.advanceToNextSlide.bind(this);
     this.backToPreviousSlide = this.backToPreviousSlide.bind(this);
@@ -17,7 +17,7 @@ class PhotoSlideshow extends React.Component {
 
   advanceToNextSlide(nextIndex) {
     const { translateValue } = this.state;
-    const { photos } = this.props;
+    const { photos, showPhotoSlideshow } = this.props;
     let translateAmount;
     if (nextIndex === 0) {
       translateAmount = translateValue;
@@ -30,14 +30,14 @@ class PhotoSlideshow extends React.Component {
     }
     this.setState(prevState => (
       {
-        indexOfDisplayedPhoto: nextIndex,
         translateValue: prevState.translateValue - translateAmount,
       }
     ));
+    showPhotoSlideshow(nextIndex);
   }
 
   backToPreviousSlide(nextIndex) {
-    const { photos } = this.props;
+    const { photos, showPhotoSlideshow } = this.props;
     let translateAmount;
     if (nextIndex === photos.length - 1) {
       translateAmount = -((photos.length - 4) * 110) - 36;
@@ -50,10 +50,10 @@ class PhotoSlideshow extends React.Component {
     }
     this.setState(prevState => (
       {
-        indexOfDisplayedPhoto: nextIndex,
         translateValue: prevState.translateValue + translateAmount,
       }
     ));
+    showPhotoSlideshow(nextIndex);
   }
 
   closePhotoSlideshow() {
@@ -62,8 +62,8 @@ class PhotoSlideshow extends React.Component {
   }
 
   render() {
-    const { photos, photoSlideshowIsVisible } = this.props;
-    const { indexOfDisplayedPhoto, translateValue } = this.state;
+    const { photos, photoSlideshowIsVisible, indexOfDisplayedPhoto } = this.props;
+    const { translateValue } = this.state;
     return (
       <PhotoSlideshowModal photoSlideshowIsVisible={photoSlideshowIsVisible}>
         <ClosePhotoSlideshowButtonContainer onClick={this.closePhotoSlideshow}>
@@ -104,6 +104,8 @@ PhotoSlideshow.propTypes = {
   photoSlideshowIsVisible: PropTypes.bool.isRequired,
   photos: PropTypes.instanceOf(Array).isRequired,
   hidePhotoSlideshow: PropTypes.func.isRequired,
+  indexOfDisplayedPhoto: PropTypes.number.isRequired,
+  showPhotoSlideshow: PropTypes.func.isRequired,
 };
 
 export default PhotoSlideshow;
