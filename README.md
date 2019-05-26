@@ -2,10 +2,10 @@
 Repository for a mock of the Airbnb photo display component.
 
 ## Stack
-Front-End: React.js
-Server: Express
-Database: MySQL
-Image Hosting: AWS S3
+**Front-End**: React.js<br />
+**Server**: Express<br />
+**Database**: MySQL<br />
+**Image Hosting**: AWS S3<br />
 
 ## Instructions for Setting Up Environment
 1. Install dependencies with `npm install`
