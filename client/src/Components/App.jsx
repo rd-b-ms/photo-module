@@ -34,7 +34,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/photos/?listingid=7')
+    const params = new URLSearchParams(window.location.search);
+    let url;
+    if (!params.has('listingid')) {
+      url = '/photos/?listingid=1';
+    } else {
+      url = `/photos/?listingid=${params.get('listingid')}`;
+    }
+    axios.get(url)
       .then((photoList) => {
         this.setState({ photos: photoList.data });
       })
