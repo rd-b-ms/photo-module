@@ -43,14 +43,16 @@ class PhotoSlideshow extends React.Component {
   backToPreviousSlide(nextIndex) {
     const { photos, showPhotoSlideshow } = this.props;
     const widthOfDiv = document.getElementById('main-photo').offsetWidth;
+    const widthOfUl = document.getElementById('ul').offsetWidth;
     const leftOverSpace = widthOfDiv % 110;
     const numOfFullPhotos = Math.floor(widthOfDiv / 110);
     const subtractMargin = leftOverSpace - 20;
+    const hiddenSpace = widthOfUl - widthOfDiv;
     let translateAmount;
     if (nextIndex > numOfFullPhotos / 2 && nextIndex < photos.length - (numOfFullPhotos / 2)) {
       translateAmount = 110;
     } else if (nextIndex === photos.length - 1) {
-      translateAmount = -(widthOfDiv / 2) + (subtractMargin / 2);
+      translateAmount = -hiddenSpace;
     } else if (nextIndex < numOfFullPhotos / 2 || nextIndex > photos.length - (numOfFullPhotos / 2)) {
       translateAmount = 0;
     } else {
