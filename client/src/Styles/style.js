@@ -152,6 +152,41 @@ const TableContainer = styled.div`
   overflow: auto;
 `;
 
+// MainSlideshow Styled Components
+const MainPhoto = styled.img`
+  display: table-row;
+  width: 100%;
+  height: 100%;
+  max-width: 105vh;
+  margin: 0px auto;
+`;
+
+const PreviousArrowContainer = styled.button`
+  position: absolute;
+  background: transparent;
+  border: 0px;
+  width: 75px;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+`;
+
+const MainSlideshowContainer = styled.div`
+  position: relative;
+`;
+
+const NextArrowContainer = styled.button`
+  position: absolute;
+  background: transparent;
+  border: 0px;
+  width: 75px;
+  height: 100%;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+`;
+
 export {
   StyledContainer,
   StyledShareButton,
@@ -165,4 +200,8 @@ export {
   PhotoSlideshowModal,
   ClosePhotoSlideshowButtonContainer,
   TableContainer,
+  MainPhoto,
+  PreviousArrowContainer,
+  MainSlideshowContainer,
+  NextArrowContainer,
 };
