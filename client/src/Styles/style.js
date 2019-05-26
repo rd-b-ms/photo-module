@@ -175,7 +175,7 @@ const TableContainer = styled.div`
 const MainPhoto = styled.img`
   display: table-row;
   width: 100%;
-  height: 100%;
+  height: 450px;
   max-width: 105vh;
   margin: 0px auto;
 `;
