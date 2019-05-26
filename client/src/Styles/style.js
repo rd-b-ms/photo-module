@@ -112,6 +112,25 @@ const StyledHeartImg = styled.img`
   flex-direction: row;
 `;
 
+// ViewPhotosButton Styled Components
+const StyledViewPhotosButton = styled.button`
+  position: absolute;
+  margin: 29% 0% 0% 89%;
+  border-radius: 4px;
+  background-color: white;
+  color: #484848;
+  height: 32px;
+  width: 112px;
+`;
+
+const StyledViewPhotosText = styled.div`
+  display: flex;
+  justify-content: center;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+`;
+
 // PhotoSlideshow Styled Components
 const PhotoSlideshowModal = styled.section`
   display: ${props => (props.photoSlideshowIsVisible ? 'block' : 'none')};
@@ -291,6 +310,8 @@ export {
   StyledSaveButton,
   StyledSaveText,
   StyledHeartImg,
+  StyledViewPhotosButton,
+  StyledViewPhotosText,
   PhotoSlideshowModal,
   ClosePhotoSlideshowButtonContainer,
   TableContainer,
