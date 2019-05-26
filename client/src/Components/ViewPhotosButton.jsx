@@ -13,7 +13,7 @@ class ViewPhotosButton extends React.Component {
   onViewPhotosButtonClick(event) {
     event.preventDefault();
     const { showPhotoSlideshow } = this.props;
-    showPhotoSlideshow(true, 0);
+    showPhotoSlideshow(true);
   }
 
   render() {

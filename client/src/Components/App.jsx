@@ -63,7 +63,7 @@ class App extends React.Component {
     this.setState({ shareModalIsVisible: isNotVisible });
   }
 
-  showPhotoSlideshow(isVisible, newIndex) {
+  showPhotoSlideshow(isVisible, newIndex = 0) {
     this.setState({ photoSlideshowIsVisible: isVisible, indexOfDisplayedPhoto: newIndex });
   }
 
