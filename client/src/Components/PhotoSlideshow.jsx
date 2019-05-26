@@ -18,15 +18,19 @@ class PhotoSlideshow extends React.Component {
   advanceToNextSlide(nextIndex) {
     const { translateValue } = this.state;
     const { photos, showPhotoSlideshow } = this.props;
+    const widthOfDiv = document.getElementById('main-photo').offsetWidth;
+    const leftOverSpace = widthOfDiv % 110;
+    const numOfFullPhotos = Math.floor(widthOfDiv / 110);
+    const subtractMargin = leftOverSpace - 20;
     let translateAmount;
-    if (nextIndex === 0) {
+    if (nextIndex > numOfFullPhotos / 2 && nextIndex < photos.length - (numOfFullPhotos / 2)) {
+      translateAmount = 110;
+    } else if (nextIndex === 0) {
       translateAmount = translateValue;
-    } else if (nextIndex === 2 || nextIndex === photos.length - 2) {
-      translateAmount = 18;
-    } else if (nextIndex === 1 || nextIndex === photos.length - 1) {
+    } else if (nextIndex < numOfFullPhotos / 2 || nextIndex > photos.length - (numOfFullPhotos / 2)) {
       translateAmount = 0;
     } else {
-      translateAmount = 110;
+      translateAmount = subtractMargin / 2;
     }
     this.setState(prevState => (
       {
@@ -38,15 +42,19 @@ class PhotoSlideshow extends React.Component {
 
   backToPreviousSlide(nextIndex) {
     const { photos, showPhotoSlideshow } = this.props;
+    const widthOfDiv = document.getElementById('main-photo').offsetWidth;
+    const leftOverSpace = widthOfDiv % 110;
+    const numOfFullPhotos = Math.floor(widthOfDiv / 110);
+    const subtractMargin = leftOverSpace - 20;
     let translateAmount;
-    if (nextIndex === photos.length - 1) {
-      translateAmount = -((photos.length - 4) * 110) - 36;
-    } else if (nextIndex === 1 || nextIndex === photos.length - 2) {
-      translateAmount = 18;
-    } else if (nextIndex === 0) {
+    if (nextIndex > numOfFullPhotos / 2 && nextIndex < photos.length - (numOfFullPhotos / 2)) {
+      translateAmount = 110;
+    } else if (nextIndex === photos.length - 1) {
+      translateAmount = -(widthOfDiv / 2) + (subtractMargin / 2);
+    } else if (nextIndex < numOfFullPhotos / 2 || nextIndex > photos.length - (numOfFullPhotos / 2)) {
       translateAmount = 0;
     } else {
-      translateAmount = 110;
+      translateAmount = subtractMargin / 2;
     }
     this.setState(prevState => (
       {
