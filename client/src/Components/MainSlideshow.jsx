@@ -45,7 +45,7 @@ class MainSlideshow extends React.Component {
         <NextArrowContainer onClick={this.nextArrowClick} type="button">
           <NextArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
         </NextArrowContainer>
-        <MainPhoto onClick={this.nextArrowClick} src={photos[indexOfDisplayedPhoto].photo_url} />
+        <MainPhoto id="main-photo" onClick={this.nextArrowClick} src={photos[indexOfDisplayedPhoto].photo_url} />
       </MainSlideshowContainer>
     );
   }

@@ -21,7 +21,7 @@ class MiniSlideshow extends React.Component {
     return (
       <MiniSlideshowContainer photoListIsVisible={photoListIsVisible}>
         <MiniSlideshowListContainer>
-          <MiniSlideshowUnorderedList translateValue={translateValue}>
+          <MiniSlideshowUnorderedList id="ul" translateValue={translateValue}>
             {photos.map((photo, index) => (
               <MiniSlideshowPhoto
                 advanceToNextSlide={advanceToNextSlide}
