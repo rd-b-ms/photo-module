@@ -37,11 +37,10 @@ class Photo extends React.Component {
       id,
     } = this.props;
     const { hover } = this.state;
-    const url = `https://s3-us-west-1.amazonaws.com/fec-carebnb/${photo.photo_url}`;
     return (
       <StyledPhotoContainer index={index}>
         <StyledPhoto
-          src={url}
+          src={photo.photo_url}
           alt="home interior"
           className="photo"
           id={id}
