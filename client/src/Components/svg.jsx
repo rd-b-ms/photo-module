@@ -240,6 +240,39 @@ function ShareModalCloseIcon(props) {
   );
 }
 
+function SaveButtonHeart(props) {
+  const {
+    display,
+    height,
+    width,
+    fill,
+    overflow,
+    fillOpacity,
+    stroke,
+    strokeWidth,
+  } = props;
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      role="presentation"
+      aria-hidden="true"
+      focusable="false"
+      style={{
+        display,
+        height,
+        width,
+        fill,
+        overflow,
+        fillOpacity,
+        stroke,
+        strokeWidth,
+      }}
+    >
+      <path d="M17.5 2.9c-2.1 0-4.1 1.3-5.4 2.8C10.5 4.1 8.3 2.5 5.9 3 4.4 3.2 3 4.2 2.3 5.6c-2.3 4.1 1 8.3 3.9 11.1 1.4 1.3 2.8 2.5 4.3 3.6.4.3 1.1.9 1.6.9s1.2-.6 1.6-.9c3.2-2.3 6.6-5.1 8.2-8.8 1.5-3.4 0-8.6-4.4-8.6" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 PreviousArrow.propTypes = {
   height: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
@@ -320,6 +353,17 @@ ShareModalCloseIcon.propTypes = {
   fill: PropTypes.string.isRequired,
 };
 
+SaveButtonHeart.propTypes = {
+  display: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired,
+  fill: PropTypes.string.isRequired,
+  overflow: PropTypes.string.isRequired,
+  fillOpacity: PropTypes.string.isRequired,
+  stroke: PropTypes.string.isRequired,
+  strokeWidth: PropTypes.string.isRequired,
+};
+
 
 export {
   PreviousArrow,
@@ -333,4 +377,5 @@ export {
   CopyIcon,
   EmbedIcon,
   ShareModalCloseIcon,
+  SaveButtonHeart,
 };

@@ -104,12 +104,11 @@ const StyledSaveText = styled.div`
   font-size: 14px;
 `;
 
-const StyledHeartImg = styled.img`
+const StyledHeartDiv = styled.div`
   width: 15px;
   height: 15px;
   padding: 0px 15px 0px 0px;
-  display: flex;
-  flex-direction: row;
+  display: block;
 `;
 
 // ViewPhotosButton Styled Components
@@ -389,7 +388,7 @@ export {
   StyledPhoto,
   StyledSaveButton,
   StyledSaveText,
-  StyledHeartImg,
+  StyledHeartDiv,
   StyledViewPhotosButton,
   StyledViewPhotosText,
   PhotoSlideshowModal,
