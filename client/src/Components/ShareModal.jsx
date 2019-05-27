@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { FacebookIcon, TwitterIcon, EmailIcon, MessengerIcon, CopyIcon, EmbedIcon } from './svg';
+import { FacebookIcon, TwitterIcon, EmailIcon, MessengerIcon, CopyIcon, EmbedIcon, ShareModalCloseIcon } from './svg';
 
 const StyledSection = styled.section`
   display: ${props => (props.shareModalIsVisible ? 'block' : 'none')};
@@ -129,7 +129,9 @@ class ShareModal extends React.Component {
         shareModalIsVisible={shareModalIsVisible}
       >
         <StyledDiv ref={this.ref}>
-          <StyledCloseButton className="share-modal-close-button" onClick={this.onCloseButtonClick}>X</StyledCloseButton>
+          <StyledCloseButton className="share-modal-close-button" onClick={this.onCloseButtonClick}>
+            <ShareModalCloseIcon height="16px" width="16px" display="block" fill="rgb(118, 118, 118)" />
+          </StyledCloseButton>
           <StyledHeader>
             <StyledTitle className="share-modal-title">Share</StyledTitle>
             <StyledListingDescription>
