@@ -37,10 +37,11 @@ class Photo extends React.Component {
       id,
     } = this.props;
     const { hover } = this.state;
+    const url = `https://s3-us-west-1.amazonaws.com/fec-carebnb/${photo.photo_url}`;
     return (
       <StyledPhotoContainer index={index}>
         <StyledPhoto
-          src={photo.photo_url}
+          src={url}
           alt="home interior"
           className="photo"
           id={id}
@@ -67,7 +68,3 @@ Photo.propTypes = {
 };
 
 export default Photo;
-
-// const url = `https://s3-us-west-1.amazonaws.com/fec-carebnb/${photo.photo_url}`;
-// The above url will replace the direct url once deployed
-// This is commented for development to reduce num of get requests to AWS
