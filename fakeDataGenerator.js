@@ -6,7 +6,7 @@ const createFakeData = () => {
 
   for (let i = 1; i < 697; i += 1) {
     fakeDataArray.push([
-      `photos/photo-${i}.jpg`,
+      `https://s3-us-west-1.amazonaws.com/fec-carebnb/photos/photo-${i}.jpg`,
       faker.lorem.sentence(),
       faker.random.boolean(),
       Math.ceil((i % 101) + 1),
