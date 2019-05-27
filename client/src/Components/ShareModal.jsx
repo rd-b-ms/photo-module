@@ -42,11 +42,6 @@ const StyledCloseButton = styled.button`
   color: rgb(118, 118, 118);
 `;
 
-const StyledHeader = styled.div`
-  display: block;
-  padding: 0px 0px 24px 0px;
-`;
-
 const StyledTitle = styled.h1`
   margin: 15px 0px 0px 0px;
   padding: 2px 0px;
@@ -73,15 +68,6 @@ const StyledLinkContainer = styled.section`
   border-top: 1px solid rgb(235, 235, 235);
   cursor: pointer;
 `;
-
-const StyledIcon = styled.img`
-  height: 18px;
-  width: 18px;
-  fill: rgb(72, 72, 72);
-  z-index: 10;
-  margin: 0px 8px -4px 0px;
-`;
-
 const StyledTextContainer = styled.span`
   font-weight: 400;
   font-size: 16px;
@@ -132,13 +118,13 @@ class ShareModal extends React.Component {
           <StyledCloseButton className="share-modal-close-button" onClick={this.onCloseButtonClick}>
             <ShareModalCloseIcon height="16px" width="16px" display="block" fill="rgb(118, 118, 118)" />
           </StyledCloseButton>
-          <StyledHeader>
+          <div style={{ display: 'block', padding: '0px 0px 24px 0px' }}>
             <StyledTitle className="share-modal-title">Share</StyledTitle>
             <StyledListingDescription>
               Check out this awesome listing on Carebnb:
                Veniam voluptatem sit rerum aut sed est in suscipit.
             </StyledListingDescription>
-          </StyledHeader>
+          </div>
           <StyledLinkContainer>
             <FacebookIcon marginRight="8px" height="18px" width="18px" display="inline-block" fill="rgb(72, 72, 72)" />
             <StyledTextContainer>
