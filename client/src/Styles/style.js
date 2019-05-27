@@ -300,6 +300,86 @@ const MiniPhoto = styled.img`
   height: 67px;
 `;
 
+// Share Modal Styled Components
+const StyledShareModal = styled.section`
+  display: ${props => (props.shareModalIsVisible ? 'block' : 'none')};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+`;
+
+const ShareModalContainer = styled.div`
+  display: block;
+  position:fixed;
+  background: rgb(255, 255, 255);
+  padding: 24px;
+  font-family: Roboto, Helvetica, sans-serif;
+  color: #484848;
+  font-size: 14px;
+  width: 23%;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+`;
+
+const StyledCloseButton = styled.button`
+  display: block;
+  padding: 20px;
+  margin: -20px;
+  cursor: pointer;
+  background-color: transparent;
+  font-weight: 100;
+  font-family: inherit;
+  font-size: 24px;
+  border-width: 0px;
+  color: rgb(118, 118, 118);
+`;
+
+const ShareModalTitle = styled.h1`
+  margin: 15px 0px 0px 0px;
+  padding: 2px 0px;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: 24px;
+  line-height: 1.25em;
+  color: #484848;
+`;
+
+const StyledListingDescription = styled.div`
+  display: block;
+  word-wrap: break-word;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.28em;
+`;
+
+const StyledLinkContainer = styled.section`
+  display: block;
+  vertical-align: top;
+  padding: 24px 0px;
+  border-bottom: 1px solid rgb(235, 235, 235);
+  border-top: 1px solid rgb(235, 235, 235);
+  cursor: pointer;
+`;
+const ShareLinkTextContainer = styled.span`
+  font-weight: 400;
+  font-size: 16px;
+  color: #008489;
+`;
+
+const StyledShareLinkText = styled.span`
+  ${ShareLinkTextContainer}:hover & {
+    text-decoration: underline;
+  }
+  display: table-cell;
+  vertical-align: top;
+`;
+
 export {
   StyledContainer,
   StyledShareButton,
@@ -329,4 +409,12 @@ export {
   MiniSlideshowPhotoContainer,
   ClickablePhoto,
   MiniPhoto,
+  StyledShareModal,
+  ShareModalContainer,
+  StyledCloseButton,
+  ShareModalTitle,
+  StyledListingDescription,
+  StyledLinkContainer,
+  ShareLinkTextContainer,
+  StyledShareLinkText,
 };
