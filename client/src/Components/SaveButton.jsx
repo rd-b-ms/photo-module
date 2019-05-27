@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyledSaveButton, StyledSaveText, StyledHeartImg } from '../Styles/style';
+import { StyledSaveButton, StyledSaveText, StyledHeartDiv } from '../Styles/style';
+import { SaveButtonHeart } from './svg';
 
 class SaveButton extends React.Component {
   constructor(props) {
@@ -16,19 +17,27 @@ class SaveButton extends React.Component {
 
   render() {
     const { isClicked } = this.state;
-    let imgSource;
     let saveText;
     if (isClicked) {
-      imgSource = './../icons/altlike.svg';
       saveText = 'Saved';
     } else {
-      imgSource = './../icons/like.svg';
       saveText = 'Save';
     }
     return (
       <StyledSaveButton onClick={this.onClick}>
         <StyledSaveText>
-          <StyledHeartImg src={imgSource} alt="like icon" isClicked={isClicked} />
+          <StyledHeartDiv>
+            <SaveButtonHeart
+              display="block"
+              height="15px"
+              width="15px"
+              fill={isClicked ? '#FF5A5F' : '#484848'}
+              overflow="visible"
+              fillOpacity={isClicked ? '1' : '0'}
+              stroke={isClicked ? '#FF5A5F' : '#484848'}
+              strokeWidth="1"
+            />
+          </StyledHeartDiv>
           <div>{saveText}</div>
         </StyledSaveText>
       </StyledSaveButton>
