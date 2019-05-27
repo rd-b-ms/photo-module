@@ -24,7 +24,7 @@ class SaveButton extends React.Component {
       saveText = 'Save';
     }
     return (
-      <StyledSaveButton onClick={this.onClick}>
+      <StyledSaveButton className="save-button" onClick={this.onClick}>
         <StyledSaveText>
           <StyledHeartDiv>
             <SaveButtonHeart
@@ -38,7 +38,7 @@ class SaveButton extends React.Component {
               strokeWidth="1"
             />
           </StyledHeartDiv>
-          <div>{saveText}</div>
+          <div className="save-button-text">{saveText}</div>
         </StyledSaveText>
       </StyledSaveButton>
     );

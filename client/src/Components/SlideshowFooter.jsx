@@ -39,7 +39,7 @@ class SlideshowFooter extends React.Component {
               <div style={{ marginBottom: '12px' }}>
                 <div style={{ display: 'table', width: '100%' }}>
                   <PhotoDescription>{photos[0].description}</PhotoDescription>
-                  <MiniSlideshowVisibilityButton onClick={this.togglePhotoListVisibility}>
+                  <MiniSlideshowVisibilityButton className="mini-slideshow-vis-button" onClick={this.togglePhotoListVisibility}>
                     <span>
                       {photoListButtonText}
                       <MiniSlideshowVisibilityArrow height="10px" width="10px" fill="currentcolor" />

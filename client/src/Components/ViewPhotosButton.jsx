@@ -21,6 +21,7 @@ class ViewPhotosButton extends React.Component {
 
     return (
       <StyledViewPhotosButton
+        className="view-photos-button"
         type="button"
         viewPhotosButtonClicked={viewPhotosButtonClicked}
         onClick={this.onViewPhotosButtonClick}

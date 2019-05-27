@@ -18,7 +18,7 @@ class PhotoSlideshow extends React.Component {
   advanceToNextSlide(nextIndex) {
     const { translateValue } = this.state;
     const { photos, showPhotoSlideshow } = this.props;
-    const widthOfDiv = document.getElementById('main-photo').offsetWidth;
+    const widthOfDiv = document.getElementsByClassName('main-photo')[0].offsetWidth;
     const leftOverSpace = widthOfDiv % 110;
     const numOfFullPhotos = Math.floor(widthOfDiv / 110);
     const subtractMargin = leftOverSpace - 20;
@@ -42,7 +42,7 @@ class PhotoSlideshow extends React.Component {
 
   backToPreviousSlide(nextIndex) {
     const { photos, showPhotoSlideshow } = this.props;
-    const widthOfDiv = document.getElementById('main-photo').offsetWidth;
+    const widthOfDiv = document.getElementsByClassName('main-photo')[0].offsetWidth;
     const widthOfUl = document.getElementById('ul').offsetWidth;
     const leftOverSpace = widthOfDiv % 110;
     const numOfFullPhotos = Math.floor(widthOfDiv / 110);
@@ -75,8 +75,8 @@ class PhotoSlideshow extends React.Component {
     const { photos, photoSlideshowIsVisible, indexOfDisplayedPhoto } = this.props;
     const { translateValue } = this.state;
     return (
-      <PhotoSlideshowModal photoSlideshowIsVisible={photoSlideshowIsVisible}>
-        <ClosePhotoSlideshowButtonContainer onClick={this.closePhotoSlideshow}>
+      <PhotoSlideshowModal className="photo-slideshow-modal" photoSlideshowIsVisible={photoSlideshowIsVisible}>
+        <ClosePhotoSlideshowButtonContainer className="photo-slideshow-close-button" onClick={this.closePhotoSlideshow}>
           <ClosePhotoSlideshowButton
             type="button"
             display="block"
