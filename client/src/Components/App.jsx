@@ -16,7 +16,7 @@ class App extends React.Component {
         description: 'Veniam voluptatem sit rerum aut sed est in suscipit.',
         id: 98,
         is_verified: 0,
-        photo_url: 'photos/photo-6.jpg',
+        photo_url: 'https://s3-us-west-1.amazonaws.com/fec-carebnb/photos/photo-6.jpg',
       }],
       isContainerHovered: false,
       shareModalIsVisible: false,
