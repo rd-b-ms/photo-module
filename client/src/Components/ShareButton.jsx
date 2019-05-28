@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { ShareButtonIcon } from './svg';
 
 const StyledButton = styled.button`
   position: absolute;
@@ -18,14 +19,6 @@ const StyledDiv = styled.div`
   font-family: Roboto, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 14px;
-`;
-
-const StyledImg = styled.img`
-  width: 15px;
-  height: 15px;
-  padding: 0px 15px 0px 0px;
-  display: flex;
-  flex-direction: row;
 `;
 
 class ShareButton extends React.Component {
@@ -48,7 +41,7 @@ class ShareButton extends React.Component {
     return (
       <StyledButton className="share-button" onClick={this.onShareButtonClick}>
         <StyledDiv>
-          <StyledImg src="./../icons/share-icon-svg-5.jpg" alt="like icon" shareButtonClicked={shareButtonClicked} />
+          <ShareButtonIcon height="15px" width="15px" display="block" fill="currentColor" padding="0px 15px 0px 0px" shareButtonClicked={shareButtonClicked} />
           <div>Share</div>
         </StyledDiv>
       </StyledButton>
