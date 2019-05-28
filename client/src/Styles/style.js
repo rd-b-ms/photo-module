@@ -11,17 +11,6 @@ const StyledContainer = styled.div`
   overflow: hidden;
 `;
 
-// Styled Components for ShareButton.jsx
-const StyledShareButton = styled.button`
-  position: absolute;
-  margin: 2% 0% 0% 82%;
-  border-radius: 4px;
-  background-color: white;
-  color: #484848;
-  height: 36px;
-  width: 91px;
-`;
-
 const StyledShareText = styled.div`
   display: flex;
   justify-content: center;
@@ -379,9 +368,27 @@ const StyledShareLinkText = styled.span`
   vertical-align: top;
 `;
 
+// Share Button svg's
+const StyledShareButton = styled.button`
+  position: absolute;
+  margin: 2% 0% 0% 82%;
+  border-radius: 4px;
+  background-color: white;
+  color: #484848;
+  height: 36px;
+  width: 91px;
+`;
+
+const StyledShareButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+`;
+
 export {
   StyledContainer,
-  StyledShareButton,
   StyledShareText,
   StyledShareImage,
   StyledPhotoContainer,
@@ -416,4 +423,6 @@ export {
   StyledLinkContainer,
   ShareLinkTextContainer,
   StyledShareLinkText,
+  StyledShareButton,
+  StyledShareButtonContainer,
 };
