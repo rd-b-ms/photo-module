@@ -253,6 +253,7 @@ function SaveButtonHeart(props) {
   } = props;
   return (
     <svg
+      id="save-button-heart"
       viewBox="0 0 24 24"
       role="presentation"
       aria-hidden="true"

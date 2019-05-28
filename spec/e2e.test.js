@@ -31,12 +31,16 @@ describe('App loading sequence', () => {
   test('save button text should change to "Saved" on click', async () => {
     await page.click('.save-button');
     const saveButtonText = await page.$eval('.save-button-text', el => el.innerHTML);
+    const saveHeartFill = await page.evaluate(() => getComputedStyle(document.getElementById('save-button-heart'), null).fill);
     expect(saveButtonText).toEqual('Saved');
+    expect(saveHeartFill).toEqual('rgb(255, 90, 95)');
   });
   test('save button text should change back to "Save" on click', async () => {
     await page.click('.save-button');
     const saveButtonText = await page.$eval('.save-button-text', el => el.innerHTML);
+    const saveHeartFill = await page.evaluate(() => getComputedStyle(document.getElementById('save-button-heart'), null).fill);
     expect(saveButtonText).toEqual('Save');
+    expect(saveHeartFill).toEqual('rgb(72, 72, 72)');
   });
   test('share modal opens on a share button click', async () => {
     await page.click('.share-button');
