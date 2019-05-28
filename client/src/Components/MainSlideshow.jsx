@@ -39,13 +39,13 @@ class MainSlideshow extends React.Component {
     const { photos, indexOfDisplayedPhoto } = this.props;
     return (
       <MainSlideshowContainer>
-        <PreviousArrowContainer onClick={this.previousArrowClick} type="button">
+        <PreviousArrowContainer className="ps-previous-arrow" onClick={this.previousArrowClick} type="button">
           <PreviousArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
         </PreviousArrowContainer>
-        <NextArrowContainer onClick={this.nextArrowClick} type="button">
+        <NextArrowContainer className="ps-next-arrow" onClick={this.nextArrowClick} type="button">
           <NextArrow height="4.8em" width="4.8em" fill="rgb(255, 255, 255)" />
         </NextArrowContainer>
-        <MainPhoto id="main-photo" onClick={this.nextArrowClick} src={photos[indexOfDisplayedPhoto].photo_url} />
+        <MainPhoto className="main-photo" id={`Photo-${indexOfDisplayedPhoto}`} onClick={this.nextArrowClick} src={photos[indexOfDisplayedPhoto].photo_url} />
       </MainSlideshowContainer>
     );
   }
