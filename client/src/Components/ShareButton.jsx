@@ -1,32 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
-
-const StyledButton = styled.button`
-  position: absolute;
-  margin: 2% 0% 0% 82%;
-  border-radius: 4px;
-  background-color: white;
-  color: #484848;
-  height: 36px;
-  width: 91px;
-`;
-
-const StyledDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  font-family: Roboto, Helvetica, sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-`;
-
-const StyledImg = styled.img`
-  width: 15px;
-  height: 15px;
-  padding: 0px 15px 0px 0px;
-  display: flex;
-  flex-direction: row;
-`;
+import { StyledShareButton, StyledShareButtonContainer } from '../Styles/style';
+import { ShareButtonIcon } from './svg';
 
 class ShareButton extends React.Component {
   constructor(props) {
@@ -46,12 +21,12 @@ class ShareButton extends React.Component {
     const { shareButtonClicked } = this.state;
 
     return (
-      <StyledButton className="share-button" onClick={this.onShareButtonClick}>
-        <StyledDiv>
-          <StyledImg src="./../icons/share-icon-svg-5.jpg" alt="like icon" shareButtonClicked={shareButtonClicked} />
+      <StyledShareButton className="share-button" onClick={this.onShareButtonClick}>
+        <StyledShareButtonContainer>
+          <ShareButtonIcon height="15px" width="15px" display="block" fill="currentColor" padding="0px 15px 0px 0px" shareButtonClicked={shareButtonClicked} />
           <div>Share</div>
-        </StyledDiv>
-      </StyledButton>
+        </StyledShareButtonContainer>
+      </StyledShareButton>
     );
   }
 }
