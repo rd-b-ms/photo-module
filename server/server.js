@@ -3,7 +3,7 @@ const path = require('path');
 const db = require('./../db/index.js');
 
 const app = express();
-const PORT = 3002;
+const PORT = 4000;
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
