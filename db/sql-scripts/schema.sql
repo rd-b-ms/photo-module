@@ -13,7 +13,7 @@ CREATE TABLE photo_information (
   PRIMARY KEY (id)
 );
 
-LOAD DATA LOCAL INFILE 'fakeData.txt'
+LOAD DATA LOCAL INFILE '/docker-entrypoint-initdb.d/fakeData.txt'
 INTO TABLE photo_information
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n' (photo_url, description, is_verified, listing_id);

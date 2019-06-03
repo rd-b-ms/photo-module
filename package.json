@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -d --watch",
+    "build-prod": "webpack -p",
     "start": "nodemon server/server.js",
+    "start-docker": "nodemon server/server.js",
     "seedDB": "node fakeDataGenerator.js && mysql -u root < schema.sql",
     "test": "jest",
     "test:coverage": "npx jest --coverage"
@@ -76,6 +78,7 @@
     "faker": "^4.1.0",
     "fs": "0.0.1-security",
     "mysql": "^2.17.1",
+    "nodemon": "^1.19.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
