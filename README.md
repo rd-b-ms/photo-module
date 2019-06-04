@@ -61,7 +61,6 @@ A request taking in a a table entry id of the shape:
 ```
 Deletes a table entry.
 
-- PUT
 PUT request sent to: 
 ```
 `~/photos/update_entry/'
