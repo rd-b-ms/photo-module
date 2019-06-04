@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('./../db/index.js');
-const moreFake = require('../db/moreFakeData');
+// const moreFake = require('../db/moreFakeData');
 
 const app = express();
 const PORT = 4000;
@@ -10,8 +10,8 @@ const PORT = 4000;
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(bodyParser.json());
 
-app.get('/photos/get/:id', (req, res) => {
-  const listingId = req.params.id;
+app.get('/photos/get/:listingId', (req, res) => {
+  const { listingId } = req.params;
   db.getPhotos(listingId, (err, photos) => {
     if (err) {
       res.status(500).send(err);
@@ -38,8 +38,8 @@ app.post('/photos/post/', (req, res) => {
   });
 });
 
-app.delete('/photos/delete/:id', (req, res) => {
-  const { id } = req.params;
+app.delete('/photos/delete/', (req, res) => {
+  const { id } = req.body;
   db.deletePhoto(id, (err) => {
     if (err) {
       res.status(500).send();
@@ -48,12 +48,7 @@ app.delete('/photos/delete/:id', (req, res) => {
   });
 });
 
-// for now, takes an id that must be supplied from the client and generates
-// fake data that is inserted and updates the db at the location of the id
-// needs future refactoring in order to properly update information from the client. But,
-// I will, at this time, ignore this front-end functionality and move forward.
-
-app.put('/photos/put/', (req, res) => {
+app.put('/photos/update_entry/', (req, res) => {
   const {
     id, photoUrl, description, isVerified, listingId,
   } = req.body;
