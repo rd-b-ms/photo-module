@@ -32,7 +32,6 @@ A route with listingId returns an image taking the shape:
 ```
 Retrieves all the relvant photos for a particular listingId.
 
-- POST
 POST request sent to:
 ```
 '~/photos/post/'
