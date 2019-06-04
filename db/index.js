@@ -2,10 +2,10 @@ const mysql = require('mysql');
 
 
 const connection = mysql.createConnection({
-  // host: '172.17.0.3',
+  // host: '172.17.0.3', // depricated
   host: 'localhost',
   user: 'root',
-  // password: 'supersecret',
+  // password: 'supersecret', // depricated
   password: '',
   database: 'photo_display',
 });
@@ -21,17 +21,15 @@ connection.connect((err) => {
 const getPhotos = (listingID, callback) => {
   connection.query(`SELECT id, photo_url, description, is_verified FROM photo_information WHERE listing_id = ${listingID};`, (err, photoUrls) => {
     if (err) {
-      console.log(err);
       callback(err);
     } else {
-      console.log('success from db');
       callback(null, photoUrls);
     }
   });
 };
 
 const addPhoto = (entry, callback) => {
-  console.log(entry);
+  // console.log(entry);
   connection.query(`INSERT INTO photo_information
     (photo_url, description, is_verified, listing_id) values (
     "${entry.photoUrl}", "${entry.description}",
@@ -55,9 +53,9 @@ const deletePhoto = (id, callback) => {
   });
 };
 
-const updatePhoto = (id, entry, callback) => {
+const updatePhoto = (entry, callback) => {
   const {
-    photoUrl, description, isVerified, listingId,
+    id, photoUrl, description, isVerified, listingId,
   } = entry;
   connection.query(
     `UPDATE photo_information SET photo_url="${photoUrl}",
