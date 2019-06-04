@@ -17,7 +17,6 @@ Repository for a mock of the Airbnb photo display component.
 # SDC
 
 ### Updated + added CRUD Routes
-- GET
 GET requests sent to:
 ```
 '~/photos/get/:listingId'
