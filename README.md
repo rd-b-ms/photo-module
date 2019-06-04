@@ -13,3 +13,55 @@ Repository for a mock of the Airbnb photo display component.
 3. Bundle code with webpack by running `npm run build`
 4. Run server with `npm run start`
 5. Seed database with fake data by running `npm run seedDB`.
+
+# SDC
+
+### Updated + added CRUD Routes
+- GET
+GET requests sent to: '~/photos/get/:listingId'
+A route with listingId returns an image taking the shape:
+{
+  id: Number,
+  photoUrl: String,
+  description: String,
+  isVerified: Boolean,
+}
+
+Retrieves all the relvant photos for a particular listingId.
+
+- POST
+POST request sent to: '~/photos/post/'
+A request taking in form data taking the shape:
+
+{
+  photoUrl: String,
+  description: String,
+  isVerified: Boolean,
+  listingId: Number,
+}
+
+Posts a new photo intry to DB.
+
+- DELETE
+DELETE request sent to: '~/photos/delete/:id'
+A request taking in a a table entry id of the shape:
+
+{
+  id : Number,
+}
+
+Deletes a table entry.
+
+- PUT
+PUT request sent to: `~/photos/update_entry/'
+A request taking in form data the shame of:
+
+{
+  id: Number,
+  photoUrl: String,
+  description: String,
+  isVerified: Boolean,
+  listingId: Number,
+}
+
+Updates the information of a particular table entry located at provided id.

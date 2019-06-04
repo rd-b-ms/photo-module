@@ -8,7 +8,7 @@
     "build-prod": "webpack -p",
     "start": "nodemon server/server.js",
     "start-docker": "nodemon server/server.js",
-    "seedDB": "node db/fakeDataGenerator.js && mysql -u root < schema.sql",
+    "seedDB": "node db/fakeDataGenerator.js && mysql -u root < db/sql-scripts/schema.sql",
     "test": "jest",
     "test:coverage": "npx jest --coverage"
   },
@@ -74,6 +74,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
+    "body-parser": "^1.19.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "fs": "0.0.1-security",
