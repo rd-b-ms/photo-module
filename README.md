@@ -48,7 +48,6 @@ A request taking in form data taking the shape:
 ```
 Posts a new photo intry to DB.
 
-- DELETE
 DELETE request sent to:
 ```
 '~/photos/delete/:id'
