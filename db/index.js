@@ -1,6 +1,5 @@
-import moreFake from './moreFakeData';
-
 const mysql = require('mysql');
+
 
 const connection = mysql.createConnection({
   // host: '172.17.0.3',
@@ -8,7 +7,7 @@ const connection = mysql.createConnection({
   user: 'root',
   // password: 'supersecret',
   password: '',
-  // database: 'photo_display',
+  database: 'photo_display',
 });
 
 connection.connect((err) => {
@@ -20,21 +19,23 @@ connection.connect((err) => {
 });
 
 const getPhotos = (listingID, callback) => {
-  connection.query(`SELECT id,photo_url,description,is_verified from photo_information where listing_id = ${listingID}`, (err, photoUrls) => {
+  connection.query(`SELECT id, photo_url, description, is_verified FROM photo_information WHERE listing_id = ${listingID};`, (err, photoUrls) => {
     if (err) {
+      console.log(err);
       callback(err);
     } else {
+      console.log('success from db');
       callback(null, photoUrls);
     }
   });
 };
 
-const addPhoto = (listingId, callback) => {
-  const entry = moreFake.makeFakeEntry();
+const addPhoto = (entry, callback) => {
+  console.log(entry);
   connection.query(`INSERT INTO photo_information
     (photo_url, description, is_verified, listing_id) values (
-    ${entry.url}, ${entry.description},
-    ${entry.is_verified}, ${listingId});`, (err) => {
+    "${entry.photoUrl}", "${entry.description}",
+    ${entry.isVerified}, ${entry.listingId});`, (err) => {
     if (err) {
       callback(err);
       return;
@@ -43,9 +44,9 @@ const addPhoto = (listingId, callback) => {
   });
 };
 
-const deletePhoto = (image, callback) => {
-  const entryId = image.id;
-  connection.query(`DELETE * FROM photo_information WHERE id=${entryId};`, (err) => {
+const deletePhoto = (id, callback) => {
+  console.log('delete');
+  connection.query(`DELETE FROM photo_information WHERE id=${id};`, (err) => {
     if (err) {
       callback(err);
       return;
@@ -54,13 +55,13 @@ const deletePhoto = (image, callback) => {
   });
 };
 
-const updatePhoto = (image, callback) => {
+const updatePhoto = (id, entry, callback) => {
   const {
-    id, photoUrl, description, isVerified, listingId,
-  } = image;
+    photoUrl, description, isVerified, listingId,
+  } = entry;
   connection.query(
-    `UPDATE photo_information SET photo_url=${photoUrl},
-    description=${description}, is_verified=${isVerified},
+    `UPDATE photo_information SET photo_url="${photoUrl}",
+    description="${description}", is_verified=${isVerified},
     listing_id=${listingId} WHERE id=${id};`, (err) => {
       if (err) {
         callback(err);

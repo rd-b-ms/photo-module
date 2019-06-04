@@ -8,7 +8,7 @@
     "build-prod": "webpack -p",
     "start": "nodemon server/server.js",
     "start-docker": "nodemon server/server.js",
-    "seedDB": "node db/fakeDataGenerator.js && mysql -u root < schema.sql",
+    "seedDB": "node db/fakeDataGenerator.js && mysql -u root < db/sql-scripts/schema.sql",
     "test": "jest",
     "test:coverage": "npx jest --coverage"
   },
