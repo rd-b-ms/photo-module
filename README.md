@@ -13,3 +13,7 @@ Repository for a mock of the Airbnb photo display component.
 3. Bundle code with webpack by running `npm run build`
 4. Run server with `npm run start`
 5. Seed database with fake data by running `npm run seedDB`.
+
+## SDC
+
+

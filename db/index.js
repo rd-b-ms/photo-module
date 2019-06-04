@@ -43,4 +43,34 @@ const addPhoto = (listingId, callback) => {
   });
 };
 
-module.exports = { getPhotos, addPhoto };
+const deletePhoto = (image, callback) => {
+  const entryId = image.id;
+  connection.query(`DELETE * FROM photo_information WHERE id=${entryId};`, (err) => {
+    if (err) {
+      callback(err);
+      return;
+    }
+    callback(null);
+  });
+};
+
+const updatePhoto = (image, callback) => {
+  const {
+    id, photoUrl, description, isVerified, listingId,
+  } = image;
+  connection.query(
+    `UPDATE photo_information SET photo_url=${photoUrl},
+    description=${description}, is_verified=${isVerified},
+    listing_id=${listingId} WHERE id=${id};`, (err) => {
+      if (err) {
+        callback(err);
+        return;
+      }
+      callback(null);
+    }
+  );
+};
+
+module.exports = {
+  getPhotos, addPhoto, deletePhoto, updatePhoto,
+};

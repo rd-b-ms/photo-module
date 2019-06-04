@@ -18,9 +18,29 @@ app.get('/photos', (req, res) => {
   });
 });
 
-app.post('photos', (req, res) => {
+app.post('/photos', (req, res) => {
   const listingId = req.query.listingid;
   db.addPhoto(listingId, (err) => {
+    if (err) {
+      res.status(500).send();
+    }
+    res.status(200).send();
+  });
+});
+
+app.delete('/photos', (req, res) => {
+  const { id } = req.query;
+  db.deletePhoto(id, (err) => {
+    if (err) {
+      res.status(500).send();
+    }
+    res.status(200).send();
+  });
+});
+
+app.put('/photos', (req, res) => {
+  const { image } = req.query;
+  db.updataPhoto(image, (err) => {
     if (err) {
       res.status(500).send();
     }
