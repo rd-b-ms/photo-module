@@ -1,3 +1,5 @@
+import moreFake from './moreFakeData';
+
 const mysql = require('mysql');
 
 const connection = mysql.createConnection({
@@ -27,4 +29,18 @@ const getPhotos = (listingID, callback) => {
   });
 };
 
-module.exports = { getPhotos };
+const addPhoto = (listingId, callback) => {
+  const entry = moreFake.makeFakeEntry();
+  connection.query(`INSERT INTO photo_information
+    (photo_url, description, is_verified, listing_id) values (
+    ${entry.url}, ${entry.description},
+    ${entry.is_verified}, ${listingId});`, (err) => {
+    if (err) {
+      callback(err);
+      return;
+    }
+    callback(null);
+  });
+};
+
+module.exports = { getPhotos, addPhoto };

@@ -18,6 +18,16 @@ app.get('/photos', (req, res) => {
   });
 });
 
+app.post('photos', (req, res) => {
+  const listingId = req.query.listingid;
+  db.addPhoto(listingId, (err) => {
+    if (err) {
+      res.status(500).send();
+    }
+    res.status(200).send();
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is now listening on port ${PORT}`);
 });

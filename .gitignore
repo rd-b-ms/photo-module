@@ -1,5 +1,6 @@
 # Ignore npm node_modules
 node_modules
+package-lock.json
 
 # Other files to ignore
 .DS_store
