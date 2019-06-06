@@ -18,7 +18,7 @@ Repository for a mock of the Airbnb photo display component.
 
 ### Updated + added CRUD Routes
 
-##### GET
+#### GET
 request sent to: ```/photos/get/:listingId```
 A route with listingId returns an image taking the shape:
 ```
@@ -32,7 +32,7 @@ A route with listingId returns an image taking the shape:
 Retrieves all the relvant photos for a particular listingId.
 Expects status code 200
 
-##### POST
+#### POST
 request sent to: ```/photos/post/```
 A request taking in form data taking the shape:
 ```
@@ -46,7 +46,7 @@ A request taking in form data taking the shape:
 Posts a new photo intry to DB.
 Expects status code 200
 
-##### DELETE
+#### DELETE
 request sent to: ```/photos/delete/:id```
 A request taking in a table entry id of the shape:
 ```
@@ -57,7 +57,7 @@ A request taking in a table entry id of the shape:
 Deletes a table entry.
 Expects status code 200
 
-##### PUT
+#### PUT
 request sent to: ```/photos/update_entry/```
 A request taking in form data the shame of:
 ```
