@@ -16,3 +16,5 @@ CREATE TABLE photos (
   is_verified BOOLEAN,
   listing_id INTEGER references listings(id)
   );
+
+\COPY listings (listing) FROM '/Users/nautilus/hackReactor/hrsf117-sdc/photodisplay-module/data_gen/dataGen2.csv' WITH (DELIMITER ',', HEADER, FORMAT CSV);
