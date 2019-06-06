@@ -10,7 +10,8 @@
     "start-docker": "nodemon server/server.js",
     "seedDB": "node db/fakeDataGenerator.js && mysql -u root < db/sql-scripts/schema.sql",
     "test": "jest",
-    "test:coverage": "npx jest --coverage"
+    "test:coverage": "npx jest --coverage",
+    "big-data-gen": "node data_gen/dataGen.js"
   },
   "lint-staged": {
     "*.js": "eslint",

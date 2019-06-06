@@ -9,8 +9,9 @@ package-lock.json
 photos/
 icons/
 
-# Fake Data Text File
-fakeData.txt
+# Fake Data CSV File
+fakeDataListings.csv
+fakeDataPhotos.csv
 
 # Testing Coverage Report Files
 coverage/

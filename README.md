@@ -71,3 +71,13 @@ A request taking in form data the shame of:
 ```
 Updates the information of a particular table entry located at provided id.
 Expects status code 200
+
+## Fake Data Generation
+
+``` WARNING! THE FOLLOWING COMMAND GENERATES ALL 100 MILLION+ RECORDS```
+``` THIS COMMAND IS INTENTIONALLY BROKEN BY DEFAULT ```
+To re-enable data generation, uncomment noted running script in file ``` data_gen/dataGen.js ```
+To re-generate data => from root directory, run command:
+```
+node run big-data-gen
+```
