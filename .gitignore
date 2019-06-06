@@ -10,6 +10,7 @@ photos/
 icons/
 
 # Fake Data CSV File
+fakeData.txt
 fakeDataListings.csv
 fakeDataPhotos.csv
 
