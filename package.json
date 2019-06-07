@@ -37,6 +37,9 @@
   },
   "keywords": [],
   "author": "Scott Torres",
+  "contributors": [
+    "Daniel Kim"
+  ],
   "license": "ISC",
   "babel": {
     "presets": [
@@ -76,7 +79,6 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.19.0",
-    "csv-write-stream": "^2.0.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "fs": "0.0.1-security",

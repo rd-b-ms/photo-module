@@ -4,10 +4,10 @@ const fs = require('fs');
 const startTime = Date.now();
 
 // FILE FOR WRITING LISTINS CSV -> PostgreSQL DB
-// const writeListings = fs.createWriteStream('./data_gen/fakeDataListings.csv');
+const writeListings = fs.createWriteStream('./data_gen/fakeDataListings.csv');
 
 // FILE FOR WRITING PHOTOS CSV -> PostgreSQL
-// const writePhotos = fs.createWriteStream('./data_gen/fakeDataPhotos.csv');
+const writePhotos = fs.createWriteStream('./data_gen/fakeDataPhotos.csv');
 
 // FILE FOR WRITING JOINED TABLE DATA FOR noSQL DB -> Cassandra DB
 const writeJoin = fs.createWriteStream('./data_gen/fakeDataJoin.csv');
@@ -101,10 +101,10 @@ const dataGenJoin = (writer, count, callback) => {
 };
 
 // SCRIPT TO GENERATE LISTINS CSV
-// dataGenListings(writeListings, listingsCount, logTime);
+dataGenListings(writeListings, listingsCount, logTime);
 
 // SCRIPT TO GENERATE PHOTOS CSV
-// dataGenPhotos(writePhotos, photosCount, logTime);
+dataGenPhotos(writePhotos, photosCount, logTime);
 
 // SCRIPT TO GENERATE COMBINED DATA FOR NOSQL, DOCUMENT DATABASE
 dataGenJoin(writeJoin, joinCount, logTime);
