@@ -10,11 +10,11 @@ const writeListings = fs.createWriteStream('./data_gen/fakeDataListings.csv');
 const writePhotos = fs.createWriteStream('./data_gen/fakeDataPhotos.csv');
 
 // FILE FOR WRITING JOINED TABLE DATA FOR noSQL DB -> Cassandra DB
-const writeJoin = fs.createWriteStream('./data_gen/fakeDataJoin.csv');
+const writePhotosListings = fs.createWriteStream('./data_gen/fakeDataPhotosListings.csv');
 
 const listingsCount = 10000000; // listings count
 const photosCount = 80000000; // photos count
-const joinCount = 80000000; // join data count
+const photosListingsCount = 80000000; // photos listings data count
 
 const logTime = (currentTime) => {
   console.log(`Total generation time: ${(currentTime - startTime) / 1000} seconds`);
@@ -73,7 +73,7 @@ const dataGenPhotos = (writer, count, callback) => {
   write();
 };
 
-const dataGenJoin = (writer, count, callback) => {
+const dataGenPhotosListings = (writer, count, callback) => {
   let i = count;
   writer.write('listing,photo_url,description,is_verified,listing_id\n');
 
@@ -107,4 +107,4 @@ dataGenListings(writeListings, listingsCount, logTime);
 dataGenPhotos(writePhotos, photosCount, logTime);
 
 // SCRIPT TO GENERATE COMBINED DATA FOR NOSQL, DOCUMENT DATABASE
-dataGenJoin(writeJoin, joinCount, logTime);
+dataGenPhotosListings(writePhotosListings, photosListingsCount, logTime);

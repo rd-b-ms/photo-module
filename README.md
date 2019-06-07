@@ -94,3 +94,11 @@ To re-generate data => from root directory, run command:
 node run big-data-gen
 ```
 
+## Initialize Cassandra bash
+
+ - From Hard Drive directory below user root directory:
+
+ ```cd usr/local/Cellar/cassandra/3.11.4/bin/ open cassandra```
+
+ - Will run Cassandra server.
+Then, from any terminal bash, run: ```cqlsh --color``` to open the Cassandra bash shell using colored output text. May omit the ```--color``` and execute just ```cqlsh``` as default command.
