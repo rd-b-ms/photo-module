@@ -18,8 +18,10 @@ Repository for a mock of the Airbnb photo display component.
 
 ### Updated + added CRUD Routes
 
+
 #### GET
 request sent to: ```/photos/get/:listingId```
+
 A route with listingId returns an image taking the shape:
 ```
 {
@@ -32,8 +34,12 @@ A route with listingId returns an image taking the shape:
 Retrieves all the relvant photos for a particular listingId.
 Expects status code 200
 
+
 #### POST
 request sent to: ```/photos/post/```
+=======
+POST request sent to:
+
 A request taking in form data taking the shape:
 ```
 {
@@ -46,9 +52,12 @@ A request taking in form data taking the shape:
 Posts a new photo intry to DB.
 Expects status code 200
 
+
 #### DELETE
 request sent to: ```/photos/delete/:id```
 A request taking in a table entry id of the shape:
+
+
 ```
 {
   id : Number,
@@ -57,8 +66,10 @@ A request taking in a table entry id of the shape:
 Deletes a table entry.
 Expects status code 200
 
+
 #### PUT
 request sent to: ```/photos/update_entry/```
+
 A request taking in form data the shame of:
 ```
 {
@@ -70,6 +81,7 @@ A request taking in form data the shame of:
 }
 ```
 Updates the information of a particular table entry located at provided id.
+
 Expects status code 200
 
 ## Fake Data Generation
@@ -81,3 +93,4 @@ To re-generate data => from root directory, run command:
 ```
 node run big-data-gen
 ```
+
