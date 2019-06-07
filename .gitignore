@@ -13,6 +13,7 @@ icons/
 fakeData.txt
 fakeDataListings.csv
 fakeDataPhotos.csv
+fakeDataJoin.csv
 
 # Testing Coverage Report Files
 coverage/
