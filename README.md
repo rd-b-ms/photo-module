@@ -107,7 +107,8 @@ node run big-data-gen
 
  - PostgreSQL shell connection to photo_module database will show command line: ```photo_module=#```
 
-Following commands are executed from psql bash shell.
+### Following commands are executed from psql bash shell.
+
  - 1: To describe all tables in selected databast, use ```\dt```
    - 1.1: Or, describe a specific table ```\dt <table_name>```
  - 2: To connect to another database, use: ```\c <database>```
@@ -120,12 +121,12 @@ Following commands are executed from psql bash shell.
 ### Initialize Cassandra bash shell
 
  - From Hard Drive directory below user root directory:
+   - Will run Cassandra server.
 
  ```cd usr/local/Cellar/cassandra/3.11.4/bin/```
 
- - Will run Cassandra server.
-Then, from any terminal bash, run: ```cqlsh --color``` to open the Cassandra bash shell using colored output text.
-May omit the ```--color``` and just execute ```cqlsh``` as default command.
+ - Then, from any terminal bash, run: ```cqlsh --color``` to open the Cassandra bash shell using colored output text.
+ - May omit the ```--color``` and just execute ```cqlsh``` as default command.
 
  - To run a Cassandra .cql file from the command line, execute:
 ```cqlsh --file= "<filename>"```
