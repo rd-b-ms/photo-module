@@ -11,7 +11,7 @@
     "seedDB": "node db/fakeDataGenerator.js && mysql -u root < db/sql-scripts/schema.sql",
     "test": "jest",
     "test:coverage": "npx jest --coverage",
-    "big-data-gen": "node data_gen/dataGen.js"
+    "big-data-gen": "node --max-old-space-size=8192 data_gen/dataGen.js"
   },
   "lint-staged": {
     "*.js": "eslint",

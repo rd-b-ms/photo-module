@@ -14,6 +14,7 @@ fakeData.txt
 fakeDataListings.csv
 fakeDataPhotos.csv
 fakeDataPhotosListings.csv
+smallFakeDataPhotosListings.csv
 
 # Testing Coverage Report Files
 coverage/
