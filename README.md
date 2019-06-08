@@ -86,8 +86,8 @@ Expects status code 200
 
 #### Fake Data Generation
 
-``` WARNING! THE FOLLOWING COMMAND GENERATES ALL 100 MILLION+ RECORDS```
-``` THIS COMMAND IS INTENTIONALLY BROKEN BY DEFAULT ```
+ - ``` WARNING! THE FOLLOWING COMMAND GENERATES ALL 100 MILLION+ RECORDS```
+ - ``` THIS COMMAND IS INTENTIONALLY BROKEN BY DEFAULT ```
 To re-enable data generation, uncomment noted running script in file ``` data_gen/dataGen.js ```
 To re-generate data => from root directory, run command:
 ```
@@ -103,19 +103,19 @@ node run big-data-gen
 ### Initialize PostgreSQL bash shell
 
  - To open PostgreSQL bash shell and immediately connect to photo_module database:
- in terminal, run: ```psql photo_module```
+  - in terminal, run: ```psql photo_module```
 
-PostgreSQL shell connection to photo_module database will show command line: ```photo_module=#```
+ - PostgreSQL shell connection to photo_module database will show command line: ```photo_module=#```
 
 Following commands are executed from psql bash shell.
-1: To describe all tables in selected databast, use ```\dt```
-  1.1: Or, describe a specific table ```\dt <table_name>```
-2: To connect to another database, use: ```\c <database>```
-3: List all databases: ```\l```
-4: List all schemas of selected db: ```\dn```
+ - 1: To describe all tables in selected databast, use ```\dt```
+   - 1.1: Or, describe a specific table ```\dt <table_name>```
+ - 2: To connect to another database, use: ```\c <database>```
+ - 3: List all databases: ```\l```
+ - 4: List all schemas of selected db: ```\dn```
 
-5: To execute a query with feedback use prefix: ```EXPLAIN ANALYZE <query>```
-  5.1: To select a row for example: ```EXPLAIN ANALYZE SELECT * from photos WHERE listing_id=4873561;```
+ - 5: To execute a query with feedback use prefix: ```EXPLAIN ANALYZE <query>```
+   - 5.1: To select a row for example: ```EXPLAIN ANALYZE SELECT * from photos WHERE listing_id=4873561;```
 
 ### Initialize Cassandra bash shell
 
@@ -124,10 +124,13 @@ Following commands are executed from psql bash shell.
  ```cd usr/local/Cellar/cassandra/3.11.4/bin/```
 
  - Will run Cassandra server.
-Then, from any terminal bash, run: ```cqlsh --color``` to open the Cassandra bash shell using colored output text. May omit the ```--color``` and execute just ```cqlsh``` as default command.
+Then, from any terminal bash, run: ```cqlsh --color``` to open the Cassandra bash shell using colored output text.
+May omit the ```--color``` and just execute ```cqlsh``` as default command.
 
-To run a Cassandra .cql file from the command line, execute ```cqlsh --file= "<filename>"```
+ - To run a Cassandra .cql file from the command line, execute:
+```cqlsh --file= "<filename>"```
 
-So, for executing the Cassandra schema file creating the keyspace 'photo_module' and table 'photos_listings', from schema.cql
+ - So, for executing the Cassandra schema file creating the keyspace 'photo_module' and table 'photos_listings', from schema.cql
 
-From the terminal, run ```cqlsh --file= /Users/nautilus/hackReactor/hrsf117-sdc/photodisplay-module/cassandra/schema.cql```
+ - From the terminal, run:
+```cqlsh --file= /Users/nautilus/hackReactor/hrsf117-sdc/photodisplay-module/cassandra/schema.cql```
