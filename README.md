@@ -148,9 +148,11 @@ node run big-data-gen
 
   - When in psql bash shell (for database 'photo_module'), shell command line: ```photo_module=# <shell_command>```
     - To toggle on and off query-time response when executing ```psql``` shell commands, use: ```\timing```.
-    - Or, use ```EXPLAIN ANALYZE <psql_shell_command>``` for a more robust query response execution.
+    - Or, use ```EXPLAIN ANALYZE <psql_shell_command>``` for a more robust query response.
 
-#### PostgreSQL table indexing
+##### Table indexing
  - From psql bash shell:
-   - To create a B -Tree index on a PostgreSQL table, execute: ```CREATE INDEX <index_name> ON <table_name> USING <btree_or_other_index_type> (column);```
-   - However, btree is the default index type. So, command can be shortened to: ```CREATE INDEX <name> ON <table_name>;```
+   - To create a B -Tree index on a PostgreSQL table, execute: 
+   ```CREATE INDEX <index_name> ON <table_name> USING <btree_or_other_index_type> (column);```
+   - However, btree is the default index type. So, command can be shortened to:
+   ```CREATE INDEX <name> ON <table_name>;```
