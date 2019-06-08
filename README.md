@@ -128,10 +128,29 @@ node run big-data-gen
  - Then, from any terminal bash, run: ```cqlsh --color``` to open the Cassandra bash shell using colored output text.
  - May omit the ```--color``` and just execute ```cqlsh``` as default command.
 
- - To run a Cassandra .cql file from the command line, execute:
-```cqlsh --file= "<filename>"```
+ - To execute a Cassandra .cql file without starting a shell session use:
+```bin/cqlsh --file= <filename>```
 
  - So, for executing the Cassandra schema file creating the keyspace 'photo_module' and table 'photos_listings', from schema.cql
 
  - From the terminal, run:
-```cqlsh --file= /Users/nautilus/hackReactor/hrsf117-sdc/photodisplay-module/cassandra/schema.cql```
+```bin/cqlsh --file= /Users/nautilus/hackReactor/hrsf117-sdc/photodisplay-module/cassandra/schema.cql```
+
+#### Alternative to start Cassandra Server
+  - To start server process from the terminal run: ```brew services start cassandra```
+  - To stop server process from the terminal run: ```brew services stop cassandra```
+    - Ensure Cassandra isn't running as a background process using Activity Monitor
+    - Can also use ```kill -9 <pid_number>``` to force kill Cassandra. Find PID with Activity Monitor, running as 'Java'
+
+## Database Benchmarking
+
+### PostgreSQL
+
+  - When in psql bash shell (for database 'photo_module'), shell command line: ```photo_module=# <shell_command>```
+    - To toggle on and off query-time response when executing ```psql``` shell commands, use: ```\timing```.
+    - Or, use ```EXPLAIN ANALYZE <psql_shell_command>``` for a more robust query response execution.
+
+#### PostgreSQL table indexing
+ - From psql bash shell:
+   - To create a B -Tree index on a PostgreSQL table, execute: ```CREATE INDEX <index_name> ON <table_name> USING <btree_or_other_index_type> (column);```
+   - However, btree is the default index type. So, command can be shortened to: ```CREATE INDEX <name> ON <table_name>;```
