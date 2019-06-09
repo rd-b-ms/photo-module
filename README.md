@@ -152,7 +152,7 @@ node run big-data-gen
 
 ##### Table indexing
  - From psql bash shell:
-   - To create a B -Tree index on a PostgreSQL table, execute: 
-   ```CREATE INDEX <index_name> ON <table_name> USING <btree_or_other_index_type> (column);```
+   - To create a B -Tree index on a PostgreSQL table, execute:
+   ```CREATE INDEX <column_name> ON <table_name> USING <btree_or_other_index_type> (<column_name>);```
    - However, btree is the default index type. So, command can be shortened to:
-   ```CREATE INDEX <name> ON <table_name>;```
+   ```CREATE INDEX <column_name> ON <table_name>;```
