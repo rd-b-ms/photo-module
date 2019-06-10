@@ -101,9 +101,13 @@ node run big-data-gen
 ```
 
 ### Initialize PostgreSQL bash shell
+ - If PostgreSQL was installed using homebrew, server can be started and stopped using brew services. From a terminal, use:
+   - ```brew services start posgresql``` to start server
+   - ```brew services stop postgresql``` to stop server
 
- - To open PostgreSQL bash shell and immediately connect to photo_module database:
-  - in terminal, run: ```psql photo_module```
+ - Once postgreSql server is running, to open PostgreSQL bash shell and immediately connect to a specific database:
+  - From terminal, run: ```psql <database_name>```
+  - So, to access this repo's database shell, execute, ```psql photo_module```
 
  - PostgreSQL shell connection to photo_module database will show command line: ```photo_module=#```
 
