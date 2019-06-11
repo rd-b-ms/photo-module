@@ -69,6 +69,7 @@
     "jest": "^24.8.0",
     "jest-environment-enzyme": "^7.0.2",
     "lint-staged": "^8.1.7",
+    "newrelic": "^5.9.1",
     "pre-commit": "^1.2.2",
     "puppeteer": "^1.16.0",
     "react-test-renderer": "^16.8.6",

@@ -22,3 +22,5 @@ coverage/
 # Webpack bundle file
 public/bundle.js
 
+# Stress Testing
+newrelic.js

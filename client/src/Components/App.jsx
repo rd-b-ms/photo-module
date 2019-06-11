@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('newrelic');
+
 import React from 'react';
 import axios from 'axios';
 import { StyledContainer } from '../Styles/style';
