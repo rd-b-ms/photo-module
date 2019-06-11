@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('./../db/index.js');
-// const moreFake = require('../db/moreFakeData');
+const dbp = require('./../postgreSQL/index.js');
 
 const app = express();
 const PORT = 4000;
@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.get('/photos/get/:listingId', (req, res) => {
   const { listingId } = req.params;
-  db.getPhotos(listingId, (err, photos) => {
+  dbp.getPhotos(listingId, (err, photos) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -30,19 +30,34 @@ app.post('/photos/post/', (req, res) => {
     photoUrl, description, isVerified, listingId,
   };
 
-  db.addPhoto(entry, (err) => {
+  dbp.addPhoto(entry, (err) => {
     if (err) {
-      res.status(500).send();
+      res.status(500).send(err);
     }
     res.status(200).send();
   });
 });
 
-app.delete('/photos/delete/', (req, res) => {
-  const { id } = req.body;
-  db.deletePhoto(id, (err) => {
+app.delete('/photos/deleteListing/:listingId', (req, res) => {
+  const { listingId } = req.params;
+  dbp.deleteListingPhotos(listingId, (err) => {
     if (err) {
-      res.status(500).send();
+      res.status(500).send(err);
+    }
+    res.status(200).send();
+  });
+});
+
+app.delete('/photos/deleteOne/:listingId', (req, res) => {
+  const { listingId } = req.params;
+  const { photoId } = req.body;
+  const photoInfo = {
+    listingId,
+    photoId,
+  };
+  dbp.deleteOnePhoto(photoInfo, (err) => {
+    if (err) {
+      res.status(500).send(err);
     }
     res.status(200).send();
   });
@@ -50,14 +65,14 @@ app.delete('/photos/delete/', (req, res) => {
 
 app.put('/photos/update_entry/', (req, res) => {
   const {
-    id, photoUrl, description, isVerified, listingId,
+    photoId, photoUrl, description, isVerified, listingId,
   } = req.body;
 
   const entry = {
-    id, photoUrl, description, isVerified, listingId,
+    photoId, photoUrl, description, isVerified, listingId,
   };
 
-  db.updatePhoto(entry, (err) => {
+  dbp.updatePhoto(entry, (err) => {
     if (err) {
       res.status(500).send();
     }
