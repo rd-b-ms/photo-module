@@ -84,7 +84,7 @@ Updates the information of a particular table entry located at provided id.
 
 Expects status code 200
 
-#### Fake Data Generation
+## Fake Data Generation
 
  - ``` WARNING! THE FOLLOWING COMMAND GENERATES ALL 100 MILLION+ RECORDS```
  - ``` THIS COMMAND IS INTENTIONALLY BROKEN BY DEFAULT ```
@@ -100,16 +100,15 @@ use: ```node --max-old-space-size=<additional ram> <path to file>```
 node run big-data-gen
 ```
 
-### Initialize PostgreSQL bash shell
+## Initialize PostgreSQL bash shell
  - If PostgreSQL was installed using homebrew, server can be started and stopped using brew services. From a terminal, use:
-   - ```brew services start posgresql``` to start server
+   - ```brew services start postgresql``` to start server
    - ```brew services stop postgresql``` to stop server
 
  - Once postgreSql server is running, to open PostgreSQL bash shell and immediately connect to a specific database:
-  - From terminal, run: ```psql <database_name>```
-  - So, to access this repo's database shell, execute, ```psql photo_module```
-
- - PostgreSQL shell connection to photo_module database will show command line: ```photo_module=#```
+   - From terminal, run: ```psql <database_name>```
+   - So, to access this repo's database shell, execute, ```psql photo_module```
+   - PostgreSQL shell connection to photo_module database will show command line: ```photo_module=#```
 
 ### Following commands are executed from psql bash shell.
 
@@ -122,7 +121,7 @@ node run big-data-gen
  - 5: To execute a query with feedback use prefix: ```EXPLAIN ANALYZE <query>```
    - 5.1: To select a row for example: ```EXPLAIN ANALYZE SELECT * from photos WHERE listing_id=4873561;```
 
-### Initialize Cassandra bash shell
+## Initialize Cassandra bash shell
 
  - From Hard Drive directory below user root directory:
    - Will run Cassandra server.
@@ -154,7 +153,7 @@ node run big-data-gen
     - To toggle on and off query-time response when executing ```psql``` shell commands, use: ```\timing```.
     - Or, use ```EXPLAIN ANALYZE <psql_shell_command>``` for a more robust query response.
 
-##### Table indexing
+### Table indexing
  - From psql bash shell:
    - To create a B -Tree index on a PostgreSQL table, execute:
    ```CREATE INDEX <column_name> ON <table_name> USING <btree_or_other_index_type> (<column_name>);```

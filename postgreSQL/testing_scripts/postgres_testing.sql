@@ -11,7 +11,7 @@ EXPLAIN ANALYZE SELECT * FROM photos
 
 EXPLAIN ANALYZE INSERT INTO public.listings (listing) VALUES ('new listing here I come!');
 EXPLAIN ANALYZE INSERT INTO public.photos (photo_url, description, is_verified, listing_id)
-  VALUES ('https://sdc-photos-rdbms.s3-us-west-1.amazonaws.com/test.jpeg', 'photo of some thing that looks kinda cool bit is probably overpriced', false, 5738216);
+  VALUES ('https://sdc-photos-rdbms.s3-us-west-1.amazonaws.com/test.jpeg', 'photo of some thing that looks kinda cool but is probably overpriced', false, 5738216);
 EXPLAIN ANALYZE INSERT INTO public.photos (photo_url, description, is_verified, listing_id)
   VALUES ('https://sdc-photos-rdbms.s3-us-west-1.amazonaws.com/testAnother.jpeg', 'photo of some thing that looks kinda cool bit is probably overpriced', true, 9863716);
 
@@ -82,3 +82,8 @@ EXPLAIN ANALYZE DELETE FROM public.photos
   WHERE listing_id = 3872180;
 EXPLAIN ANALYZE DELETE FROM public.photos
   WHERE listing_id = 9735180;
+
+EXPLAIN ANALYZE DELETE FROM public.photos
+  WHERE listing_id = 1827493;
+EXPLAIN ANALYZE DELETE FROM public.photos
+  WHERE listing_id = 4837263;
