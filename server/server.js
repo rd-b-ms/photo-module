@@ -17,7 +17,6 @@ app.get('/listings/*', (req, res) => {
 });
 
 app.get('/photos/get/:listingId', (req, res) => {
-  console.log('received get request');
   const { listingId } = req.params;
   dbp.getPhotos(listingId, (err, photos) => {
     if (err) {
