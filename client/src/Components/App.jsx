@@ -8,6 +8,8 @@ import ViewPhotosButton from './ViewPhotosButton';
 import ShareModal from './ShareModal';
 import PhotoSlideshow from './PhotoSlideshow';
 
+const path = require('path');
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +18,7 @@ class App extends React.Component {
         description: 'Veniam voluptatem sit rerum aut sed est in suscipit.',
         id: 98,
         is_verified: 0,
-        photo_url: 'https://s3-us-west-1.amazonaws.com/fec-carebnb/photos/photo-6.jpg',
+        photo_url: 'https://sdc-photos-rdbms.s3-us-west-1.amazonaws.com/404.jpeg',
       }],
       isContainerHovered: false,
       shareModalIsVisible: false,
@@ -34,18 +36,22 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const params = new URLSearchParams(window.location.search);
-    let url;
-    if (!params.has('listingid')) {
-      url = '/photos/?listingid=1';
-    } else {
-      url = `/photos/?listingid=${params.get('listingid')}`;
-    }
+    const pathName = window.location.pathname.split('/');
+    const listingId = pathName[2];
+    const url = `/photos/get/${listingId}`;
+    // const params = new URLSearchParams(window.location.search);
+    // let url;
+    // if (!params.has('listingid')) {
+    //   url = '/photos/get/1';
+    // } else {
+    //   url = `/photos/get/?listingid=${params.get('listingid')}`;
+    // }
     axios.get(url)
       .then((photoList) => {
-        this.setState({ photos: photoList.data });
+        this.setState({ photos: photoList.data.rows });
       })
       .catch((err) => {
+        console.log(err);
         throw err;
       });
   }

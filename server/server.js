@@ -1,7 +1,9 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const db = require('./../db/index.js');
+// const db = require('./../db/index.js');
 const dbp = require('./../postgreSQL/index.js');
 
 const app = express();
@@ -10,7 +12,12 @@ const PORT = 4000;
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(bodyParser.json());
 
+app.get('/listings/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
+
 app.get('/photos/get/:listingId', (req, res) => {
+  console.log('received get request');
   const { listingId } = req.params;
   dbp.getPhotos(listingId, (err, photos) => {
     if (err) {

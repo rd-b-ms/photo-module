@@ -22,7 +22,7 @@ const addPhoto = (entry, callback) => {
   const {
     photoUrl, description, isVerified, listingId,
   } = entry;
-  pool.query('INSERT INTO photos (photo_url, description, is_verified, listing_id) VALUES ($1, $2, $3, $4)', [photoUrl, description, isVerified, listingId], (err) => {
+  pool.query('INSERT INTO photos (photo_url, description, is_verified, listing_id) VALUES (\'$1\', \'$2\', $3, $4)', [photoUrl, description, isVerified, listingId], (err) => {
     if (err) {
       callback(err);
       return;
@@ -56,7 +56,7 @@ const updatePhoto = (entry, callback) => {
   const {
     photoId, photoUrl, description, isVerified, listingId,
   } = entry;
-  pool.query('UPDATE photos SET photo_url = $1, description = $2, is_verified = $3, listing_id = $4 WHERE id = $5', [photoUrl, description, isVerified, listingId, photoId], (err) => {
+  pool.query('UPDATE photos SET photo_url = \'$1\', description = \'$2\', is_verified = $3, listing_id = $4 WHERE id = $5', [photoUrl, description, isVerified, listingId, photoId], (err) => {
     if (err) {
       callback(err);
       return;
