@@ -1,8 +1,10 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('newrelic');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const db = require('./../db/index.js');
-// const moreFake = require('../db/moreFakeData');
+// const db = require('./../db/index.js'); // old database from inherited code
+const dbp = require('./../postgreSQL/index.js');
 
 const app = express();
 const PORT = 4000;
@@ -10,9 +12,13 @@ const PORT = 4000;
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(bodyParser.json());
 
+app.get('/listings/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
+
 app.get('/photos/get/:listingId', (req, res) => {
   const { listingId } = req.params;
-  db.getPhotos(listingId, (err, photos) => {
+  dbp.getPhotos(listingId, (err, photos) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -21,47 +27,65 @@ app.get('/photos/get/:listingId', (req, res) => {
   });
 });
 
-app.post('/photos/post/', (req, res) => {
+app.post('/photos/post', (req, res) => {
   const {
     photoUrl, description, isVerified, listingId,
   } = req.body;
-
   const entry = {
     photoUrl, description, isVerified, listingId,
   };
 
-  db.addPhoto(entry, (err) => {
+  dbp.addPhoto(entry, (err) => {
     if (err) {
       res.status(500).send();
+    } else {
+      res.status(200).send();
     }
-    res.status(200).send();
   });
 });
 
-app.delete('/photos/delete/', (req, res) => {
-  const { id } = req.body;
-  db.deletePhoto(id, (err) => {
+app.delete('/photos/deleteListing/:listingId', (req, res) => {
+  const { listingId } = req.params;
+  dbp.deleteListingPhotos(listingId, (err) => {
     if (err) {
-      res.status(500).send();
+      res.status(500).send(err);
+    } else {
+      res.status(200).send();
     }
-    res.status(200).send();
+  });
+});
+
+app.delete('/photos/deleteOne/:listingId', (req, res) => {
+  const { listingId } = req.params;
+  const { photoId } = req.body;
+  const photoInfo = {
+    listingId,
+    photoId,
+  };
+  dbp.deleteOnePhoto(photoInfo, (err) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send();
+    }
   });
 });
 
 app.put('/photos/update_entry/', (req, res) => {
   const {
-    id, photoUrl, description, isVerified, listingId,
+    photoId, photoUrl, description, isVerified, listingId,
   } = req.body;
 
   const entry = {
-    id, photoUrl, description, isVerified, listingId,
+    photoId, photoUrl, description, isVerified, listingId,
   };
 
-  db.updatePhoto(entry, (err) => {
+  dbp.updatePhoto(entry, (err) => {
     if (err) {
       res.status(500).send();
+    } else {
+      res.status(200).send();
     }
-    res.status(200).send();
   });
 });
 
