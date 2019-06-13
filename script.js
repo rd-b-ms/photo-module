@@ -25,8 +25,17 @@ export default function () {
 // Uncomment following block to run POST request stress testing
 
 export const options = {
-  vus: 100,
-  duration: '600s',
+  // vus: 1000,
+  // duration: '600s',
+  stages: [
+    { duration: '20s', target: 250 },
+    { duration: '40s', target: 500 },
+    { duration: '60s', target: 750 },
+    { duration: '320s', target: 1000 },
+    { duration: '20s', target: 750 },
+    { duration: '20s', target: 500 },
+    { duration: '20s', target: 250 },
+  ],
 };
 
 export default function () {
