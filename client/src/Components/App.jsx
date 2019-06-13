@@ -39,20 +39,15 @@ class App extends React.Component {
     const pathName = window.location.pathname.split('/');
     const listingId = pathName[2];
     const url = `/photos/get/${listingId}`;
-    // const params = new URLSearchParams(window.location.search);
-    // let url;
-    // if (!params.has('listingid')) {
-    //   url = '/photos/get/1';
-    // } else {
-    //   url = `/photos/get/?listingid=${params.get('listingid')}`;
-    // }
+
+    console.log(url);
     axios.get(url)
       .then((photoList) => {
         this.setState({ photos: photoList.data.rows });
       })
       .catch((err) => {
         console.log(err);
-        throw err;
+        // throw err;
       });
   }
 

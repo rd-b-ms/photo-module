@@ -3,7 +3,7 @@ require('newrelic');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-// const db = require('./../db/index.js');
+// const db = require('./../db/index.js'); // old database from inherited code
 const dbp = require('./../postgreSQL/index.js');
 
 const app = express();
@@ -27,20 +27,20 @@ app.get('/photos/get/:listingId', (req, res) => {
   });
 });
 
-app.post('/photos/post/', (req, res) => {
+app.post('/photos/post', (req, res) => {
   const {
     photoUrl, description, isVerified, listingId,
   } = req.body;
-
   const entry = {
     photoUrl, description, isVerified, listingId,
   };
 
   dbp.addPhoto(entry, (err) => {
     if (err) {
-      res.status(500).send(err);
+      res.status(500).send();
+    } else {
+      res.status(200).send();
     }
-    res.status(200).send();
   });
 });
 
@@ -49,8 +49,9 @@ app.delete('/photos/deleteListing/:listingId', (req, res) => {
   dbp.deleteListingPhotos(listingId, (err) => {
     if (err) {
       res.status(500).send(err);
+    } else {
+      res.status(200).send();
     }
-    res.status(200).send();
   });
 });
 
@@ -64,8 +65,9 @@ app.delete('/photos/deleteOne/:listingId', (req, res) => {
   dbp.deleteOnePhoto(photoInfo, (err) => {
     if (err) {
       res.status(500).send(err);
+    } else {
+      res.status(200).send();
     }
-    res.status(200).send();
   });
 });
 
@@ -81,8 +83,9 @@ app.put('/photos/update_entry/', (req, res) => {
   dbp.updatePhoto(entry, (err) => {
     if (err) {
       res.status(500).send();
+    } else {
+      res.status(200).send();
     }
-    res.status(200).send();
   });
 });
 

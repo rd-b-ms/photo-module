@@ -18,8 +18,8 @@ connection.connect((err) => {
   }
 });
 
-const getPhotos = (listingID, callback) => {
-  connection.query(`SELECT id, photo_url, description, is_verified FROM photo_information WHERE listing_id = ${listingID};`, (err, photoUrls) => {
+const getPhotos = (listingId, callback) => {
+  connection.query(`SELECT id, photo_url, description, is_verified FROM photo_information WHERE listing_id = ${listingId};`, (err, photoUrls) => {
     if (err) {
       callback(err);
     } else {
@@ -30,10 +30,10 @@ const getPhotos = (listingID, callback) => {
 
 const addPhoto = (entry, callback) => {
   // console.log(entry);
-  connection.query(`INSERT INTO photo_information
-    (photo_url, description, is_verified, listing_id) values (
-    "${entry.photoUrl}", "${entry.description}",
-    ${entry.isVerified}, ${entry.listingId});`, (err) => {
+  const {
+    photoUrl, description, isVerified, listingId,
+  } = entry;
+  connection.query('INSERT INTO photo_information (photo_url, description, is_verified, listing_id) values ("$1", "$2", $3, $4)', [photoUrl, description, isVerified, listingId], (err) => {
     if (err) {
       callback(err);
       return;
