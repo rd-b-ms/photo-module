@@ -15,8 +15,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       photos: [{
-        description: 'Veniam voluptatem sit rerum aut sed est in suscipit.',
-        id: 98,
+        description: 'This is the default state. Data not served from db.',
+        id: 666,
         is_verified: 0,
         photo_url: 'https://sdc-photos-rdbms.s3-us-west-1.amazonaws.com/404.jpeg',
       }],

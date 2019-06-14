@@ -1,14 +1,16 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-require('newrelic');
+// require('newrelic'); // uncomment to enable New Relic data gathering
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 // const db = require('./../db/index.js'); // old database from inherited code
 const dbp = require('./../postgreSQL/index.js');
 
 const app = express();
 const PORT = 4000;
 
+app.use(cors());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(bodyParser.json());
 
