@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-require('newrelic');
+// require('newrelic'); // uncomment to enable New Relic data gathering
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
