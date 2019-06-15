@@ -112,7 +112,7 @@ node run big-data-gen
 
 ### Following commands are executed from psql bash shell.
 
- - 1: To describe all tables in selected databast, use ```\dt```
+ - 1: To describe all tables in selected database, use ```\dt```
    - 1.1: Or, describe a specific table ```\dt <table_name>```
  - 2: To connect to another database, use: ```\c <database>```
  - 3: List all databases: ```\l```
@@ -159,3 +159,20 @@ node run big-data-gen
    ```CREATE INDEX <column_name> ON <table_name> USING <btree_or_other_index_type> (<column_name>);```
    - However, btree is the default index type. So, command can be shortened to:
    ```CREATE INDEX <column_name> ON <table_name>;```
+
+# Deployment
+
+## Database
+
+  From Ubuntu shell:
+  Install PostgreSQL from source code.
+
+  Open the postgres shell from Ubuntu root directory using ```sudo -u postgres psql```
+  Once in postgres shell, command line prompt will show ```postgres=#```
+
+  OR
+
+  Navigate to the postgres directory with ```sudo -i -u postgres```
+  Then, enter the postres shell with ```psql```
+
+
