@@ -162,6 +162,22 @@ node run big-data-gen
 
 # Deployment
 
+## Securely Sending Files
+
+To securely send files to a remote server with SSH, from directory where the file to be sent is located:
+
+If I'm trying to send a ```fakeData.csv``` file to my remote server with IP address ```10.10.10.10``` and store that file in a directory on the remote server named ```/data```:
+
+Execute terminal command ```scp fakeData.csv 10.10.10.10:/data```
+
+Also, I can send a ```directory``` in the same fashion using recursive flag ```-r```:
+Execute terminal command ```scp -r directory 10.10.10.10:/data```
+
+If authentication key is required by destination server, include a ```-i``` flag immediately after the ```scp``` command:
+For example, a .pem key located at ```/User/me/keys/myKey.pem```
+
+Execute: ```scp -i /User/me/keys/myKey.pem fakeData.csv 10.10.10.10:/data```
+
 ## Database
 
   From Ubuntu shell:
@@ -176,3 +192,15 @@ node run big-data-gen
   Then, enter the postres shell with ```psql```
 
 
+## Service
+
+  From Ubuntu shell, install dependencies:
+  ```sudo apt install nodejs```
+  ```sudo apt install npm```
+
+  Using git, clone down service repo,
+  ``` git clone https://github/<username>/<repo>.git```
+
+  cd into repo directory and install local dependencies, i.e. ```npm install```
+
+  Run webpack to compile a production bundle.js file ```npm run build-prod```
