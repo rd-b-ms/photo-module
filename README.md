@@ -176,7 +176,7 @@ Execute terminal command ```scp -r directory 10.10.10.10:/data```
 If authentication key is required by destination server, include a ```-i``` flag immediately after the ```scp``` command:
 For example, a .pem key located at ```/User/me/keys/myKey.pem```
 
-Execute: ```scp -i /User/me/keys/myKey.pem fakeData.csv 10.10.10.10:/data```
+Execute: ```scp -i /User/me/keys/myKey.pem fakeData.csv 10.10.10.10:~/data```
 
 ## Database
 
@@ -204,3 +204,33 @@ Execute: ```scp -i /User/me/keys/myKey.pem fakeData.csv 10.10.10.10:/data```
   cd into repo directory and install local dependencies, i.e. ```npm install```
 
   Run webpack to compile a production bundle.js file ```npm run build-prod```
+
+
+# Data File Compression / Decompression
+
+## Compression
+In order to send large files to EC2, I compressed my ```.csv``` files before ssh delivery to EC2 instance.
+
+To gzip my csv files, save a copy of the original, and output the gzip version into a different directory, renamed with a ```.csv.gz``` extension:
+
+From csv file directory:
+
+In this example, I'm compressing ```fakeDataPhotos1.csv``` and saving the zip copy to directory ```/zip-data``` with a new filename ```fakeDataPhotos3.csv.gz```
+
+Execute:
+```gzip -c fakeDataPhotos1.csv >/Users/nautilus/hackReactor/hrsf117-sdc/photodisplay-module/data_gen/zip-data/fakeDataPhotos1.csv.gz```
+
+Generic command:
+```gzip -c file_to_copy_and_compress.csv >/absolute_path_of/copy_directory/new_file_name_of_compressed_copy.csv.gz```
+
+
+gzip -c fakeDataPhotos4.csv >/Users/nautilus/hackReactor/hrsf117-sdc/photodisplay-module/data_gen/zip-data/fakeDataPhotos4.csv.gz
+
+## Decompression
+
+To decompress the .gz file use ```gunzip  <filename.gz>```
+
+This will place the decompressed file into the same directory as the location of the .gz file with corrected filename minus the .gz extension.
+
+DOES NOT PRESERVE THE ORIGINAL ```.csv.gz``` FILE. That file is simply decompressed.
+
