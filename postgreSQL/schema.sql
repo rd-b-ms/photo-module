@@ -18,6 +18,14 @@ CREATE TABLE photos (
   );
 
 -- \COPY listings (listing) FROM '/Users/nautilus/hackReactor/hrsf117-sdc/photodisplay-module/data_gen/fakeDataListings.csv' WITH (DELIMITER ',', HEADER, FORMAT CSV);
--- \COPY photos (photo_url, description, is_verified, listing_id) FROM '/Users/nautilus/hackReactor/hrsf117-sdc/photodisplay-module/data_gen/fakeDataPhotosListings.csv' WITH (DELIMITER ',', HEADER, FORMAT CSV);
+-- \COPY photos (photo_url, description, is_verified, listing_id) FROM '/Users/nautilus/hackReactor/hrsf117-sdc/photodisplay-module/data_gen/fakeDataPhotos.csv' WITH (DELIMITER ',', HEADER, FORMAT CSV);
 
--- \COPY photos (photo_url, description, is_verified, listing_id) FROM '/Users/nautilus/hackReactor/hrsf117-sdc/photodisplay-module/data_gen/smallFakeDataPhotosListings.csv' WITH (DELIMITER ',', HEADER, FORMAT CSV);
+-- \COPY photos (photo_url, description, is_verified, listing_id) FROM '/Users/nautilus/hackReactor/hrsf117-sdc/photodisplay-module/data_gen/smallFakeDataPhotos.csv' WITH (DELIMITER ',', HEADER, FORMAT CSV);
+
+
+-- Add the foreign key and btree index after database seeding complete
+-- ALTER TABLE photos
+--   ADD CONSTRAINT fk_photos_listings FOREIGN KEY (listing_id) REFERENCES listings (id);
+
+-- CREATE INDEX photos_index ON photos
+--   USING btree (listing_id);

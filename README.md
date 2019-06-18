@@ -160,6 +160,23 @@ node run big-data-gen
    - However, btree is the default index type. So, command can be shortened to:
    ```CREATE INDEX <column_name> ON <table_name>;```
 
+### Seeding Consideration
+  Extremely large file copy from a .csv file to postres table required considerable processing power. So, it was important to batch out the copy scripts and data files. I decided to create four data files and seed them one at a time. However, this created another issue. The seeding was still taking too much processing power. It became necessary to remove the foreign key constraint from my initial table definition, seed the database, then use an 'ALTER TABLE' statement to add the foreign key constraint after all data had been seeded.
+
+  After adding the foreign key constraint to the photos table, I also added a btree index to the listing_id column of the photos table.
+  The commands used are listed below.
+
+  Adding the foreign key constraint:
+  ```
+  ALTER TABLE photos
+    ADD CONSTRAINT fk_photos_listings FOREIGN KEY (listing_id) REFERENCES listings (id);
+  ```
+  Creating a btree index on the listing_id column of the photos table:
+  ```
+  CREATE INDEX photos_index ON photos
+    USING btree (listing_id);
+  ```
+
 # Deployment
 
 ## Securely Sending Files
@@ -177,6 +194,8 @@ If authentication key is required by destination server, include a ```-i``` flag
 For example, a .pem key located at ```/User/me/keys/myKey.pem```
 
 Execute: ```scp -i /User/me/keys/myKey.pem fakeData.csv 10.10.10.10:~/data```
+
+scp -i /User/me/keys/myKey.pem fakeData.csv ubuntu@18.218.63.193:~/postgres
 
 ## Database
 
