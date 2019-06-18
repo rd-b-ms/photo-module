@@ -1,12 +1,11 @@
 const { Pool } = require('pg');
+// const config = require('./user-config');
 
-const pool = new Pool({
-  user: 'nautilus',
-  host: 'localhost',
-  database: 'photo_module',
-  password: '',
-  port: 5432,
-});
+// const {
+//   user, host, database, password, port,
+// } = config;
+
+const pool = new Pool(/* hidden from git */);
 
 const getPhotos = (listingId, callback) => {
   pool.query('SELECT * FROM photos where listing_id = $1', [listingId], (err, result) => {

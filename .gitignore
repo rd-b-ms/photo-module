@@ -32,3 +32,6 @@ public/bundle.js
 # Stress Testing
 newrelic.js
 newrelic_agent.log
+
+# config
+user-config.js
