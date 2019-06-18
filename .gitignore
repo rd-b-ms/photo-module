@@ -10,11 +10,18 @@ photos/
 icons/
 
 # Fake Data CSV File
+data_gen/zip-data
 fakeData.txt
 fakeDataListings.csv
 fakeDataPhotos.csv
 fakeDataPhotosListings.csv
 smallFakeDataPhotosListings.csv
+smallFakeDataPhotos.csv
+
+fakeDataPhotos1.csv
+fakeDataPhotos2.csv
+fakeDataPhotos3.csv
+fakeDataPhotos4.csv
 
 # Testing Coverage Report Files
 coverage/
@@ -25,3 +32,6 @@ public/bundle.js
 # Stress Testing
 newrelic.js
 newrelic_agent.log
+
+# config
+user-config.js

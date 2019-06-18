@@ -22,6 +22,7 @@ app.get('/photos/get/:listingId', (req, res) => {
   const { listingId } = req.params;
   dbp.getPhotos(listingId, (err, photos) => {
     if (err) {
+      console.log(err);
       res.status(500).send(err);
     } else {
       res.status(200).send(photos);

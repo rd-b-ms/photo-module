@@ -9,18 +9,30 @@ const startTime = Date.now();
 // FILE FOR WRITING PHOTOS CSV -> PostgreSQL
 // const writePhotos = fs.createWriteStream('./data_gen/fakeDataPhotos.csv');
 
-// FILE FOR WRITING JOINED TABLE DATA FOR noSQL DB -> Cassandra DB
-const writePhotosListings = fs.createWriteStream('./data_gen/fakeDataPhotosListings.csv');
+// data generation files for partial batch seeding
+// const writePhotos1 = fs.createWriteStream('./data_gen/fakeDataPhotos1.csv');
+// const writePhotos2 = fs.createWriteStream('./data_gen/fakeDataPhotos2.csv');
+// const writePhotos3 = fs.createWriteStream('./data_gen/fakeDataPhotos3.csv');
+// const writePhotos4 = fs.createWriteStream('./data_gen/fakeDataPhotos4.csv');
 
-// small version
+// FILE FOR WRITING JOINED TABLE DATA FOR noSQL DB -> Cassandra DB
+// const writePhotosListings = fs.createWriteStream('./data_gen/fakeDataPhotosListings.csv');
+
+// small version Cassandra photosListings
 // const smallWritePhotosListings = fs.createWriteStream('./data_gen/smallFakeDataPhotosListings.csv');
 
+// small version PostgreSQL photos
+const smallWritePhotos = fs.createWriteStream('./data_gen/smallFakeDataPhotos.csv');
+
 const listingsCount = 10000000; // listings count
-const photosCount = 80000000; // photos count
-const photosListingsCount = 80000000; // photos listings data count
+// const photosCount = 80000000; // photos count
+const photosCountPart = 20000000; // photos count
+
+// const photosListingsCount = 80000000; // photos listings data count
 
 // small photosListingCount version
-const smallPhotosListingsCount = 8000; // small photos listings data count
+// const smallPhotosListingsCount = 8000; // small photos listings data count
+const smallPhotosCount = 8000; // small photos data count
 
 const logTime = (currentTime) => {
   console.log(`Total generation time: ${(currentTime - startTime) / 1000} seconds`);
@@ -112,6 +124,15 @@ const dataGenPhotosListings = (writer, count, callback) => {
 // SCRIPT TO GENERATE PHOTOS CSV
 // dataGenPhotos(writePhotos, photosCount, logTime);
 
+// SCRIPTS TO GENERATE BATCH SEEDING DATA
+// dataGenPhotos(writePhotos1, photosCountPart, logTime);
+// dataGenPhotos(writePhotos2, photosCountPart, logTime);
+// dataGenPhotos(writePhotos3, photosCountPart, logTime);
+// dataGenPhotos(writePhotos4, photosCountPart, logTime);
+
 // SCRIPT TO GENERATE COMBINED DATA FOR NOSQL, DOCUMENT DATABASE
-dataGenPhotosListings(writePhotosListings, photosListingsCount, logTime);
+// dataGenPhotosListings(writePhotosListings, photosListingsCount, logTime);
 // dataGenPhotosListings(smallWritePhotosListings, smallPhotosListingsCount, logTime); // small version
+
+// SCRIPT TO GENERATE SMALL VERSION OF PHOTOS DATA FOR POSTGRESQL PHOTOS TABLE
+dataGenPhotos(smallWritePhotos, smallPhotosCount, logTime);

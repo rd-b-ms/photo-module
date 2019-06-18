@@ -160,7 +160,42 @@ node run big-data-gen
    - However, btree is the default index type. So, command can be shortened to:
    ```CREATE INDEX <column_name> ON <table_name>;```
 
+### Seeding Consideration
+  Extremely large file copy from a .csv file to postres table required considerable processing power. So, it was important to batch out the copy scripts and data files. I decided to create four data files and seed them one at a time. However, this created another issue. The seeding was still taking too much processing power. It became necessary to remove the foreign key constraint from my initial table definition, seed the database, then use an 'ALTER TABLE' statement to add the foreign key constraint after all data had been seeded.
+
+  After adding the foreign key constraint to the photos table, I also added a btree index to the listing_id column of the photos table.
+  The commands used are listed below.
+
+  Adding the foreign key constraint:
+  ```
+  ALTER TABLE photos
+    ADD CONSTRAINT fk_photos_listings FOREIGN KEY (listing_id) REFERENCES listings (id);
+  ```
+  Creating a btree index on the listing_id column of the photos table:
+  ```
+  CREATE INDEX photos_index ON photos
+    USING btree (listing_id);
+  ```
+
 # Deployment
+
+## Securely Sending Files
+
+To securely send files to a remote server with SSH, from directory where the file to be sent is located:
+
+If I'm trying to send a ```fakeData.csv``` file to my remote server with IP address ```10.10.10.10``` and store that file in a directory on the remote server named ```/data```:
+
+Execute terminal command ```scp fakeData.csv 10.10.10.10:/data```
+
+Also, I can send a ```directory``` in the same fashion using recursive flag ```-r```:
+Execute terminal command ```scp -r directory 10.10.10.10:/data```
+
+If authentication key is required by destination server, include a ```-i``` flag immediately after the ```scp``` command:
+For example, a .pem key located at ```/User/me/keys/myKey.pem```
+
+Execute: ```scp -i /User/me/keys/myKey.pem fakeData.csv 10.10.10.10:~/data```
+
+scp -i /User/me/keys/myKey.pem fakeData.csv ubuntu@18.218.63.193:~/postgres
 
 ## Database
 
@@ -175,4 +210,46 @@ node run big-data-gen
   Navigate to the postgres directory with ```sudo -i -u postgres```
   Then, enter the postres shell with ```psql```
 
+
+## Service
+
+  From Ubuntu shell, install dependencies:
+  ```sudo apt install nodejs```
+  ```sudo apt install npm```
+
+  Using git, clone down service repo,
+  ``` git clone https://github/<username>/<repo>.git```
+
+  cd into repo directory and install local dependencies, i.e. ```npm install```
+
+  Run webpack to compile a production bundle.js file ```npm run build-prod```
+
+
+# Data File Compression / Decompression
+
+## Compression
+In order to send large files to EC2, I compressed my ```.csv``` files before ssh delivery to EC2 instance.
+
+To gzip my csv files, save a copy of the original, and output the gzip version into a different directory, renamed with a ```.csv.gz``` extension:
+
+From csv file directory:
+
+In this example, I'm compressing ```fakeDataPhotos1.csv``` and saving the zip copy to directory ```/zip-data``` with a new filename ```fakeDataPhotos3.csv.gz```
+
+Execute:
+```gzip -c fakeDataPhotos1.csv >/Users/nautilus/hackReactor/hrsf117-sdc/photodisplay-module/data_gen/zip-data/fakeDataPhotos1.csv.gz```
+
+Generic command:
+```gzip -c file_to_copy_and_compress.csv >/absolute_path_of/copy_directory/new_file_name_of_compressed_copy.csv.gz```
+
+
+gzip -c fakeDataPhotos4.csv >/Users/nautilus/hackReactor/hrsf117-sdc/photodisplay-module/data_gen/zip-data/fakeDataPhotos4.csv.gz
+
+## Decompression
+
+To decompress the .gz file use ```gunzip  <filename.gz>```
+
+This will place the decompressed file into the same directory as the location of the .gz file with corrected filename minus the .gz extension.
+
+DOES NOT PRESERVE THE ORIGINAL ```.csv.gz``` FILE. That file is simply decompressed.
 
